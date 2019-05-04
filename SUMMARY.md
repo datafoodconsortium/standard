@@ -17,3 +17,7 @@
 * [Design decisions](technical-specification/design-decisions.md)
 * [Architecture representations](technical-specification/architecture-representations.md)
 
+## Appendixes
+
+* [Appendix 1. Decisions points and choices](appendixes/appendix-1.-decisions-points-and-choices.md)
+
