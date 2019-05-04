@@ -20,4 +20,5 @@
 ## Appendixes
 
 * [Appendix 1. Decisions points and choices](appendixes/appendix-1.-decisions-points-and-choices.md)
+* [Appendix 2. General principles](appendixes/appendix-2.-general-principles.md)
 
