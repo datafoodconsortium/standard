@@ -6,3 +6,8 @@
 * [General strategy to build that standard](general-strategy-to-build-that-standard.md)
 * [Status of the project](status-of-the-project.md)
 
+## Semantic specification
+
+* [Business model and ontology](semantic-specification/business-model-and-ontology.md)
+* [Product ontology](semantic-specification/product-ontology.md)
+
