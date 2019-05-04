@@ -11,3 +11,9 @@
 * [Business model and ontology](semantic-specification/business-model-and-ontology.md)
 * [Product ontology](semantic-specification/product-ontology.md)
 
+## Technical specification
+
+* [Overall strategy for building a reliable spec](technical-specification/overall-strategy-for-building-a-reliable-spec.md)
+* [Design decisions](technical-specification/design-decisions.md)
+* [Architecture representations](technical-specification/architecture-representations.md)
+
