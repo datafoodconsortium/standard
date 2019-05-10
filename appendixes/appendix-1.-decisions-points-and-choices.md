@@ -24,9 +24,8 @@ A highly granular service will split the interactions into low level functional 
 
 For instance:
 
-* A service that manage the product catalog including product categories, stock, etc. This would be a low granularity service
-
-A highly granular service would just be the stock information. The name of the product. Etc. Everything is split in small high granularity services, that can either be assemble on the service side as one low granularity service, or let the client assemble these high granularity services itself. For the use case of mutualized logistic flows, we could have a specific service on "routes" without any information on what is transported. Another service on orders, to find out what was ordered. And then have a view that combines the different services.
+* A service that manage the product catalog including product categories, stock, etc. This would be a **low granularity service**
+* A **highly granular service** would just be the stock information. The name of the product. Etc. Everything is split in small high granularity services, that can either be assemble on the service side as one low granularity service, or let the client assemble these high granularity services itself. For the use case of mutualized logistic flows, we could have a specific service on "routes" without any information on what is transported. Another service on orders, to find out what was ordered. And then have a view that combines the different services.
 
 Some pros and cons of each approach:
 
@@ -45,7 +44,8 @@ Some pros and cons of each approach:
         <p>- Easier to maintain and debug</p>
         <p>- Less data being transmitted as only what is needed is requested</p>
         <p>- More flexible and future proof</p>
-        <p>- Easier autorisation management</p>
+        <p>- <b>Easier autorisation management</b>
+        </p>
       </td>
       <td style="text-align:left">More services to keep track of</td>
     </tr>
@@ -65,15 +65,15 @@ Some pros and cons of each approach:
       </td>
     </tr>
   </tbody>
-</table>The main advantage of highly granular services in the context of interoperability with authorization management is the simplicity of development on the server side. For instance it is easy to answer in an interface that the owner of some data denies access to it for a specific client. The service will just use the standard HTTP responses \(401 or 403\). This becomes more complex if this entity is nested in another \(as for a low granularity service\). In this case, the server will respond well to the interface with the root data but will have to express one way or another that its answer is not complete because it lacks a part for which the user has no rights.
+</table>**The main advantage of highly granular services in the context of interoperability with authorization management is the simplicity of development on the server side.** For instance it is easy to answer in an interface that the owner of some data denies access to it for a specific client. The service will just use the standard HTTP responses \(401 or 403\). This becomes more complex if this entity is nested in another \(as for a low granularity service\). In this case, the server will respond well to the interface with the root data but will have to express one way or another that its answer is not complete because it lacks a part for which the user has no rights.
 
-Conclusion: implement the needed low granularity services for phase 1 and in phase 2, implement in addition more granular query based services
+**Conclusion: implement the needed low granularity services for phase 1 and in phase 2, implement in addition more granular query based services.**
 
 ## Service standard
 
 An old standard exists to describe API, coming from the XML world but today applicable to most data format: WSDL. This norm is complex as it is very generic and is able to describe almost any kind of API, not only HTTP, and not only synchronous or unidirectional. Working hand in hand with WSDL, and nearly as complex, the UDDI standard allowed for registration and discovery of services.
 
-OpenAPI on the other hand focuses on HTTP and on the service usage from a resource point of view, which makes it much simpler. It allows to document et specify the API \(the endpoint, the URLs structure, the serialisations...\).
+OpenAPI on the other hand focuses on HTTP and on the service usage from a resource point of view, which makes it much simpler. **It allows to document et specify the API \(the endpoint, the URLs structure, the serialisations...\).**
 
 The capability of being able to specify by a given standard, the form of the url, the ability to work in a Query logic, the serialization, the use of a model and its visibility with each request is summarized in this table:
 
@@ -145,7 +145,7 @@ The capability of being able to specify by a given standard, the form of the url
   </tbody>
 </table>### URL structure
 
-Resource driven \(REST\)
+#### Resource driven \(REST logic\)
 
 A URL is a unique address pointing to a single resource. This resource can be a container that contains several atomic resources.
 
@@ -181,7 +181,7 @@ A URL is a unique address pointing to a single resource. This resource can be a 
 | :--- |
 
 
-### **Application driven**
+#### **Application driven**
 
 The more parameters an API can handle, the more generic the API becomes that encompass the entire application. This type of URL changes the design of an API since it no longer creates an API by type of resource but a generic API capable of meeting the different needs of the application.
 
@@ -200,7 +200,7 @@ The request above means retrieving the resources related to the container idCont
 
 The more complex parameters the API contains, the less it is possible to use the OpenAPI specification because the result and structure of the query are variable. If the strategy is moving towards this type of url, it is probably better to take the step towards using queries.
 
-### **Query**
+#### **Query**
 
 The ultimate use of advanced parameters is called Query. This is a normalized query passed in a single parameter with all the information needed for server using this standard to execute the request. In the semantic world it is SPARQL. GraphQL offers another standardization specific to this technology for queries.
 
