@@ -19,7 +19,7 @@ There would be libraries in almost all languages, but these are more or less mat
 
 ## Transition strategy from current to ideal
 
-Bas**ic** principle: Improve the legacy rather than migrate to new technology
+**Basic principle: Improve the legacy rather than migrate to new technology**
 
 ### High vs Low granularity services
 
