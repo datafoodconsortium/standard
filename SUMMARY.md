@@ -6,6 +6,7 @@
 * [General strategy to build that standard](general-strategy-to-build-that-standard.md)
 * [Status of the project](status-of-the-project.md)
 * [Access to sources](access-to-sources.md)
+* [Contact and partners](contact-and-partners.md)
 
 ## Semantic specification
 
