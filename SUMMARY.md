@@ -5,6 +5,7 @@
 * [What is the DFC standard ?](what-is-the-dfc-standard.md)
 * [General strategy to build that standard](general-strategy-to-build-that-standard.md)
 * [Status of the project](status-of-the-project.md)
+* [Access to sources](access-to-sources.md)
 
 ## Semantic specification
 
