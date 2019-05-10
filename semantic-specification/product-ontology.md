@@ -13,22 +13,17 @@ The question of products identification is treated in the technical standard and
 
 So we choose the following “criteria” to uniquely identify products:
 
-* Product type: this is a basic sales oriented taxonomy \(are you selling carrots or soap ?\).
-* Then some facets help identify more precisely the products:
-  * If the product has a unique “living/mineral” source, what is the source? For instance a steak has as source a living cow from a specific breed. If a product is composed it can be decomposed through the “transformation flow” mentioned above and each component can be described following the same process.
-  * If the product has a unique “living/mineral” source, what part or product of this source is used? For instance honey comes from a unique living source which is a bee from a specific breed. The part of product of source concerned here is “honey”. If we talk about a carrot, the source will be the carrot variety, and the part concerned will be “the root”. If I talk about carrots seeds, the part concerned will be the seeds. If I sell carrots with the leaves it will be “whole plant”.
-  * Every product sold will have gone through some sort of processes, at a minimum a tomato has been “harvested” from the living tomato plant. So even what we call “raw products” have undergone some basic process. Salt will have been “dried”, etc.
-
-Each product has a geographical origin, it comes from somewhere. It can be a territorial origin \(ex: France, Nice, etc.\) or a general global origin \(ex: north west atlantic sea\) so this facet can have values from two taxonomies even though there is only one facet. A cocoa bean can be from the same producer \(big farmer owning lots of parcels for instance\), go through the same harvesting, fermenting, 
-
-
-
-* * drying processes, come from the same variety of cocoa plant, BUT come from a different location.
-  * Products can have certifications/labels
-  * Products can have some physical characteristics \(soft, tender, etc.\)
-  * Products can have some specific claims \(“gluten free”, “zero salt”, etc.\)
-  * And products can have a specific brand
-* And to finish a product is also identified with a dimension and unit, like potatoes are sold by 1 x kg, a jar of tomato sauce is sold by 1 x item, the item here being a “jar of 500 ml tomato sauce”.
+* **Product type**: this is a basic sales oriented taxonomy \(are you selling carrots or soap ?\).
+* Then some **facets** help identify more precisely the products:
+  * If the product has a unique **“living/mineral” source**, what is the source? For instance a steak has as source a living cow from a specific breed. If a product is composed it can be decomposed through the “transformation flow” mentioned above and each component can be described following the same process.
+  * If the product has a unique “living/mineral” source, **what part or product of this source is used**? For instance honey comes from a unique living source which is a bee from a specific breed. The part of product of source concerned here is “honey”. If we talk about a carrot, the source will be the carrot variety, and the part concerned will be “the root”. If I talk about carrots seeds, the part concerned will be the seeds. If I sell carrots with the leaves it will be “whole plant”.
+  * Every product sold will have gone through some sort of **processes**, at a minimum a tomato has been “harvested” from the living tomato plant. So even what we call “raw products” have undergone some basic process. Salt will have been “dried”, etc.
+  * Each product has a **geographical origin**, it comes from somewhere. It can be a **territorial origin** \(ex: France, Nice, etc.\) or a **general global origin** \(ex: north west atlantic sea\) so this facet can have values from two taxonomies even though there is only one facet. A cocoa bean can be from the same producer \(big farmer owning lots of parcels for instance\), go through the same harvesting, fermenting, drying processes, come from the same variety of cocoa plant, BUT come from a different location.
+  * Products can have **certifications/labels**
+  * Products can have some **physical characteristics** \(soft, tender, etc.\)
+  * Products can have some specific **claims** \(“gluten free”, “zero salt”, etc.\)
+  * And products can have a specific **brand**
+* And to finish a product is also identified with a **dimension and unit**, like potatoes are sold by 1 x kg, a jar of tomato sauce is sold by 1 x item, the item here being a “jar of 500 ml tomato sauce”.
 
 Behind each of those facets, we need taxonomies, or it can be a free field but then it’s hard to make searches !
 
