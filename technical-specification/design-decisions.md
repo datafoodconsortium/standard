@@ -40,24 +40,32 @@
     <tr>
       <td style="text-align:left"><b>Service specifications</b>
       </td>
-      <td style="text-align:left">OpenAPI except for the input/output data structure, for which use OWL.</td>
-      <td
-      style="text-align:left">
-        <p>- Complete OpenAPI specifications for standard services.</p>
+      <td style="text-align:left">OpenAPI except for the input/output data structure, for which use OWL.
+        LDP specification compliant.</td>
+      <td style="text-align:left">
+        <p>- Complete OpenAPI specifications for standard services. LDP specification
+          compliant.</p>
         <p>- SPARQL spec for high granularity service by Query.</p>
-        </td>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left"><b>Serialization</b>
       </td>
-      <td style="text-align:left">JSON-LD</td>
-      <td style="text-align:left">JSON-LD (JSON-LD in the data attribute if HyperGraphQL)</td>
+      <td style="text-align:left">
+        <p>JSON-LD</p>
+        <p>LDP specification compliant.</p>
+      </td>
+      <td style="text-align:left">
+        <p>JSON-LD (JSON-LD in the data attribute if HyperGraphQL)</p>
+        <p>LDP specification compliant.</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left"><b>Transport layer</b>
       </td>
-      <td style="text-align:left">HTTP</td>
-      <td style="text-align:left">HTTP</td>
+      <td style="text-align:left">HTTP + LDP</td>
+      <td style="text-align:left">HTTP + LDP
+        <br />HTTP + SPARQL or HyperGraphQL</td>
     </tr>
     <tr>
       <td style="text-align:left"><b>Single or multi-source</b>
@@ -87,7 +95,7 @@
       <td style="text-align:left"><b>User data</b>
       </td>
       <td style="text-align:left">ID centralized by user</td>
-      <td style="text-align:left">Phase 1 or web-id/OIDC if mature enough in order to achieve an decentralized
+      <td style="text-align:left">Phase 1 or web-id/OIDC if mature enough in order to achieve a decentralized
         authentication</td>
     </tr>
     <tr>
