@@ -23,7 +23,8 @@ This prototype will be developed in 3 steps:
 
 We have now specified more precisely the UX of the first step of the prototype, and it raises already a lot of questions, about synchronization of data for example : when a producer has connected and imported data from various platforms, solved conflicts, etc. If he modifies a data in one platform, and make another change for the same product in another one, etc. How do we synchronize ? For now we don’t have platforms reading and updating info from a universal shared catalog. We don’t know yet how we are going to manage such issues, but we’ll move forward one step at a time !
 
-You can see the real time progress of the development of the POC through this [Github project board](https://github.com/orgs/datafoodconsortium/projects/1). 
+You can see the real time progress of the development of the POC through this [Github project board](https://github.com/orgs/datafoodconsortium/projects/1).   
+You can also access the WIP version of the prototype online [here](http://185.25.192.252:8080/ui/) \(but it still might be hard to use, we are moving forward step by step !\)
 
 So developing this prototype will enable us to test real life the semantic specification of the standard \(the ontology\) and the technical specifications \(the protocols, etc.\) described below, and improve them step by step.
 
