@@ -19,7 +19,7 @@
 * [Overall strategy for building a reliable spec](technical-specification/overall-strategy-for-building-a-reliable-spec.md)
 * [Design decisions](technical-specification/design-decisions.md)
 * [Architecture representations](technical-specification/architecture-representations.md)
-* [Usage Examples](api-examples.md)
+* [Usage Examples](technical-specification/api-examples.md)
 
 ## Appendixes
 
