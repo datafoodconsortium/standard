@@ -9,10 +9,11 @@
 * Outdated Token
   * If token is outdated, plateform can refuse request.
   * If platform have to request an other (DFC or Other) and receive outaded input token, Platform can remember refresh token (when OIDC authentication featur execution) and ask new access to do out request.
-  
+
 ### version 1.3
 
 #### version 1.2 upgrade
+
 * supporter plusieurs entreprises par user connecté
   * Cela revient a recentrer la racine du graph retourné sur le user
 * Utilisation du Catalog Item
@@ -21,6 +22,7 @@
 * Ajout de la notion d'offre lié au Catalog Item
 
 #### example
+
 ```json
 {
   "@context": {
