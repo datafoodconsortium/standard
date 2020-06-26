@@ -31,38 +31,64 @@
   },
   "@id": "/personId",
   "@type": "dfc:Person",
+  "dfc:familyName":"Doe",
+  "dfc:firtsName":"Jhon",
+  "dfc:hasAdress":{
+    "@type":"dfc:Address",
+    "dfc:city":"",
+    "dfc:country":"",
+    "dfc:postcode":"",
+    "dfc:street":""
+  },
   "dfc:affiliates" : [
     {
       "@id": "/entrepriseId",
       "@type": "dfc:Entreprise",
+      "dfc:VATnumber":"",
       "dfc:defines" :[
         {
           "@id":"/customerCategoryId1",
           "@type":"dfc:CustomerCategory",
-          "rdfs:label":"membre"
+          "rdfs:label":"member"
         },
         {
           "@id":"/customerCategoryId2",
           "@type":"dfc:CustomerCategory",
-          "rdfs:label":"non membre"
+          "rdfs:label":"non member"
         }
       ],
       "dfc:supplies":[
         {
           "@id":"/suppliedProduct/item3",
           "dfc:hasUnit":{
-            "@id":"/unit/kg"
+            "@id":"/unit/kg",
+            "rdfs:label":"kilogram"
           },
-          "dfc:quantity":"0,5",
-          "dfc:description":"Aillet botte 1 pièce"
+          "dfc:quantity":"99.99",
+          "dfc:description":"supply description 1",
+          "dfc:totalTheoriticalStock":"999",
+          "dfc:brand":"supply brand",
+          "dfc:claim":"supply claim",
+          "dfc:image":"supply image url",
+          "lifeTime":"supply lifeTime",
+          "dfc:physicalCharacterisctics":"supply physical characterisctics",
+          "dfc:quantity":"supply quantity"
         },
         {
           "@id":"/suppliedProduct/item4",
           "dfc:hasUnit":{
-            "@id":"/unit/unit"
+            "@id":"/unit/unit",
+            "rdfs:label":"unit"
           },
           "dfc:quantity":"1",
-          "dfc:description":"Aromates-Romarin Botte 1 pièce"
+          "dfc:description":"supply description 2",
+          "dfc:totalTheoriticalStock":"999",
+          "dfc:brand":"supply brand",
+          "dfc:claim":"supply claim",
+          "dfc:image":"supply image url",
+          "lifeTime":"supply lifeTime",
+          "dfc:physicalCharacterisctics":"supply physical characterisctics",
+          "dfc:quantity":"supply quantity"
         }
       ],
       "dfc:manages":[
@@ -73,6 +99,8 @@
             "@type":"@id",
             "@id":"/suppliedProduct/item3"
           },
+          "dfc:sku":"catalog item gtin or sku",
+          "dfc:stockLimitation":"999",
           "dfc:offeredThrough":[
             {
               "@id":"offerId1",
@@ -81,7 +109,8 @@
                 "@type":"@id",
                 "@id":"/customerCategoryId1"
               },
-              "dfc:price":"000"
+              "dfc:price":"000",
+              "dfc:stockLimitation":"999",
             },
             {
               "@id":"offerId2",
@@ -90,13 +119,16 @@
                 "@type":"@id",
                 "@id":"/customerCategoryId2",
               },
-              "dfc:price":"999"
+              "dfc:price":"999",
+              "dfc:stockLimitation":"999",
             }
           ]
         },
         {
           "@id":"/catalogItemId2",
           "@type":"dfc:CatalogItem",
+          "dfc:sku":"catalog item gtin or sku",
+          "dfc:stockLimitation":"999",
           "dfc:references":{
             "@type":"@id",
             "@id":"/suppliedProduct/item4"
@@ -109,7 +141,8 @@
                 "@type":"@id",
                 "@id":"/customerCategoryId1"
               },
-              "dfc:price":"000"
+              "dfc:price":"000",
+              "dfc:stockLimitation":"999",
             },
             {
               "@id":"offerId4",
@@ -118,7 +151,8 @@
                 "@type":"@id",
                 "@id":"/customerCategoryId2",
               },
-              "dfc:price":"999"
+              "dfc:price":"999",
+              "dfc:stockLimitation":"999",
             }
           ]
         }
