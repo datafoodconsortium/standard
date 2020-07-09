@@ -2,7 +2,7 @@
 
 If you want to join the consortium, or take part in any form to this open and contributive project, please drop us a line at **hello@datafoodconsortium.org**.
 
-You can also [join our Slack](https://join.slack.com/t/datafoodconsortium/shared_invite/enQtNjM0NTI4NDEzMzgyLTUzMzc3NGVmMjQ4NDQ1ZmM2MGMzOTkzZDhlNmE2ZjYzYmJhYTNkOGNhYTdkMjYzNTcwYWI0MzA1MTgzMzJkOTM). 
+You can also [join our Slack.](https://join.slack.com/t/datafoodconsortium/shared_invite/zt-83hxu18m-dUNX0qO1ryIWvkemWEpEgQ) 
 
 Follow our blog on [http://datafoodconsortium.org/](http://datafoodconsortium.org/).
 

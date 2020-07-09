@@ -65,7 +65,9 @@ Some pros and cons of each approach:
       </td>
     </tr>
   </tbody>
-</table>**The main advantage of highly granular services in the context of interoperability with authorization management is the simplicity of development on the server side.** For instance it is easy to answer in an interface that the owner of some data denies access to it for a specific client. The service will just use the standard HTTP responses \(401 or 403\). This becomes more complex if this entity is nested in another \(as for a low granularity service\). In this case, the server will respond well to the interface with the root data but will have to express one way or another that its answer is not complete because it lacks a part for which the user has no rights.
+</table>
+
+**The main advantage of highly granular services in the context of interoperability with authorization management is the simplicity of development on the server side.** For instance it is easy to answer in an interface that the owner of some data denies access to it for a specific client. The service will just use the standard HTTP responses \(401 or 403\). This becomes more complex if this entity is nested in another \(as for a low granularity service\). In this case, the server will respond well to the interface with the root data but will have to express one way or another that its answer is not complete because it lacks a part for which the user has no rights.
 
 **Conclusion: implement the needed low granularity services for phase 1 and in phase 2, implement in addition more granular query based services.**
 
@@ -143,7 +145,9 @@ The capability of being able to specify by a given standard, the form of the url
       </td>
     </tr>
   </tbody>
-</table>### URL structure
+</table>
+
+### URL structure
 
 #### Resource driven \(REST logic\)
 
@@ -161,7 +165,9 @@ A URL is a unique address pointing to a single resource. This resource can be a 
     </tr>
   </thead>
   <tbody></tbody>
-</table>A URL may also contain parameters, using the special characters ‘?' to mark the start of the parameters and '&' to separate each parameter. Previous examples translated with parameters:
+</table>
+
+A URL may also contain parameters, using the special characters ‘?' to mark the start of the parameters and '&' to separate each parameter. Previous examples translated with parameters:
 
 <table>
   <thead>
@@ -175,7 +181,9 @@ A URL is a unique address pointing to a single resource. This resource can be a 
     </tr>
   </thead>
   <tbody></tbody>
-</table>With pagination parameters to load data by package rather than all at once:
+</table>
+
+With pagination parameters to load data by package rather than all at once:
 
 | 5: http://serveur/idContainer?idRessource=idRessource1&start=0&length=100 |
 | :--- |
@@ -269,7 +277,9 @@ The following table shows where it is possible to go from one standard to anothe
         APIs of several actors.</td>
     </tr>
   </tbody>
-</table>To build the prototype, we need a user-friendly protocol that is easy to set up quickly while offering the possibility of making a more professional API available. For the sake of maintainability of it all, the user-friendly API should be pluggable into the professional API.
+</table>
+
+To build the prototype, we need a user-friendly protocol that is easy to set up quickly while offering the possibility of making a more professional API available. For the sake of maintainability of it all, the user-friendly API should be pluggable into the professional API.
 
 **Conclusion: the actors of the consortium agree on a shared vision on the need to have 2 APIs:**
 
