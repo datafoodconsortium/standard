@@ -24,7 +24,7 @@ We made the following changes from version 1.2:
   * Il et possible de rajouter un intermédiare entre CatalogItem et Entreprise qui est le Repository pour découper le catalogue global en plusieurs.
 * Add offers that are linked to the catalog item
 
-#### example
+### Example
 
 ```javascript
 {
