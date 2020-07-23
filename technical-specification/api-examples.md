@@ -2,14 +2,14 @@
 
 ## Get Data linked to Connected Users
 
-* No specification for url syntaxe
-* Request have to fill Authorization Header with JWT OIDC Token obtain thanks to login.lescommuns.org
+* No specification for url syntax
+* Requests have to fill Authorization Header with JWT OIDC Token obtained thanks to login.lescommuns.org application.
 * Basic authentification
   * Server has to validate token thanks to signature and parse token to obtain preferred\_username.
-  * This preferred\_username can be linked to the Platform User. To Link OIDC user and Platform User, platforms can add OIDC authentification feature.
+  * This preferred\_username can be linked to the Platform User. To link OIDC User and Platform User, platforms can add OIDC authentification feature.
 * Outdated Token
   * If token is outdated, platforms can refuse request.
-  * If platforms have to request another \(DFC or Other\) and receive outaded input token, Platforms can remember refresh token \(when OIDC authentication features execution\) and ask new access to do out request.
+  * If platforms have to request another \(DFC or Other\) and receive outaded input token, Platforms can remember refresh token \(when OIDC authentication features execution\) and ask new access with a specific request.
 
 ### version 1.3
 
@@ -17,11 +17,11 @@
 
 We made the following changes from version 1.2:
 
-* Support several enterprises per logged-in user
-  * _Cela revient a recentrer la racine du graph retourné sur le user_
+* Support multiple enterprises for logged-in user
+  * In fact, we recentered the data graph root on user
 * Use the catalog item
-  * Le Catalog Item permet de lister dans un seul prédicat de l'Entreprise tous les Defined Product \(Supplied et Tecnical\)
-  * Il et possible de rajouter un intermédiare entre CatalogItem et Entreprise qui est le Repository pour découper le catalogue global en plusieurs.
+  * The Catalog Item allows us to list all the Defined Products \(Supplied et Tecnical\) on a uniq entreprise.
+  * It is possible to add an extra layer between Catalog Item and Entreprise called Repository. It can be used to break down the general catalog into multiple ones.
 * Add offers that are linked to the catalog item
 
 ### Example
@@ -74,8 +74,7 @@ We made the following changes from version 1.2:
           "dfc:claim":"supply claim",
           "dfc:image":"supply image url",
           "lifeTime":"supply lifeTime",
-          "dfc:physicalCharacterisctics":"supply physical characterisctics",
-          "dfc:quantity":"supply quantity"
+          "dfc:physicalCharacterisctics":"supply physical characterisctics"
         },
         {
           "@id":"/suppliedProduct/item4",

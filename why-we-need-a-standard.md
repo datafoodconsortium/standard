@@ -1,4 +1,4 @@
-# Why we need a standard ?
+# Why we need a standard?
 
 ### The problems are:
 
@@ -7,11 +7,11 @@
 
 ### The objective is:
 
-* Enable producers to seamlessly manage their product and inventory catalog while selling their products through multiple channels using multiple platforms.
-* To enable the development of shared logistics solutions using logistic information from all the platforms in use
+* To enable producers to seamlessly manage their product and inventory catalog while selling their products through multiple channels using multiple platforms.
+* To enable the development of shared logistics solutions using logistic information from all the platforms in use.
 * To allow the implementation of interoperable management tools allowing for example a producer to generate integrated reports gathering sales data from different platforms
-* Allow the reporting or visualization \(via maps for instance\) of data coming from multiple platforms
-* To allow actors with different business models and technologies to work together without changing their way of working and tools
+* To allow the reporting or visualization \(via maps for instance\) of data coming from multiple platforms.
+* To allow actors with different business models and technologies to work together without changing their way of working and tools.
 * Etc.
 
 ### For this we need:

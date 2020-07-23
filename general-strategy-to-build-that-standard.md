@@ -1,8 +1,8 @@
-# General strategy to build that standard
+# General strategy to build the DFC standard
 
 ### Remain independent
 
-We could have setup a standardization group within GS1. We chose not to as GS1 were asking us to sign a form to tell we commit to use the GS1 standards. How can we commit to use a specific solution when we have not yet investigated our problem, the potential solutions available, etc. ? We are pretty happy we made that decision, as we remained free to work with Open Food Facts for products identification, which wouldn’t have been possible in the context of a GS1 standardization group.
+We could have setup a standardization group within GS1. We chose not to as GS1 were asking us to sign a form to tell we commit to use the GS1 standards. How can we commit to use a specific solution when we have not yet investigated our problem, the potential solutions available, etc. ? We are pretty happy that we made this decision, as we remained free to work with Open Food Facts for products identification, which wouldn’t have been possible in the context of a GS1 standardization group.
 
 ### Collaborate with Open Food Facts for product identifiers and ontologies
 
@@ -12,9 +12,9 @@ As we don’t want to force all actors to open their data \(this should remain t
 
 ### Collaborate with “The Commons” for shared data storage
 
-We also choose a “neutral” agent to host the shared data of the consortium : this DFC universal products catalog. That avoid any conflict of interest among the consortium partners.
+We also chose a “neutral” agent to host the shared data of the consortium: The DFC universal products catalog. This avoid any conflict of interest amongst the consortium partners.
 
 ### Iterative process and prototype base development
 
-When building both the semantic and technical specifications of the standard, we need real life cases to test if what we imagine is adapted, works well, enable to do what we want to do. So we are developing a prototype to not only make a “proof of concept” and show the potential of the standard to solve the problems mentioned above, but also to build and improve step by step the semantic and technical standard.
+When building both the semantic and technical specifications of the standard, we need real life cases to test whether what we imagined is adapted to our needs and facilitates our work. So we are developing a prototype not only to create a “proof of concept” and show the potential of the standard to solve the problems mentioned above, but also to build and improve step by step the semantic and technical standard.
 

@@ -1,6 +1,6 @@
 # Architecture representations
 
-Here we try to represent some of the designs choices above between phase 1 and phase 2:
+Here we try to represent some of the design choices between phase 1 and phase 2:
 
 * Single or multi-source
 * Identification and authentication
