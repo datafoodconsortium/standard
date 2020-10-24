@@ -137,7 +137,9 @@
       <td style="text-align:left">Phase 1 + Startin&#x2019;blox or SemViz</td>
     </tr>
   </tbody>
-</table>Federation: all entities follow the same protocol
+</table>
+
+Federation: all entities follow the same protocol
 
 Syndication: entities may have different protocols
 

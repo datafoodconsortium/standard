@@ -1,14 +1,15 @@
-# Exemples d'usage du standard
+# Practical Examples
 
 ## Get Data linked to Connected Users
-* No spécification for url syntaxe
-* Request have to fill Authorization Header with JWT OIDC Token obtain thanks to login.lescommuns.org
+
+* No specification for url syntax
+* Requests have to fill Authorization Header with JWT OIDC Token obtained thanks to login.lescommuns.org application.
 * Basic authentification
-  * Server have to validate token thanks to signature and parse token to obtain preferred_username.
-  * This preferred_username can be linked to the Platform User. To Link OIDC user and Platform User, the platforms can add OIDC authentification feature.
+  * Server has to validate token thanks to signature and parse token to obtain preferred\_username.
+  * This preferred\_username can be linked to the Platform User. To link OIDC User and Platform User, platforms can add OIDC authentification feature.
 * Outdated Token
-  * If token is outdated, plateform can refuse request.
-  * If platform have to request an other (DFC or Other) and receive outaded input token, Platform can remember refresh token (when OIDC authentication featur execution) and ask new access to do out request.
+  * If token is outdated, platforms can refuse request.
+  * If platforms have to request another \(DFC or Other\) and receive outaded input token, Platforms can remember refresh token \(when OIDC authentication features execution\) and ask new access with a specific request.
 
 ### version 1.4
 #### version 1.3 upgrade
@@ -18,7 +19,7 @@
 * contexte plus explicite sur le type @id pour dimplifier les datas
 
 #### example
-```json
+```javascript
 {
   "@context": {
     "dfc-b": "http://datafoodconsortium.org/ontologies/dfc_FullModel.owl#",
@@ -140,21 +141,22 @@
   ]
 }
 ```
-
 ### version 1.3
 
 #### version 1.2 upgrade
 
-* supporter plusieurs entreprises par user connecté
-  * Cela revient a recentrer la racine du graph retourné sur le user
-* Utilisation du Catalog Item
-  * Le Catalog Item permet de lister dans un seul prédicat de l'Entreprise tous les Defined Product (Supplied et Tecnical)
-  * Il et possible de rajouter un intermédiare entre CatalogItem et Entreprise qui est le Repository pour découper le catalogue global en plusieurs.
-* Ajout de la notion d'offre lié au Catalog Item
+We made the following changes from version 1.2:
 
-#### example
+* Support multiple enterprises for logged-in user
+  * In fact, we recentered the data graph root on user
+* Use the catalog item
+  * The Catalog Item allows us to list all the Defined Products \(Supplied et Tecnical\) on a uniq entreprise.
+  * It is possible to add an extra layer between Catalog Item and Entreprise called Repository. It can be used to break down the general catalog into multiple ones.
+* Add offers that are linked to the catalog item
 
-```json
+### Example
+
+```javascript
 {
   "@context": {
     "dfc": "http://datafoodconsortium.org/ontologies/dfc_FullModel.owl#",
@@ -293,9 +295,9 @@
 
 ### version 1.2
 
-supposition : une seul entreprise par user connecté (OIDC)
+In version 1.2 we had only one enterprise per logged in user:
 
-```json
+```javascript
 {
   "@context": {
     "dfc": "http://datafoodconsortium.org/ontologies/dfc_FullModel.owl#",
