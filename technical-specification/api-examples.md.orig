@@ -14,12 +14,12 @@
 ### version 1.4
 #### version 1.3 upgrade
 * préfix différent selon la partie de l'ontologie importée
-* rdfs:label remplacé par dfc-b description sur CutomerCatgory
-* unité issue du referentiel DFC
-* contexte plus explicite sur le type @id pour simplifier les datas
+* rdfs:label replace by dfc-b description in CutomerCatgory
+* unité issue du referenceiel
+* contexte plus explicite sur le type @id pour dimplifier les datas
 
 #### example
-```javascript
+```json
 {
   "@context": {
     "dfc-b": "http://datafoodconsortium.org/ontologies/dfc_FullModel.owl#",
@@ -141,6 +141,7 @@
   ]
 }
 ```
+
 ### version 1.3
 
 #### version 1.2 upgrade
@@ -197,6 +198,7 @@ We made the following changes from version 1.2:
             "@id": "/unit/kg",
             "rdfs:label": "kilogram"
           },
+<<<<<<< HEAD
           "dfc:quantity": "99.99",
           "dfc:description": "supply description 1",
           "dfc:totalTheoriticalStock": "999",
@@ -205,6 +207,16 @@ We made the following changes from version 1.2:
           "dfc:image": "supply image url",
           "lifeTime": "supply lifeTime",
           "dfc:physicalCharacterisctics": "supply physical characterisctics"
+=======
+          "dfc:quantity":"99.99",
+          "dfc:description":"supply description 1",
+          "dfc:totalTheoriticalStock":"999",
+          "dfc:brand":"supply brand",
+          "dfc:claim":"supply claim",
+          "dfc:image":"supply image url",
+          "lifeTime":"supply lifeTime",
+          "dfc:physicalCharacterisctics":"supply physical characterisctics"
+>>>>>>> 1106fc53f8e5950e4b15053a5d0cd23bb3ea4de7
         },
         {
           "@id": "/suppliedProduct/item4",
@@ -325,3 +337,4 @@ In version 1.2 we had only one enterprise per logged in user:
   ]
 }
 ```
+
