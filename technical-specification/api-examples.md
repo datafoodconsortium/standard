@@ -14,7 +14,7 @@
 ### version 1.4
 #### version 1.3 upgrade
 * préfix différent selon la partie de l'ontologie importée
-* rdfs:label remplacé par dfc-b description sur CutomerCatgory
+* rdfs:label remplacé par dfc-b description sur CutomerCategory
 * unité issue du referentiel DFC
 * contexte plus explicite sur le type @id pour simplifier les datas
 
@@ -24,6 +24,7 @@
   "@context": {
     "dfc-b": "http://datafoodconsortium.org/ontologies/dfc_FullModel.owl#",
     "dfc-p": "http://datafoodconsortium.org/ontologies/dfc_ProductGlossary.owl#",
+    "dfc-u": "http://datafoodconsortium.org/data/units.rdf#",
     "dfc-b:hasUnit":{
       "@type":"@id"
     },
@@ -66,7 +67,7 @@
       "dfc-b:supplies": [
         {
           "@id": "/suppliedProduct/item3",
-          "dfc-b:hasUnit": "dfc-p:u",
+          "dfc-b:hasUnit": "dfc-u:u",
           "dfc-b:quantity": "99.99",
           "dfc-b:description": "supply description 1",
           "dfc-b:totalTheoriticalStock": "999",
@@ -78,7 +79,7 @@
         },
         {
           "@id": "/suppliedProduct/item4",
-          "dfc-b:hasUnit": "dfc-p:u",
+          "dfc-b:hasUnit": "dfc-u:u",
           "dfc-b:quantity": "1",
           "dfc-b:description": "supply description 2",
           "dfc-b:totalTheoriticalStock": "999",
