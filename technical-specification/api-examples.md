@@ -23,7 +23,6 @@
 {
   "@context": {
     "dfc-b": "http://datafoodconsortium.org/ontologies/dfc_FullModel.owl#",
-    "dfc-p": "http://datafoodconsortium.org/ontologies/dfc_ProductGlossary.owl#",
     "dfc-u": "http://datafoodconsortium.org/data/units.rdf#",
     "dfc-b:hasUnit":{
       "@type":"@id"
