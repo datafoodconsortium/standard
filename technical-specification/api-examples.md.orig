@@ -22,8 +22,8 @@
 ```json
 {
   "@context": {
-    "dfc-b": "http://datafoodconsortium.org/ontologies/dfc_FullModel.owl#",
-    "dfc-p": "http://datafoodconsortium.org/ontologies/dfc_ProductGlossary.owl#",
+    "dfc-b": "http://static.datafoodconsortium.org/ontologies/dfc_FullModel.owl#",
+    "dfc-b": "http://static.datafoodconsortium.org/ontologies/dfc_FullModel.owl#",
     "dfc-b:hasUnit":{
       "@type":"@id"
     },
@@ -312,7 +312,7 @@ In version 1.2 we had only one enterprise per logged in user:
 ```javascript
 {
   "@context": {
-    "dfc": "http://datafoodconsortium.org/ontologies/dfc_FullModel.owl#",
+    "dfc": "http://static.datafoodconsortium.org/ontologies/dfc_FullModel.owl#",
     "@base": "http://maPlateformeNationale"
   },
   "@id": "/entreprise/maGrandeEntreprise",
@@ -337,4 +337,3 @@ In version 1.2 we had only one enterprise per logged in user:
   ]
 }
 ```
-
