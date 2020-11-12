@@ -66,6 +66,7 @@
       "dfc-b:supplies": [
         {
           "@id": "/suppliedProduct/item3",
+          "@type": "dfc-b:SuppliedProduct",
           "dfc-b:hasUnit": "dfc-u:u",
           "dfc-b:quantity": "99.99",
           "dfc-b:description": "supply description 1",
@@ -78,6 +79,7 @@
         },
         {
           "@id": "/suppliedProduct/item4",
+          "@type": "dfc-b:SuppliedProduct",
           "dfc-b:hasUnit": "dfc-u:u",
           "dfc-b:quantity": "1",
           "dfc-b:description": "supply description 2",
