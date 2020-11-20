@@ -20,7 +20,3 @@ If you are an expert in licences and want to advice us, please contact us!
 
 &gt;&gt;&gt; [Access to the prototype code](https://github.com/datafoodconsortium/dfc-prototype-V2)
 
-
-
-
-

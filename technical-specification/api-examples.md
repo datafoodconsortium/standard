@@ -12,13 +12,16 @@
   * If platforms have to request another \(DFC or Other\) and receive outaded input token, Platforms can remember refresh token \(when OIDC authentication features execution\) and ask new access with a specific request.
 
 ### version 1.4
+
 #### version 1.3 upgrade
-* préfix différent selon la partie de l'ontologie importée
-* rdfs:label remplacé par dfc-b description sur CutomerCategory
-* unité issue du referentiel DFC
-* contexte plus explicite sur le type @id pour simplifier les datas
+
+* cahnges prefix according to ontology
+* rdfs:label was replaced by dfc-b description on CutomerCategory
+* units were added
+* context on @id was made more easier
 
 #### example
+
 ```javascript
 {
   "@context": {
@@ -143,6 +146,7 @@
   ]
 }
 ```
+
 ### version 1.3
 
 #### version 1.2 upgrade
@@ -327,3 +331,4 @@ In version 1.2 we had only one enterprise per logged in user:
   ]
 }
 ```
+
