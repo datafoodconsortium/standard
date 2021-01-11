@@ -15,7 +15,11 @@
 * [Authentication strategy](technical-specifications/authentication-strategy.md)
 * [Architecture representations](technical-specifications/architecture-representations.md)
 
-## Appendixes
+## Prototype specifications
+
+* [Design decisions](technical-specifications/design-decisions.md)
+* [Status of the project](status-of-the-project.md)
+* [Prototype strategy](technical-specifications/prototype-strategy.md)
 
 ## Appendixes
 
