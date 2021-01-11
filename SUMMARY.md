@@ -4,10 +4,10 @@
 * [Access to sources](access-to-sources.md)
 * [Contact and partners](contact-and-partners.md)
 
-## Semantic specification
+## Semantic specifications
 
-* [Business model and ontology](semantic-specification/business-model-and-ontology.md)
-* [Product ontology](semantic-specification/product-ontology.md)
+* [Business model and ontology](semantic-specifications/business-model-and-ontology.md)
+* [Product ontology](semantic-specifications/product-ontology.md)
 
 ## Technical specification
 
