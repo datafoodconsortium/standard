@@ -9,12 +9,11 @@
 * [Business model and ontology](semantic-specifications/business-model-and-ontology.md)
 * [Product ontology](semantic-specifications/product-ontology.md)
 
-## Technical specification
+## Technical specifications
 
-* [Overall strategy for building a reliable spec](technical-specification/overall-strategy-for-building-a-reliable-spec.md)
-* [Design decisions](technical-specification/design-decisions.md)
-* [Architecture representations](technical-specification/architecture-representations.md)
-* [Practical Examples](technical-specification/api-examples.md)
+* [General principles](technical-specifications/general-principles.md)
+* [Authentication strategy](technical-specifications/authentication-strategy.md)
+* [Architecture representations](technical-specifications/architecture-representations.md)
 
 ## Appendixes
 
