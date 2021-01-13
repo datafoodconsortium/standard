@@ -4,26 +4,22 @@
 * [Access to sources](access-to-sources.md)
 * [Contact and partners](contact-and-partners.md)
 
-## Semantic specifications
+* [Semantic specifications](semantic-specifications/README.md)
+  * [Business model and ontology](semantic-specifications/business-model-and-ontology.md)
+  * [Product ontology](semantic-specifications/product-ontology.md)
 
-* [Business model and ontology](semantic-specifications/business-model-and-ontology.md)
-* [Product ontology](semantic-specifications/product-ontology.md)
+* [Technical specifications](technical-specifications/README.md)
+  * [General principles](technical-specifications/general-principles.md)
+  * [Authentication strategy](technical-specifications/authentication-strategy.md)
+  * [Architecture representations](technical-specifications/architecture-representations.md)
 
-## Technical specifications
-
-* [General principles](technical-specifications/general-principles.md)
-* [Authentication strategy](technical-specifications/authentication-strategy.md)
-* [Architecture representations](technical-specifications/architecture-representations.md)
-
-## Prototype specifications
-
-* [Design decisions](technical-specifications/design-decisions.md)
-* [Status of the project](status-of-the-project.md)
-* [Prototype strategy](technical-specifications/prototype-strategy.md)
+* [Prototype specifications](prototype-specifications/README.md)
+  * [Design decisions](prototype-specifications/design-decisions.md)
+  * [Prototype strategy](prototype-specifications/prototype-strategy.md)
+  * [Status of the project](prototype-specifications/status-of-the-project.md)
 
 ## Appendixes
-
-* [Appendix 1. Decisions choices history](appendixes/decisions-and-choices-history/README.md)
+* [Appendix 1. Decisions and choices history](appendixes/decisions-and-choices-history/README.md)
   * [Stateless or stateful?](appendixes/decisions-and-choices-history/stateless-or-statefull.md)
   * [Service granularity](appendixes/decisions-and-choices-history/service-granularity.md)
   * [Service standard](appendixes/decisions-and-choices-history/service-standard.md)
@@ -36,7 +32,7 @@
   * [Centralized or decentralized data storage](appendixes/decisions-and-choices-history/centralized-or-decentralized-data-storage.md)
   * [Metadata repository](appendixes/decisions-and-choices-history/metadata-repository.md)
 
-* [Appendix 2. Practical Examples](appendixes/appendix-2.-practical-examples/README.md)
+* [Appendix 2. Practical Examples](appendixes/practical-examples/README.md)
   * [version 1.4](appendixes/practical-examples/version-1-4.md)
   * [version 1.3](appendixes/practical-examples/version-1-3.md)
   * [version 1.2](appendixes/practical-examples/version-1-2.md)
