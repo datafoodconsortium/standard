@@ -10,7 +10,7 @@
 * ProductType reference system
 * Patch example
 
-## GET Catalogue
+## GET User Data
 
 ```javascript
 {
