@@ -31,7 +31,7 @@
   * [Centralized or decentralized data storage](appendixes/decisions-and-choices-history/centralized-or-decentralized-data-storage.md)
   * [Metadata repository](appendixes/decisions-and-choices-history/metadata-repository.md)
 * [Appendix 2. Practical Examples](appendixes/practical-examples/README.md)
-  * [version 1.4](appendixes/practical-examples/version-1-4.md)
+  * [version 1.5](appendixes/practical-examples/version-1-4.md)
   * [version 1.3](appendixes/practical-examples/version-1-3.md)
   * [version 1.2](appendixes/practical-examples/version-1-2.md)
 
