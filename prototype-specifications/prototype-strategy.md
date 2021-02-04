@@ -14,5 +14,3 @@ The strategy we have undertaken for building the first step of the prototype is 
 
 ![](../.gitbook/assets/dfc-offacts-2.jpg)
 
-
-

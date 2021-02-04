@@ -3,22 +3,21 @@
 * [Introduction](README.md)
 * [Access to sources](access-to-sources.md)
 * [Contact and partners](contact-and-partners.md)
-
 * [Semantic specifications](semantic-specifications/README.md)
   * [Business model and ontology](semantic-specifications/business-model-and-ontology.md)
   * [Product ontology](semantic-specifications/product-ontology.md)
-
 * [Technical specifications](technical-specifications/README.md)
   * [General principles](technical-specifications/general-principles.md)
+  * [Decentralised identifier matching référence system](technical-specifications/decentralised-identifier-matching-reference-system.md)
   * [Authentication strategy](technical-specifications/authentication-strategy.md)
   * [Architecture representations](technical-specifications/architecture-representations.md)
-
 * [Prototype specifications](prototype-specifications/README.md)
   * [Design decisions](prototype-specifications/design-decisions.md)
   * [Prototype strategy](prototype-specifications/prototype-strategy.md)
   * [Status of the project](prototype-specifications/status-of-the-project.md)
 
 ## Appendixes
+
 * [Appendix 1. Decisions and choices history](appendixes/decisions-and-choices-history/README.md)
   * [Stateless or stateful?](appendixes/decisions-and-choices-history/stateless-or-statefull.md)
   * [Service granularity](appendixes/decisions-and-choices-history/service-granularity.md)
@@ -31,8 +30,8 @@
   * [Right delegation between platforms and DFC](appendixes/decisions-and-choices-history/right-delegation-between-platforms-and-dfc.md)
   * [Centralized or decentralized data storage](appendixes/decisions-and-choices-history/centralized-or-decentralized-data-storage.md)
   * [Metadata repository](appendixes/decisions-and-choices-history/metadata-repository.md)
-
 * [Appendix 2. Practical Examples](appendixes/practical-examples/README.md)
   * [version 1.4](appendixes/practical-examples/version-1-4.md)
   * [version 1.3](appendixes/practical-examples/version-1-3.md)
   * [version 1.2](appendixes/practical-examples/version-1-2.md)
+

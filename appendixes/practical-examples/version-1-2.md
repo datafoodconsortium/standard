@@ -1,6 +1,6 @@
-# Version 1.2
+# version 1.2
 
-### GET Catalogue
+## GET Catalogue
 
 In version 1.2 we had only one enterprise per logged in user:
 

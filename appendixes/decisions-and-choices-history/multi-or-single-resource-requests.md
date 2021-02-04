@@ -4,7 +4,7 @@ The ability to make multi-resource requests \(a query that looks for information
 
 The need for multi-resource queries will influence the choice of server \(next point\).
 
-In our vision, and in the continuity of the architectural vision described above, to be able to carry out research on a set of resources \(eg a search on all the catalogs or all the logistical needs\) we need to ability to make multi-resource SPARQL queries.
-We do not yet know how to put it in place, but we know in our vision that we need to be able to make multi-resource requests.
+In our vision, and in the continuity of the architectural vision described above, to be able to carry out research on a set of resources \(eg a search on all the catalogs or all the logistical needs\) we need to ability to make multi-resource SPARQL queries. We do not yet know how to put it in place, but we know in our vision that we need to be able to make multi-resource requests.
 
 **Conclusion: we need to be able to do multi-resources requests, but it is unclear how to achieve this.**
+

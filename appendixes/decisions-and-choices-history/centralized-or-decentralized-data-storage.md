@@ -21,3 +21,4 @@ Our vision pushes us to favor decentralization, so to move towards a logic of fe
   * To guarantee the performances and to be able to make queries \(SPARQL, GraphQL\) which cover the data of all the platforms
 * The Open Food Facts Taxonomy Not Open-Data
   * For producers to map their catalog based on the Open Food Facts taxonomy. This mapping from the original taxonomy of the platforms to the Open Food Facts taxonomy has to be done once manually and can be automated after, which should facilitate the adoption of DFC.
+

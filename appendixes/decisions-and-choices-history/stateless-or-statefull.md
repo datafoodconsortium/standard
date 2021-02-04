@@ -1,4 +1,4 @@
-# Stateless or statefull?
+# Stateless or stateful?
 
 When several requests are made, should they be independant or can they rely on each other?
 
@@ -13,3 +13,4 @@ Some of the main advantages of each approach impact performance and scaling:
 The common best practice today is to use stateless services, making each request independant. It makes for easier debugging, maintenance and scaling but needs additional development for identification and authentication especially.
 
 **Conclusion: implement stateless service**
+

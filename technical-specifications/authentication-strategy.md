@@ -6,4 +6,11 @@ This technology is active since years and heavily supported by many big actors o
 
 It will allow us to separate the authentication layer from the business logic one by calling a third-party application.
 
-(schema needed)
+OIDC is federeted and centralized athentification protocol. Other decentralized protocol as WebID-OIDC exists but are not mature.
+
+![Platform Authentificaiton not OIDC driven](../.gitbook/assets/selection_622.png)
+
+![Platform Authentificaiton OIDC driven](../.gitbook/assets/selection_624.png)
+
+
+

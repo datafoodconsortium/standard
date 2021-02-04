@@ -52,3 +52,4 @@ Some pros and cons of each approach:
 **The main advantage of highly granular services in the context of interoperability with authorization management is the simplicity of development on the server side.** For instance it is easy to answer in an interface that the owner of some data denies access to it for a specific client. The service will just use the standard HTTP responses \(401 or 403\). This becomes more complex if this entity is nested in another \(as for a low granularity service\). In this case, the server will respond well to the interface with the root data but will have to express one way or another that its answer is not complete because it lacks a part for which the user has no rights.
 
 **Conclusion: implement the needed low granularity services for phase 1 and in phase 2, implement in addition more granular query based services.**
+

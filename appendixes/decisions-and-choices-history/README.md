@@ -1,4 +1,4 @@
-# Appendix 1. Decisions points and choices
+# Appendix 1. Decisions and choices history
 
 You will find here the list of the different technical decisions and choices made during the build of the DFC Standard. It is ordered from the most recent one to the oldest one.
 
@@ -13,3 +13,4 @@ You will find here the list of the different technical decisions and choices mad
 * [Right delegation between platforms and DFC](right-delegation-between-platforms-and-dfc.md)
 * [Centralized or decentralized data storage](centralized-or-decentralized-data-storage.md)
 * [Metadata repository](metadata-repository.md)
+

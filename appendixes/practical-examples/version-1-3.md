@@ -1,6 +1,6 @@
-# Version 1.3
+# version 1.3
 
-#### Changes log from version 1.2
+### Changes log from version 1.2
 
 We made the following changes from version 1.2:
 
@@ -11,7 +11,7 @@ We made the following changes from version 1.2:
   * It is possible to add an extra layer between Catalog Item and Entreprise called Repository. It can be used to break down the general catalog into multiple ones.
 * Add offers that are linked to the catalog item
 
-### GET Catalogue
+## GET Catalogue
 
 ```javascript
 {
@@ -149,3 +149,4 @@ We made the following changes from version 1.2:
   ]
 }
 ```
+

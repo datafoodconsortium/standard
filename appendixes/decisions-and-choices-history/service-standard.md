@@ -74,10 +74,9 @@ The capability of being able to specify by a given standard, the form of the url
   </tbody>
 </table>
 
+## URL structure
 
-### URL structure
-
-#### Resource driven \(REST logic\)
+### Resource driven \(REST logic\)
 
 A URL is a unique address pointing to a single resource. This resource can be a container that contains several atomic resources.
 
@@ -104,7 +103,7 @@ A URL may also contain parameters, using the special characters ‘?' to mark th
         <p>1: http://serveur/idContainer?idRessource=idRessource1</p>
         <p>2: http://serveur/idContainer?idRessource=idRessource1&amp;attribut=attribut1</p>
         <p>3: http://serveur/idContainer?idRessource=idRessource1&amp;attribut=attribut1.attribut2</p>
-        <p>4: diffic<b>ult to express see </b>6</p>
+        <p>4: diffic<b>ult to express see</b> 6</p>
       </th>
     </tr>
   </thead>
@@ -113,17 +112,17 @@ A URL may also contain parameters, using the special characters ‘?' to mark th
 
 With pagination parameters to load data by package rather than all at once:
 
-| 5: http://serveur/idContainer?idRessource=idRessource1&start=0&length=100 |
+| 5: [http://serveur/idContainer?idRessource=idRessource1&start=0&length=100](http://serveur/idContainer?idRessource=idRessource1&start=0&length=100) |
 | :--- |
 
 
-#### **Application driven**
+### **Application driven**
 
 The more parameters an API can handle, the more generic the API becomes that encompass the entire application. This type of URL changes the design of an API since it no longer creates an API by type of resource but a generic API capable of meeting the different needs of the application.
 
 The tendency is to make parameters that contain json objects which makes APIs much more generic \(search, projection \(choice of fields\), sorting ...\). The syntax use is usually based on the MongoDB NoSql database “standard”.
 
-| 6 : http://serveur/idContainer?search={attribut1:{$gte:value1}}&projection={attribut1:1,attribut2:1,attribut3:0}&sort={attribut1:1,attribut2:2}&start=0&length=100 |
+| 6 : [http://serveur/idContainer?search={attribut1:{$gte:value1}}&projection={attribut1:1,attribut2:1,attribut3:0}&sort={attribut1:1,attribut2:2}&start=0&length=100](http://serveur/idContainer?search={attribut1:{$gte:value1}}&projection={attribut1:1,attribut2:1,attribut3:0}&sort={attribut1:1,attribut2:2}&start=0&length=100) |
 | :--- |
 
 
@@ -136,7 +135,7 @@ The request above means retrieving the resources related to the container idCont
 
 The more complex parameters the API contains, the less it is possible to use the OpenAPI specification because the result and structure of the query are variable. If the strategy is moving towards this type of url, it is probably better to take the step towards using queries.
 
-#### **Query**
+### **Query**
 
 The ultimate use of advanced parameters is called Query. This is a normalized query passed in a single parameter with all the information needed for server using this standard to execute the request. In the semantic world it is SPARQL. GraphQL offers another standardization specific to this technology for queries.
 
@@ -144,7 +143,7 @@ The disadvantage of SPARQL queries is the inherent complexity of the semantic we
 
 HyperGraphQL is an implementation of GraphQL dedicated to the semantic web in order to connect to a tripleStore. The API provides data in their json-ld form with context in owl schemas.
 
-### **Gateways between protocols**
+## **Gateways between protocols**
 
 Ideally Both protocols \(de facto standard and semantic standard\) should be accepted by the platforms. The API in de facto standard could then be based on the semantic API to avoid duplicated maintenance \(putting SPARQL in front\). This represents a significant cost to setup and configure.
 
@@ -214,7 +213,7 @@ To build the prototype, we need a user-friendly protocol that is easy to set up 
 * **a "professional" API using SPARQL**
 * **A more user friendly API in JSON-LD only on "read" data permissions.**
 
-### De facto standards or semantic web ?
+## De facto standards or semantic web ?
 
 Do we want to respect the standards of the semantic web, or develop a simpler API, potentially more intuitive, enjoyable, and easy to use?
 
@@ -244,3 +243,4 @@ All the actors in the consortium agree that compared to our goal, our willingnes
 **Platforms can use the implementation they want including solid servers but must expose the API of the standard.**
 
 **Eventually, a cache server will increase search performance and use SPARQL and / or GraphQL for this. This cache will also expose the API of the standard.**
+

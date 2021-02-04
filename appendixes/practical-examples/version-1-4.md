@@ -1,13 +1,13 @@
-# Version 1.4
+# version 1.4
 
-#### Changes log from version 1.3
+## Changes log from version 1.3
 
 * cahnges prefix according to ontology
 * rdfs:label was replaced by dfc-b description on CutomerCategory
 * units were added
 * context on @id was made more easier
 
-#### GET Catalogue
+## GET Catalogue
 
 ```javascript
 {
@@ -133,3 +133,4 @@
   ]
 }
 ```
+
