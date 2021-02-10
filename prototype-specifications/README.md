@@ -6,7 +6,7 @@ After the first iteration of DFC Standard building, we chose to directly develop
 
 Thus we will focus on:
 
-* [Design decisions](design-decisions.md) made to build the protoype following the standars
+* [Design decisions](../technical-specifications/design-decisions.md) made to build the protoype following the standars
 * [Prototype strategy](prototype-strategy.md) showing the planning for next development iteration
 * [Status of the project](status-of-the-project.md) to
 
