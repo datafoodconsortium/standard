@@ -18,5 +18,5 @@ If you are an expert in licences and want to advice us, please contact us!
 
 &gt;&gt;&gt; [Access to this present documentation including the technical specification](https://github.com/datafoodconsortium/standarddocumentation)
 
-&gt;&gt;&gt; [Access to the prototype code](https://github.com/datafoodconsortium/dfc-prototype-V2)
+&gt;&gt;&gt; [Access to the prototype code](https://github.com/datafoodconsortium/dfc-prototype-V3)
 

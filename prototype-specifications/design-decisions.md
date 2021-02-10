@@ -139,7 +139,7 @@ The overall strategy is to implement the prototype in roughly two phases:
       <td style="text-align:left"><b>Interface</b>
       </td>
       <td style="text-align:left">Native web components</td>
-      <td style="text-align:left">Phase 1 + Startin&#x2019;blox or SemViz</td>
+      <td style="text-align:left">Phase 1 OR React OR Startin&#x2019;blox</td>
     </tr>
   </tbody>
 </table>
