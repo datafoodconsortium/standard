@@ -8,7 +8,7 @@
   * [Product ontology](semantic-specifications/product-ontology.md)
 * [Technical specifications](technical-specifications/README.md)
   * [General principles](technical-specifications/general-principles.md)
-  * [Design decisions](technical-specifications/design-decisions.md)
+  * [Protocol specification](technical-specifications/design-decisions.md)
   * [Decentralised identifier matching référence system](technical-specifications/decentralised-identifier-matching-reference-system.md)
   * [Authentication strategy](technical-specifications/authentication-strategy.md)
   * [Architecture representations](technical-specifications/architecture-representations.md)
