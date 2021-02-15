@@ -20,6 +20,9 @@
 ## Appendixes
 
 * [Appendix 1. Decisions and choices history](appendixes/decisions-and-choices-history/README.md)
+  * [Federation vs Syndication](../appendixes/decisions-and-choices-history/federation-vs-syndication.md)
+  * [Libraries to develop in semantic](../appendixes/decisions-and-choices-history/libraries-to-develop-in-semantic.md)
+  * [Transition strategy fron current to ideal](../appendixes/decisions-and-choices-history/transition-strategy-from-current-to-ideal.md)
   * [Stateless or stateful?](appendixes/decisions-and-choices-history/stateless-or-statefull.md)
   * [Service granularity](appendixes/decisions-and-choices-history/service-granularity.md)
   * [Service standard](appendixes/decisions-and-choices-history/service-standard.md)
