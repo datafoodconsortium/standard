@@ -1,5 +1,9 @@
 # Product ontology
 
+This ontology will help to describe the different objects our standards will use later on.
+
+## History and references
+
 This specification has been built since March 2017, through alternation between field interviews and modelization. We have been supported in that work by an ontologist, [Bernard Chabot](https://docs.google.com/document/d/1vLYI4pv-lqcy7WLoMN9XWROPh1FayXFU5g4zA5blmEQ/edit?usp=sharing).
 
 Here is a simplified representation of the product ontology:
@@ -8,7 +12,9 @@ Here is a simplified representation of the product ontology:
 
 [Click here to access a zoomable version of the document.](https://docs.google.com/presentation/d/157i0ySW3T89KviZHmderXl7X0ywuvtz0QunaHJcEF_Q/edit?usp=sharing)
 
-The question of products identification is treated in the technical standard and won’t be discussed here. We came up with that model through various iterations, you can especially [check that spreadsheet](https://drive.google.com/open?id=1l0wCwerm1ZW6zkUF4uB_A8u6B-MRaY3DmKSZKK9Z0vc) illustrating the cases we used to illustrate and validate our last iteration. We chose to characterize products through various orthogonal facets that enable precise understanding, rich research and comparisons. This will be really useful for several use cases. They will enable platforms to order products received from automated data exchange in their own appropriate taxonomy. Also, actors will be able to make searches in a pull of products from various platforms using various custom taxonomies.
+The question of products identification is treated in the technical standard and won’t be discussed here.
+
+## Criterions
 
 So we choose the following “criteria” to uniquely identify products:
 
@@ -24,9 +30,10 @@ So we choose the following “criteria” to uniquely identify products:
   * And products can have a specific **brand**
 * And to finish a product is also identified with a **dimension and unit**, like potatoes are sold by 1 x kg, a jar of tomato sauce is sold by 1 x item, the item here being a “jar of 500 ml tomato sauce”.
 
+## Taxonomies
+
 Behind each of these facets, we need taxonomies, or it can be a free field but then it’s hard to make searches!
 
 As we understand how complex it is to maintain taxonomies alone, we decided, just as we did for product identification \([see technical specification / metadata repository](https://app.gitbook.com/@datafoodconsortium/s/dfc-standard-documentation/appendixes/appendix-1.-decisions-points-and-choices#products)\), to use Open Food Facts taxonomies. They are not totally aligned with the way we wanted to describe products so for the first real life test \(prototype\) we will ignore some of our facets. We are working hand in hand to make our complementary approaches converge.
 
 Depending on the use case, we might have to ask a user to fill in some unfilled info if they are needed by the integrated platform to process the data. For instance, if a product is in the category “apple” but no variety was filled in. And the data receiving platform has two categories “acidic apple” and “sugary apple”, how can the receiving platform know where to put the product ? So in that case, the UX will require to as the user to fill in missing data.
-

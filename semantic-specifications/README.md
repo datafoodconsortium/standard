@@ -10,10 +10,12 @@ You can find more information about this choice in this [appendix](https://githu
 
 Semantic specifications are expressed with files called onotologies. It is using Web Ontology Language \([OWL](https://fr.wikipedia.org/wiki/Web_Ontology_Language)\), based on other standards such as XML and RDF.
 
-We are actually using 2 main files \(and a third one to synthetise them\):
+We are actually using 3 main files \(and a fourth one to synthetise them three\):
 
-* [Business model and ontology](business-model-and-ontology.md)
 * [Product ontology](product-ontology.md)
+* [Business ontology](business-ontology.md)
+* [Technical ontology](technical-ontology.md)
+* Full ontology
 
 ## Access to code source
 
@@ -21,4 +23,3 @@ These ontologies are totally public and you can find the sources on:
 
 * [Github](https://github.com/datafoodconsortium/ontology) which is used in order to maintain and share the source files.
 * [Linked Open Vocubularies](https://lov.linkeddata.es/dataset/lov/vocabs/dfc) which is a famous library helping our standard to be discovered by other people using and reusing semantic ontologies.
-
