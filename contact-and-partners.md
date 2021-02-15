@@ -13,9 +13,9 @@ The consortium is currently facilitated by [Myriam Bouré](https://www.linkedin.
 Participants vary all the time, but we can mention some active member organizations, that are mainly located in France as the project started there:
 
 * [Open Food France](https://www.openfoodfrance.org/) and [Open Food Network](https://openfoodnetwork.org/) more generaly, project coordinators
+* [Socleo](https://www.socleo.fr/) \(ex-Panier Local, CLEOP\)
 * [Virtual Assembly](https://www.virtual-assembly.org/association-virtual-assembly/), technical facilitators
 * [The Food Assembly](https://laruchequiditoui.fr/fr) \(La Ruche Qui Dit Oui / Equanum\)
-* [Panier Local](https://www.panierlocal.com/) \(CLEOP\)
 * [Cagette](https://www.cagette.net/) \(ALILO\)
 * [Elzeard](https://www.elzeard.co/)
 * [Promus](https://www.promus.fr/)
