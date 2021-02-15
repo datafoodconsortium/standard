@@ -1,7 +1,7 @@
 # Table of contents
 
 * [Introduction](README.md)
-* [Access to sources](access-to-sources.md)
+* [Sources and licences](sources-and-licences.md)
 * [Contact and partners](contact-and-partners.md)
 * [Semantic specifications](semantic-specifications/README.md)
   * [Product ontology](semantic-specifications/product-ontology.md)
