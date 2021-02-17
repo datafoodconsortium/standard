@@ -8,7 +8,6 @@
   * [Business ontology](semantic-specifications/business-ontology.md)
   * [Technical ontology](semantic-specifications/technical-ontology.md)
 * [Technical specifications](technical-specifications/README.md)
-  * [General principles](technical-specifications/general-principles.md)
   * [Protocols specifications](technical-specifications/protocols-specifications.md)
   * [Decentralised identifier matching reference system](technical-specifications/decentralised-identifier-matching-reference-system.md)
   * [Authentication strategy](technical-specifications/authentication-strategy.md)
