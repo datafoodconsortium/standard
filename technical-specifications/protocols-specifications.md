@@ -1,4 +1,4 @@
-# Protocol specification
+# Protocols specifications
 
 The overall strategy is to implement the prototype in roughly two phases:
 

@@ -1,10 +1,12 @@
 # Semantic specifications
 
+Before diving into the technical aspect of the standard, we will focus a bit on the semantic aspect of it as it will help to get a better overview of the core objects and their interactions.
+
 ## Why semantic?
 
-The DFC Consortium chose to build the standard using semantic standards. In terms of interoperability, this approach makes totally sense and allows us to use robust technologies to complete our objectives. It is an important decision and it will help us to improve the standard in the future, and also to give us more possibility in interoperability automation.
+The DFC Consortium chose to build the standard using semantic standards. In terms of interoperability, this approach makes totally sense and allows us to use robust technologies to complete our objectives. It is an important decision, it will help us to improve the standard in the future, and also to give us more possibility in interoperability automation.
 
-You can find more information about this choice in this [appendix](https://github.com/datafoodconsortium/standarddocumentation/tree/bf798061ab399eca4ada363fa47da245908a3ae0/appendixes/decisions-and-choices-history/service-standard.html#de-facto-standards-or-semantic-web-).
+You can find more information about this choice in this [appendix](../appendixes/technical-decisions/service-standard.html#de-facto-standards-or-semantic-web-).
 
 ## Ontologies
 

@@ -8,7 +8,7 @@ The book will then be divided into 3 parts:
 
 * [Semantic Specifications](semantic-specifications/) to explain a bit more what was our approach building DFC ontologies.
 * [Technical Specifications](technical-specifications/) to describe the different technical layer we decided to use and how they intereact with each other.
-* [Prototype Specifications](prototype-specifications/) to show how we build an implementation of the standard aside and how it helps to ietrate on its construction.
+* [Prototype Specifications](prototype-specifications/) to show how we build an implementation of the standard aside and how it helps to iterate on its construction.
 
 If you want to access more general information about why the Data Food Consortium, we invite you to take a look the DFC website: [https://www.datafoodconsortium.org](https://www.datafoodconsortium.org). You will understand here the objectives of the Data Food Consortium, the partners of the project, the way to contact the DFC team, ...
 

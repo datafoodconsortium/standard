@@ -9,8 +9,8 @@
   * [Technical ontology](semantic-specifications/technical-ontology.md)
 * [Technical specifications](technical-specifications/README.md)
   * [General principles](technical-specifications/general-principles.md)
-  * [Protocol specification](technical-specifications/design-decisions.md)
-  * [Decentralised identifier matching référence system](technical-specifications/decentralised-identifier-matching-reference-system.md)
+  * [Protocols specifications](technical-specifications/protocols-specifications.md)
+  * [Decentralised identifier matching reference system](technical-specifications/decentralised-identifier-matching-reference-system.md)
   * [Authentication strategy](technical-specifications/authentication-strategy.md)
   * [Architecture representations](technical-specifications/architecture-representations.md)
 * [Prototype specifications](prototype-specifications/README.md)
@@ -43,4 +43,3 @@
   * [version 1.5](appendixes/practical-examples/version-1-4.md)
   * [version 1.3](appendixes/practical-examples/version-1-3.md)
   * [version 1.2](appendixes/practical-examples/version-1-2.md)
-
