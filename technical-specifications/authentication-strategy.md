@@ -22,5 +22,3 @@ Basically, these token are based on encoding JSON data into base 64. The token i
 
 ![Platform Authentificaiton OIDC driven](../.gitbook/assets/selection_624.png)
 
-
-

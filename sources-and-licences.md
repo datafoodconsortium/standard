@@ -19,3 +19,4 @@ Until now we use three licences for these deliverables:
 * [MIT](https://en.wikipedia.org/wiki/MIT_License) : for the prototype. It is very permissive, you can do whatever you want with the code of the prototype, even build commercial applications. As we want as many people to use the standard and build applications on it, we don't want to put any barrier to it.
 
 If you are an expert in licences and want to advice us, please contact us!
+

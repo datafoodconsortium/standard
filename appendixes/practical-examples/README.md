@@ -1,4 +1,4 @@
-# Appendix 2. Practical Examples
+# Appendix 4. Practical Examples
 
 ## Get Data linked to Connected Users
 
@@ -18,4 +18,6 @@ As we developed the DFC Standard aside the DFC Prototype, we had to tweak the da
 * [version 1.4](https://github.com/datafoodconsortium/standarddocumentation/tree/bf798061ab399eca4ada363fa47da245908a3ae0/appendixes/practical-examples/practical-examples/version-1-4.md)
 * [version 1.3](https://github.com/datafoodconsortium/standarddocumentation/tree/bf798061ab399eca4ada363fa47da245908a3ae0/appendixes/practical-examples/practical-examples/version-1-3.md)
 * [version 1.2](https://github.com/datafoodconsortium/standarddocumentation/tree/bf798061ab399eca4ada363fa47da245908a3ae0/appendixes/practical-examples/practical-examples/version-1-2.md)
+
+
 

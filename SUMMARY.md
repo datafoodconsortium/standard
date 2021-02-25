@@ -26,7 +26,6 @@
   * [Identification and authentication](appendixes/general-decisions/identification-and-authentication.md)
   * [Centralized or decentralized data storage](appendixes/general-decisions/centralized-or-decentralized-data-storage.md)
   * [Metadata repository](appendixes/general-decisions/metadata-repository.md)
-
 * [Appendix 2. Technical decisions](appendixes/technical-decisions/README.md)
   * [Libraries to develop in semantic](appendixes/technical-decisions/libraries-to-develop-in-semantic.md)
   * [Transition strategy fron current to ideal](appendixes/technical-decisions/transition-strategy-from-current-to-ideal.md)
@@ -35,10 +34,9 @@
   * [Transport layer](appendixes/technical-decisions/transport-layer.md)
   * [Multi- or single-resource requests?](appendixes/technical-decisions/multi-or-single-resource-requests.md)
   * [Right delegation between platforms and DFC](appendixes/technical-decisions/right-delegation-between-platforms-and-dfc.md)
-
-* [Appendix 3. Protoype decisions](appendixes/prototype-decisions/README.md)
-
+* [Appendix 3. Protoype decisions](appendixes/prototype-decisions.md)
 * [Appendix 4. Practical Examples](appendixes/practical-examples/README.md)
-  * [version 1.5](appendixes/practical-examples/version-1-4.md)
+  * [version 1.5](appendixes/practical-examples/version-1-5.md)
   * [version 1.3](appendixes/practical-examples/version-1-3.md)
   * [version 1.2](appendixes/practical-examples/version-1-2.md)
+

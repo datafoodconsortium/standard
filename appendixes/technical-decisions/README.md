@@ -9,3 +9,4 @@ You will find here the list of the different technical decisions and choices mad
 * [Transport layer](transport-layer.md)
 * [Multi- or single-resource requests?](multi-or-single-resource-requests.md)
 * [Right delegation between platforms and DFC](right-delegation-between-platforms-and-dfc.md)
+

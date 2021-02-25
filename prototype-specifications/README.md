@@ -6,7 +6,7 @@ After the first iteration of DFC Standard building, we chose to directly develop
 
 Thus we will focus on:
 
-* [Design decisions](../technical-specifications/design-decisions.md) made to build the protoype following the standards
+* [Design decisions](https://github.com/datafoodconsortium/standarddocumentation/tree/4d0cabf44403fe90253690daed02ed8110d1b4bc/technical-specifications/design-decisions.md) made to build the protoype following the standards
 * [Prototype strategy](prototype-strategy.md) showing the planning for next development iteration
 * [Status of the project](status-of-the-project.md)
 
@@ -16,7 +16,7 @@ If you are more interested into the code and his usage, you will find all you ne
 
 The data frames we deisgned evolved during the developement and you can find the different versions in [Appendix 4 - Practical Examples](../appendixes/practical-examples/).
 
-The current recommenced format is the [version 1.5](../appendixes/practical-examples/version-1-5.md).
+The current recommenced format is the [version 1.5](https://github.com/datafoodconsortium/standarddocumentation/tree/4d0cabf44403fe90253690daed02ed8110d1b4bc/appendixes/practical-examples/version-1-5.md).
 
 ## Access to code source
 

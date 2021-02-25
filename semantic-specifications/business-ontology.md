@@ -34,3 +34,4 @@ The human readable modelization can be represented as follow:
 ## Transactions
 
 When an agent has ordered products and products has been delivered through a last transformation flow \(transport\), the ownership of the product changes hands. The transaction is then officially happening and the previous product owner can invoice the customer.
+

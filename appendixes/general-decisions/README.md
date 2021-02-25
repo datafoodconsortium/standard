@@ -9,3 +9,4 @@ You will find here the list of the different general decisions and choices made 
 * [Identification and authentication](identification-and-authentication.md)
 * [Centralized or decentralized data storage](centralized-or-decentralized-data-storage.md)
 * [Metadata repository](metadata-repository.md)
+

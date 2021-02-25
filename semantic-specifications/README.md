@@ -6,7 +6,7 @@ Before diving into the technical aspect of the standard, we will focus a bit on 
 
 The DFC Consortium chose to build the standard using semantic standards. In terms of interoperability, this approach makes totally sense and allows us to use robust technologies to complete our objectives. It is an important decision, it will help us to improve the standard in the future, and also to give us more possibility in interoperability automation.
 
-You can find more information about this choice in this [appendix](../appendixes/technical-decisions/service-standard.html#de-facto-standards-or-semantic-web-).
+You can find more information about this choice in this [appendix](https://github.com/datafoodconsortium/standarddocumentation/tree/e4ac9c376381d4593ae7677f61ae06e3a252ad97/appendixes/technical-decisions/service-standard.html#de-facto-standards-or-semantic-web-).
 
 ## Ontologies
 
@@ -25,3 +25,4 @@ These ontologies are totally public and you can find the sources on:
 
 * [Github](https://github.com/datafoodconsortium/ontology) which is used in order to maintain and share the source files.
 * [Linked Open Vocubularies](https://lov.linkeddata.es/dataset/lov/vocabs/dfc) which is a famous library helping our standard to be discovered by other people using and reusing semantic ontologies.
+
