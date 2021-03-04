@@ -14,7 +14,6 @@ Here is a simplified representation of the product ontology:
 
 The question of products identification is treated in the technical standard and won’t be discussed here.
 
-
 ## Product Type
 
 Product have a main product type. That's the simpliest way to qualify product. Product Type have to be valuated by Taxonomy.
@@ -31,10 +30,11 @@ Some class of busines ontology have unit predicat. Unit have to be valuated by T
 
 ## Taxonomies
 
-Platform have to provide valuated Taxonomy for Product Type, Unit and Facets.  
+Platform have to provide valuated Taxonomy for Product Type, Unit and Facets.
 
 DFC try to reuse existing taxonomy for each concept. Despite this goal, we use DFC taxonomies in the prototype until international repositories have been found.
 
 If Product Types, Units or Facets are not provided by Platform, user could fill it in prototype and send it to platform to update it. User could also change vlue provided and update platform.
 
 Taxonomy will help to identify the products and the facets chosen to do so.
+
