@@ -4,8 +4,8 @@
 * [Sources and licences](sources-and-licences.md)
 * [Contact and partners](contact-and-partners.md)
 * [Semantic specifications](semantic-specifications/README.md)
-  * [Product ontology](semantic-specifications/product-ontology.md)
   * [Business ontology](semantic-specifications/business-ontology.md)
+  * [Product ontology](semantic-specifications/product-ontology.md)
   * [Technical ontology](semantic-specifications/technical-ontology.md)
 * [Technical specifications](technical-specifications/README.md)
   * [Protocols specifications](technical-specifications/protocols-specifications.md)
@@ -39,4 +39,3 @@
   * [version 1.5](appendixes/practical-examples/version-1-5.md)
   * [version 1.3](appendixes/practical-examples/version-1-3.md)
   * [version 1.2](appendixes/practical-examples/version-1-2.md)
-
