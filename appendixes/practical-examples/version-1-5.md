@@ -64,9 +64,9 @@
         {
           "@id": "/suppliedProduct/item3",
           "@type": "dfc-b:SuppliedProduct",
-          "dfc-b:hasUnit": "dfc-u:u",
+          "dfc-p:hasUnit": "dfc-u:u",
           "dfc-b:quantity": "99.99",
-          "dfc-pt:productType": "dfc-pt:egg",
+          "dfc-p:hasType": "dfc-pt:egg",
           "dfc-b:description": "supply description 1",
           "dfc-b:totalTheoriticalStock": "999",
           "dfc-b:brand": "supply brand",
@@ -78,9 +78,9 @@
         {
           "@id": "/suppliedProduct/item4",
           "@type": "dfc-b:SuppliedProduct",
-          "dfc-b:hasUnit": "dfc-u:u",
+          "dfc-p:hasUnit": "dfc-u:u",
           "dfc-b:quantity": "1",
-          "dfc-pt:productType": "dfc-pt:strawberry",
+          "dfc-p:hasType": "dfc-pt:strawberry",
           "dfc-b:description": "supply description 2",
           "dfc-b:totalTheoriticalStock": "999",
           "dfc-b:brand": "supply brand",
