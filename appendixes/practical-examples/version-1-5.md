@@ -16,9 +16,13 @@
 {
   "@context": {
     "dfc-b": "http://static.datafoodconsortium.org/ontologies/dfc_FullModel.owl#",
+    "dfc-p": "http://static.datafoodconsortium.org/ontologies/DFC_ProductOntology.owl#",
     "dfc-u": "http://static.datafoodconsortium.org/data/units.rdf#",
     "dfc-pt": "http://static.datafoodconsortium.org/data/types.rdf#",
-    "dfc-b:hasUnit":{
+    "dfc-p:hasUnit":{
+      "@type":"@id"
+    },
+    "dfc-p:hasType":{
       "@type":"@id"
     },
     "dfc-b:references":{
@@ -156,6 +160,7 @@ PATCH http://maPlateformeNationale/catalogItem/catalogItemId1
   "@context": {
     "dfc-b": "http://static.datafoodconsortium.org/ontologies/dfc_FullModel.owl#",
     "dfc-u": "http://static.datafoodconsortium.org/data/units.rdf#",
+    "dfc-p": "http://static.datafoodconsortium.org/ontologies/DFC_ProductOntology.owl#",
     "dfc-b:references":{
       "@type":"@id"
     },
@@ -182,8 +187,9 @@ PATCH http://maPlateformeNationale/offer/offerId1
 {
   "@context": {
     "dfc-b": "http://static.datafoodconsortium.org/ontologies/dfc_FullModel.owl#",
+    "dfc-p": "http://static.datafoodconsortium.org/ontologies/DFC_ProductOntology.owl#",
     "dfc-u": "http://static.datafoodconsortium.org/data/units.rdf#",
-    "dfc-b:hasUnit":{
+    "dfc-p:hasUnit":{
       "@type":"@id"
     },
     "dfc-b:references":{
