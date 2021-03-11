@@ -8,7 +8,7 @@ Thus we will focus on:
 
 * Design decisions made to build the prototype following the standards
 * [Prototype strategy](prototype-strategy.md) showing the planning for next development iteration
-* [Status ](status-of-the-project.md)and roadmap
+* [Status and roadmap](https://datafoodconsortium.gitbook.io/dfc-standard-documentation/prototype-specifications/status-of-the-project)
 
 If you are more interested into the code, you will find all you need in the next section.
 
