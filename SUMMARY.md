@@ -14,7 +14,7 @@
   * [Architecture representations](technical-specifications/architecture-representations.md)
 * [Prototype specifications](prototype-specifications/README.md)
   * [Prototype strategy](prototype-specifications/prototype-strategy.md)
-  * [Status of the project](prototype-specifications/status-of-the-project.md)
+  * [Status and roadmap](prototype-specifications/status-of-the-project.md)
 
 ## Appendixes
 

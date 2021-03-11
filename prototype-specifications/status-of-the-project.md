@@ -1,10 +1,4 @@
-# Status of the project
-
-### First releases
-
-We released in November 2017 a first version of the semantic standard, then a second version in June 2018, and we just released a new version in May 2019.  You can access the corresponding ontology through [Github](https://github.com/datafoodconsortium/ontology). For the technical specification, we started to work on it in october 2018 and we just released a first specification through this document.
-
-### The POC to test the v.0 of the standard
+# Status and roadmap
 
 We needed to start working on the prototype to build a first version of the technical standard, understand the current status of the data and of the first platforms willing to adopt the standard. We built a prototype on the use case of sharing of products catalogs between platforms and mutualization of logistic flows.
 
