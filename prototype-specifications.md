@@ -4,13 +4,23 @@
 
 After the first iteration of the DFC Standard, we chose to develop a prototype in order to use this standard in a pratical example. This helped \(and is still helping\) us a lot to improve the standard over iterations as there are always some small differences between theoritical design and experimental applications. To get quickly this feedback allows us to adjust our specifications with real cases, and this is why we also want to share these information in this book.
 
-Thus we will focus on:
+## Roadmap
 
-* Design decisions made to build the prototype following the standards
-* [Prototype strategy](prototype-strategy.md) showing the planning for next development iteration
-* [Status and roadmap](https://datafoodconsortium.gitbook.io/dfc-standard-documentation/prototype-specifications/status-of-the-project)
+It follows of course our specifications definition but we can show the milestones of the prototype.
 
-If you are more interested into the code, you will find all you need in the next section.
+What we did is:
+- Implemtent authentication with OIDC
+- Read catalogs from API following the DFC standard
+- Link items from different catalogs
+
+What we are currently doing is:
+- Write data on API following the DFC standard
+- Improve internationalization
+
+What we aim to is:
+- Synchronize catalogs between platforms, especially on logisitic aspect
+- Synchronize orders between platforms
+
 
 ## API Data Format
 
