@@ -6,12 +6,12 @@ After the first iteration of the DFC Standard, we chose to develop a prototype i
 
 ## Roadmap
 
-It follows of course our specifications definition but we can show the milestones of the prototype.
+It follows, of course, our standard definition. You will find then the different milestones for past, present and future developement.
 
-What we did is:
-- Implemtent authentication with OIDC
-- Read catalogs from API following the DFC standard
-- Link items from different catalogs
+What we did so far is:
+- Implement authentication with OIDC
+- Read catalogs from different API following the DFC standard
+- Link items from these different catalogs with an intuitive UI
 
 What we are currently doing is:
 - Write data on API following the DFC standard
@@ -24,7 +24,7 @@ What we aim to is:
 
 ## API Data Format
 
-The data frames we designed evolved during the developement and you can find the different versions in [Appendix 4 - Practical Examples](../appendixes/practical-examples/).
+The data frames we designed evolved during the developement and you can find the different versions in [Appendix 3 - Practical Examples](../appendixes/practical-examples/).
 
 The current recommenced format is the [version 1.5](https://github.com/datafoodconsortium/standarddocumentation/tree/4d0cabf44403fe90253690daed02ed8110d1b4bc/appendixes/practical-examples/version-1-5.md).
 
