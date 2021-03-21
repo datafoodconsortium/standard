@@ -1,6 +1,6 @@
 # Appendix 2. Technical decisions
 
-You will find here the list of the different technical decisions and choices made during the build of the DFC Standard. It is ordered from the most recent one to the oldest one.
+You will find here the list of the different technical decisions and choices made during the build of the DFC Standard. It is ordered from the most recent one to the oldest one; some of these decisions may sound obsolete or not related to today's specifications but they can help understanding how we build them.
 
 * [Libraries to develop in semantic](libraries-to-develop-in-semantic.md)
 * [Transition strategy fron current to ideal](transition-strategy-from-current-to-ideal.md)
