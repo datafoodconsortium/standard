@@ -22,5 +22,5 @@ As we are documenting most of design decisions and choices, you can find them in
 
 ## About the DFC Prototype
 
-In order to give an example of the standard implementation, and especially the intermediation logic behind our interoperability model, we have developed the [DFC Prototype](../prototype-specifications/) that you will discover more in the next chapter.
+In order to give an example of the standard implementation, and especially the intermediation logic behind our interoperability model, we have developed the [DFC Prototype](../prototype-specifications.md) that you will discover more in the next chapter.
 

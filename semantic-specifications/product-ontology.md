@@ -12,7 +12,8 @@ Here is a simplified representation of the product ontology:
 
 [Click here to access a zoomable version of the document.](https://docs.google.com/presentation/d/157i0ySW3T89KviZHmderXl7X0ywuvtz0QunaHJcEF_Q/edit?usp=sharing)
 
-The question of products identification is treated in the technical standard and won’t be discussed here.
+The question of products identification is treated in the technical standard and won’t be discussed here.  
+Published on [LOV](https://lov.linkeddata.es/dataset/lov/vocabs/dfc-p)
 
 ## Product Type
 

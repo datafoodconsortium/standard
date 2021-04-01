@@ -1,4 +1,4 @@
-# Appendix 4. Practical Examples
+# Appendix 3. Practical Examples
 
 ## Get Data linked to Connected Users
 

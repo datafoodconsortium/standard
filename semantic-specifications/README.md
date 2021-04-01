@@ -17,7 +17,7 @@ We are actually using 3 main files \(and a fourth one to synthesise the three\):
 * [Product ontology](product-ontology.md)
 * [Business ontology](business-ontology.md)
 * [Technical ontology](technical-ontology.md)
-* Full ontology
+* Full ontology published on [LOV](https://lov.linkeddata.es/dataset/lov/vocabs/dfc)
 
 ## Access to code source
 

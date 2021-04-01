@@ -12,6 +12,8 @@ The human readable models can be represented as follows:
 
 [Click here to access a zoomable version of the document.](https://docs.google.com/presentation/d/157i0ySW3T89KviZHmderXl7X0ywuvtz0QunaHJcEF_Q/edit?usp=sharing)
 
+Published on [LOV](https://lov.linkeddata.es/dataset/lov/vocabs/dfc-b)
+
 ## Products
 
 * We have identified the different concepts of products we manipulate. We distinguished the product “need” \(what I want as a customer\), from the product “answer” \(what I propose as a distributor to satisfy your need\), from the product “supply” \(what I propose as a producer that enable distributors to meet their promises to customers\), all those products being manipulated without any “location” notion.
