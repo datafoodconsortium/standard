@@ -27,20 +27,20 @@ The overall strategy is to implement the prototype in roughly two phases:
         </p>
       </td>
       <td style="text-align:left">
-        <p><em>Esential </em>
+        <p><em>Essential </em>
         </p>
         <p><em>Platorm </em><b>DONE</b>
         </p>
       </td>
       <td style="text-align:left">
-        <p><em>Esential </em>
+        <p><em>Essential </em>
         </p>
         <p><em>Platorm</em> + LDP</p>
         <p><b>IN PROGRESS</b>
         </p>
       </td>
       <td style="text-align:left">
-        <p><em>Esential </em>
+        <p><em>Essential </em>
         </p>
         <p><em>DFC + </em>Full Semantic protocol (LDP + SPARQL)</p>
         <p><b>DONE</b>
@@ -55,7 +55,7 @@ The overall strategy is to implement the prototype in roughly two phases:
         <p><b>DONE</b>
         </p>
       </td>
-      <td style="text-align:left"><em>Esential platorm<br /></em><b>DONE</b>
+      <td style="text-align:left"><em>Essential Platorm<br /></em><b>DONE</b>
       </td>
       <td style="text-align:left">Stateless<em><br /></em><b>DONE</b>
       </td>
@@ -71,13 +71,13 @@ The overall strategy is to implement the prototype in roughly two phases:
         </p>
       </td>
       <td style="text-align:left">
-        <p><em>Esential platorm</em>
+        <p><em>Essential Platorm</em>
         </p>
         <p><b>ABANDONED</b>
         </p>
       </td>
       <td style="text-align:left">
-        <p><em>Esential platorm </em>+ high granularity via LDP</p>
+        <p><em>Essential platorm </em>+ high granularity via LDP</p>
         <p><b> IN PROGRESS</b>
         </p>
       </td>
@@ -95,12 +95,12 @@ The overall strategy is to implement the prototype in roughly two phases:
         <p><b>DONE</b>
         </p>
       </td>
-      <td style="text-align:left"><em>Esential platorm<br /></em><b>DONE</b>
+      <td style="text-align:left"><em>Essential Platform<br /></em><b>DONE</b>
       </td>
       <td style="text-align:left">
-        <p><em>Esential </em>
+        <p><em>Essential </em>
         </p>
-        <p><em>Platorm</em> 
+        <p><em>Platform</em> 
           <br /><b>DONE</b>
         </p>
       </td>
@@ -121,7 +121,7 @@ The overall strategy is to implement the prototype in roughly two phases:
         <p><b>OUTLOOK</b>
         </p>
       </td>
-      <td style="text-align:left"><em>Esential platorm<br /></em><b>OUTLOOK</b>
+      <td style="text-align:left"><em>Essential Platform<br /></em><b>OUTLOOK</b>
       </td>
       <td style="text-align:left">
         <p>Complete OpenAPI specifications for standard services. LDP specification
@@ -145,17 +145,17 @@ The overall strategy is to implement the prototype in roughly two phases:
         </p>
         <p></p>
       </td>
-      <td style="text-align:left"><em>Esential platorm<br /></em><b>DONE</b>
+      <td style="text-align:left"><em>Essential Platform<br /></em><b>DONE</b>
       </td>
       <td style="text-align:left">
-        <p><em>Esential </em>
+        <p><em>Essential </em>
         </p>
-        <p><em>Platorm</em> 
+        <p><em>Platform</em> 
           <br /><b>DONE</b>
         </p>
       </td>
       <td style="text-align:left">
-        <p><em>Esential DFC</em> + JSON-LD in the data attribute if HyperGraphQL</p>
+        <p><em>Essential DFC</em> + JSON-LD in the data attribute if HyperGraphQL</p>
         <p><b>OUTLOOK</b>
         </p>
       </td>
@@ -168,11 +168,11 @@ The overall strategy is to implement the prototype in roughly two phases:
         <p><b>DONE</b>
         </p>
       </td>
-      <td style="text-align:left"><em>Esential platorm<br /></em><b>DONE</b>
+      <td style="text-align:left"><em>Essential Platform<br /></em><b>DONE</b>
       </td>
-      <td style="text-align:left"><em>Esential platorm<br /></em><b>DONE</b>
+      <td style="text-align:left"><em>Essential Platform<br /></em><b>DONE</b>
       </td>
-      <td style="text-align:left"><em>Esential DFC<br /></em><b>DONE</b>
+      <td style="text-align:left"><em>Essential DFC<br /></em><b>DONE</b>
       </td>
     </tr>
     <tr>
@@ -183,9 +183,9 @@ The overall strategy is to implement the prototype in roughly two phases:
         <p><b>DONE</b>
         </p>
       </td>
-      <td style="text-align:left"><em>Esential platorm<br /></em><b>DONE</b>
+      <td style="text-align:left"><em>Essential Platorm<br /></em><b>DONE</b>
       </td>
-      <td style="text-align:left"><em>Esential platorm<br /></em><b>DONE</b>
+      <td style="text-align:left"><em>Essential Platform<br /></em><b>DONE</b>
       </td>
       <td style="text-align:left">
         <p>Query on multiple sources</p>
@@ -203,7 +203,7 @@ The overall strategy is to implement the prototype in roughly two phases:
         <p><b>DONE</b>
         </p>
       </td>
-      <td style="text-align:left"><em>Esential platorm<br /></em><b>IN PROGRESS</b>
+      <td style="text-align:left"><em>Essential Platorm<br /></em><b>IN PROGRESS</b>
       </td>
       <td style="text-align:left">
         <p>Yes (web ACL Compliance)</p>
@@ -224,7 +224,7 @@ The overall strategy is to implement the prototype in roughly two phases:
         <p><b>DONE</b>
         </p>
       </td>
-      <td style="text-align:left"><em>Esential platorm<br /></em><b>DONE</b>
+      <td style="text-align:left"><em>Essential Platorm<br /></em><b>DONE</b>
       </td>
       <td style="text-align:left">
         <p>webId-OIDC (decentralised authentification serveur : need platform impl&#xE9;mentation)
@@ -250,13 +250,13 @@ The overall strategy is to implement the prototype in roughly two phases:
         </p>
       </td>
       <td style="text-align:left">
-        <p><em>Esential platorm</em>
+        <p><em>Essential Platform</em>
         </p>
         <p><b>DONE</b>
         </p>
       </td>
       <td style="text-align:left">
-        <p><em>Esential DFC</em> +semantic cache</p>
+        <p><em>Essential DFC</em> +semantic cache</p>
         <p><b>IN PROGRESS</b>
         </p>
       </td>
@@ -269,7 +269,7 @@ The overall strategy is to implement the prototype in roughly two phases:
         <p><b>DONE</b>
         </p>
       </td>
-      <td style="text-align:left"><em>Esential platorm<br /></em><b>DONE</b>
+      <td style="text-align:left"><em>Essential Platform<br /></em><b>DONE</b>
       </td>
       <td style="text-align:left">webId-OIDC (decentralised authentification serveur : need platform impl&#xE9;mentation)
         <br
@@ -286,16 +286,16 @@ The overall strategy is to implement the prototype in roughly two phases:
         <p><b>DONE</b>
         </p>
       </td>
-      <td style="text-align:left"><em>Esential platorm<br /></em><b>DONE</b>
+      <td style="text-align:left"><em>Essential Platform<br /></em><b>DONE</b>
       </td>
       <td style="text-align:left">
-        <p><em>Esential platorm</em>
+        <p><em>Essential Platform</em>
         </p>
         <p><b>DONE</b>
         </p>
       </td>
       <td style="text-align:left">
-        <p><em>Esential DFC</em>
+        <p><em>Essential DFC</em>
         </p>
         <p><b>DONE</b>
         </p>
