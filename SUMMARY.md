@@ -33,6 +33,7 @@
   * [Multi- or single-resource requests?](appendixes/technical-decisions/multi-or-single-resource-requests.md)
   * [Right delegation between platforms and DFC](appendixes/technical-decisions/right-delegation-between-platforms-and-dfc.md)
 * [Appendix 3. Practical Examples](appendixes/practical-examples/README.md)
+  * [version 1.5.1](appendixes/practical-examples/version-1.5.1.md)
   * [version 1.5](appendixes/practical-examples/version-1-5.md)
   * [version 1.3](appendixes/practical-examples/version-1-3.md)
   * [version 1.2](appendixes/practical-examples/version-1-2.md)
