@@ -197,7 +197,7 @@ The overall strategy is to implement the prototype in roughly two phases:
       <td style="text-align:left"><b>Right delegation</b>
       </td>
       <td style="text-align:left">
-        <p>Not standardized
+        <p>Standardized
           <br />OIDC authentification + platform manage acces to data using authentification
           : authentified user data or more</p>
         <p><b>DONE</b>
