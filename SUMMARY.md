@@ -10,9 +10,9 @@
 * [Technical specifications](technical-specifications/README.md)
   * [Protocols specifications](technical-specifications/protocols-specifications.md)
   * [Decentralised identifier matching reference system](technical-specifications/decentralised-identifier-matching-reference-system.md)
+  * [Non LDP API](technical-specifications/non-ldp-api.md)
   * [Authentication strategy](technical-specifications/authentication-strategy.md)
   * [Architecture representations](technical-specifications/architecture-representations.md)
-  * [Non LDP API](technical-specifications/non-ldp-api.md)
 * [Prototype specifications](prototype-specifications.md)
 
 ## Appendixes
