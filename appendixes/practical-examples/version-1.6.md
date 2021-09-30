@@ -34,7 +34,7 @@
     },
     "dfc-b:supplies":{
       "@type":"@id"
-    }
+    },
     "dfc-b:defines":{
       "@type":"@id"
     },
@@ -52,7 +52,7 @@
         "dfc-b:country": "",
         "dfc-b:postcode": "",
         "dfc-b:street": ""
-      }
+      },
       "dfc-b:supplies": [
         "entreprise/entrepriseId"
       ]
@@ -67,7 +67,7 @@
       ],
       "dfc-b:supplies": [
         "suppliedProduct/item3",
-        "suppliedProduct/item4",
+        "suppliedProduct/item4"
       ],
       "dfc-b:manages": [
         "catalogItem/catalogItemId1",
