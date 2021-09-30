@@ -77,8 +77,8 @@ The overall strategy is to implement the prototype in roughly two phases:
         </p>
       </td>
       <td style="text-align:left">
-        <p><em>Essential platorm to read </em>+ high granularity (atomic) via LDP
-          to write &amp; read</p>
+        <p><em>optional : Essential platorm to read </em>+ mandatory : high granularity
+          (atomic) via LDP to write &amp; read</p>
         <p><b> IN PROGRESS</b>
         </p>
       </td>
