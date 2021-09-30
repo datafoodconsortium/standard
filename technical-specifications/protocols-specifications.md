@@ -83,7 +83,8 @@ The overall strategy is to implement the prototype in roughly two phases:
         </p>
       </td>
       <td style="text-align:left">
-        <p>high granularity via LDP</p>
+        <p>NO DIRET WRITE</p>
+        <p>read :high granularity (atomic) via</p>
         <p><b>DONE</b>
         </p>
       </td>
