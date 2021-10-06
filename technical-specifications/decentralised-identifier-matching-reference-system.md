@@ -16,13 +16,13 @@ Before data can be synchronized, it has to be imported into the DFC prototype. M
 
 ![](../.gitbook/assets/selection_629.png)
 
-#### A platform can directly requests a change on a second one 
+#### A platform can directly request a change on a second one 
 
-After data is matched inside the DFC prototype, a platform 1 can request to change an item managed by a platform 2 after getting its identifier \(URI\) using the DFC prototype API. For example, the platform 1 can request to update the name of the equivalent item stored on platform 2.
+After data is matched inside the DFC prototype, a platform 1 can request to change an item managed by a platform 2 after getting its identifier \(URI\) using the DFC prototype API. For example, the platform 1 can request to update the name of the equivalent item stored on the platform 2.
 
 ![](../.gitbook/assets/selection_627.png)
 
-#### A platform can ask the DFC prototype to requests a change on a second one \(delegation\)
+#### A platform can ask the DFC prototype to request a change on a second one \(delegation\)
 
 If the platform 1 does not want to request a change on the platform 2 by itself, it can request the DFC prototype to request that change for it.
 
