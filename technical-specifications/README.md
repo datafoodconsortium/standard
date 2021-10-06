@@ -1,15 +1,15 @@
 # Technical specifications
 
-## General principles
+## The main objective of the DFC standard is to allow different platforms to easily read and write data from each other, in an authenticated way and using existing standards.General principles
 
 Here you will find the core of this book, focusing on how to build the DFC standard.
 
-The main objective of the DFC standard is to allow different platforms to easily read and write data from each other, in an authentifed way and using existing standards.
+
 
 We divided this chapter into 4 parts:
 
 * [Protocols specifications](protocols-specifications.md) where we will list the existing protocols we are using to build our semantic model, the core of our interoperability engine.
-* [Decentralized identifier matching reference system](decentralised-identifier-matching-reference-system.md) where we will explain why we are not building a centralized referential but rather promoting platforms intermedation.
+* [Decentralized identifier matching reference system](decentralised-identifier-matching-reference-system.md) where we will explain why we are not building a centralized referential but rather promoting platforms intermediation.
 * [Authentication strategy](authentication-strategy.md) where we will discuss the use of OpenID protocol as our authentication layer.
 * [Architecture representations](architecture-representations.md) where we will finally resume all these information into a nice schema.
 

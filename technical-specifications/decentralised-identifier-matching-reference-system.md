@@ -1,10 +1,10 @@
 # Decentralised identifier matching reference system
 
-DFC choose to not centralised an unique identifier reference system for catalog product nor all other subject. We could use Open Food Fact or GS1 référence system but both have come up agains political or technical problems. DFC provide a médiation intermediary to deal identifier matcher betwen platform. Prototype provide this feature but it is open source and free to use.
+DFC choose to not centralized an unique identifier reference system for catalog product nor all other subject. We could use Open Food Fact or GS1 reference system but both have come up against political or technical problems. DFC provide a mediation intermediary to deal identifier matching between platforms. Prototype provide this feature as open source and it is free to use.
 
-![Build Decentralised identifier matching](../.gitbook/assets/selection_629.png)
+![Build Decentralized identifier matching](../.gitbook/assets/selection_629.png)
 
-![A platform use Decentralised identifier matching reference system to interoperate whit an other](../.gitbook/assets/selection_627.png)
+![A platform use Decentralized identifier matching reference system to interoperate with an other](../.gitbook/assets/selection_627.png)
 
-![A platform claim impact of its item to all platfoms managing equivalent item on others platform](../.gitbook/assets/selection_628.png)
+![A platform claim impact of its item to all platforms managing equivalent item on other platforms](../.gitbook/assets/selection_628.png)
 
