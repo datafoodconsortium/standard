@@ -9,7 +9,7 @@
   * [Technical ontology](semantic-specifications/technical-ontology.md)
 * [Technical specifications](technical-specifications/README.md)
   * [Protocols specifications](technical-specifications/protocols-specifications.md)
-  * [Decentralised identifier matching reference system](technical-specifications/decentralised-identifier-matching-reference-system.md)
+  * [Decentralized identifier matching reference system](technical-specifications/decentralised-identifier-matching-reference-system.md)
   * [Specifics API](technical-specifications/non-ldp-api.md)
   * [Authentication strategy](technical-specifications/authentication-strategy.md)
   * [Architecture representations](technical-specifications/architecture-representations.md)
