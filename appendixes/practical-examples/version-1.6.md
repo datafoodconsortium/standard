@@ -53,7 +53,7 @@
         "dfc-b:postcode": "",
         "dfc-b:street": ""
       },
-      "dfc-b:supplies": [
+      "dfc-b:affiliates": [
         "entreprise/entrepriseId"
       ]
     },
@@ -165,4 +165,3 @@
   ]
 }
 ```
-
