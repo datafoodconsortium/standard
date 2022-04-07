@@ -1,6 +1,8 @@
 # version 1.7
 
-## Changes log from version 1.6
+
+
+### Changes log from version 1.6.1
 
 * replace raw context by inline (optional)
 * add and replace properties of ontology V?
@@ -8,13 +10,12 @@
   * characteristic refactor
 * focus to supplied product instead catalogItem (same ontology, just an other perspective)
 
-
-## GET User Data
+### GET User Data
 
 * @base and @id respect W3C json-ld standard
 
 ```javascript
-{
+  {
   "@context": "http://static.datafoodconsortium.org/ontologies/context.json",
   "@graph" : [
     {
