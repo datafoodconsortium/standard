@@ -16,7 +16,11 @@
 
 ```javascript
   {
-  "@context": "http://static.datafoodconsortium.org/ontologies/context.json",
+  "@context":   [
+    "http://static.datafoodconsortium.org/ontologies/context.json",
+    {
+      "@base": "http://maPlateformeNationale/"
+    },
   "@graph" : [
     {
      "@id": "person/personId",
@@ -78,6 +82,7 @@
       "dfc-b:hasBrand":[
         {
           "@type":"dfc-p:Brand",
+          "@id":"suppliedProduct/item3",
           "dfc-p:description": "supply brand" # Ontology not ready; identifier could specifiy external subject
         }
       ],
