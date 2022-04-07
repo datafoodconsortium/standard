@@ -4,6 +4,8 @@
 
 * replace raw context by inline (optional)
 * add and replace properties of ontology V?
+  * facet refactor
+  * characteristic refactor
 * focus to supplied product instead catalogItem (same ontology, just an other perspective)
 
 
