@@ -9,6 +9,8 @@
   * facet refactor
   * characteristic refactor
 * focus to supplied product instead catalogItem (same ontology, just an other perspective)
+* hasType in usinees ontology and not product ontology
+* hasUnit in usinees ontology and not product ontology
 
 ### GET User Data
 
@@ -41,6 +43,7 @@
     {
       "@id": "entreprise/entrepriseId",
       "@type": "dfc-b:Entreprise",
+      "dfc-b:description": "La ferme beausoleil",
       "dfc-b:VATnumber": "",
       "dfc-b:defines": [
         "customerCategory/customerCategoryId1",
@@ -53,63 +56,91 @@
       "dfc-b:manages": [
         "catalogItem/catalogItemId1",
         "catalogItem/catalogItemId2"
+      ],
+      "dfc-b:owns": [
+        "brand/brand1",
       ]
     },
     {
       "@id": "customerCategory/customerCategoryId1",
       "@type": "dfc-b:CustomerCategory",
-      "dfc-b:description": "member"
+      "dfc-b:description": "particulier"
     },
     {
-      "@id": "customerCategory/customerCategoryId2",
+      "@id": "customerCategory/customerCategoryId1",
       "@type": "dfc-b:CustomerCategory",
-      "dfc-b:description": "non member"
+      "dfc-b:description": "particulier"
+    },
+    {
+      "@id": "brand/brand1",
+      "@type": "dfc-b:Brand",
+      "dfc-b:description": "ma marque"
     },
     {
       "@id": "suppliedProduct/item3",
       "@type": "dfc-b:SuppliedProduct",
+      "dfc-b:description": "Magnifique lot de 6 yaourts",
+      "dfc-b:hasType": "dfc-pt:cow-dairy-product",
       "dfc-b:referencedBy":[
           "/catalogItem/catalogItemId1"
-      ], # Ontology not ready
+      ],
       "dfc-b:hasQuantity":{
         "@type":"dfc-b:QuantitativeValue",
         "dfc-b:hasUnit": "dfc-u:u",
-        "dfc-b:value": "99.99",
+        "dfc-b:value": "1",
       },
-      "dfc-p:hasType": "dfc-pt:egg",
-      "dfc-b:description": "supply description 1",
+      "dfc-b:specificCondition": "Conserver au frais",
       "dfc-b:totalTheoriticalStock": "999",
-      "dfc-b:hasBrand":[
-        {
-          "@type":"dfc-p:Brand",
-          "@id":"suppliedProduct/item3",
-          "dfc-p:description": "supply brand" # Ontology not ready; identifier could specifiy external subject
-        }
+      "dfc-b:hasBrand":"brand/brand1",
+      "dfc-b:hasCertification":[
+        "dfc-c:OrganicLabel"
       ],
       "dfc-b:hasClaim":[
+        "dfc-a:nutriScore"
+      ],
+      "dfc-b:image": "https://cdn.pixabay.com/photo/2013/07/13/09/50/yoghurt-156133_960_720.png",
+      "dfc-b:lifeTime": "supply lifeTime",
+      "dfc-b:hasAllergenCharacteristic":[
         {
-          "@type":"dfc-p:NutritionalClaim",
-          "dfc-p:description": "supply claim" # Ontology not ready; identifier could specifiy external subject
+          "@type":"dfc-b:AllergenCharacteristic",
+          "dfc-b:hasUnit": "dfc-u:Percent",
+          "dfc-b:hasAllergenDimension": "dfc-d:LactoseMilks",
+          "dfc-b:value": "90"
         }
       ],
-      "dfc-b:image": "supply image url",
-      "dfc-b:lifeTime": "supply lifeTime",
-      "dfc-b:hasCharacteristic":[
+      "dfc-b:hasNutrimentCharacteristic":[
         {
-          "@type":"dfc-b:NutrientCharacteristic", # scope/file could be ProductGlosssary
-          "dfc-b:hasUnit": "dfc-u:u",
-          "dfc-b:value": "nutriment value" # identifier could specifiy external subject
-        },
-        {
-          "@type":"dfc-b:AllergenCharacteristic", scope/file could be ProductGlosssary
-          "dfc-b:hasUnit": "dfc-u:u",
-          "dfc-b:value": "alergen value" # identifier could specifiy external subject
-        },
-        {
-          "@type":"dfc-b:PhysicalCharacteristic", scope/file could be ProductGlosssary
-          "dfc-b:hasUnit": "dfc-u:u",
-          "dfc-b:value": "physical value" # identifier could specifiy external subject
+          "@type":"dfc-b:NutrimentCharacteristic",
+          "dfc-b:hasUnit": "dfc-u:Percent",
+          "dfc-b:hasNutrimentDimension": "dfc-d:Fat",
+          "dfc-b:value": "6,2"
         }
+      ],
+      "dfc-b:hasPhysicalCharacteristic":[
+        {
+          "@type":"dfc-b:PhysicalCharacteristic",
+          "dfc-b:hasUnit": "dfc-u:Centimetre",
+          "dfc-b:hasPhysicalDimension": "dfc-d:Weight",
+          "dfc-b:value": "300"
+        },
+        {
+          "@type":"dfc-b:PhysicalCharacteristic",
+          "dfc-b:hasUnit": "dfc-u:Centimetre",
+          "dfc-b:hasPhysicalDimension": "dfc-d:Height",
+          "dfc-b:value": "10"
+        },
+        {
+          "@type":"dfc-b:PhysicalCharacteristic",
+          "dfc-b:hasUnit": "dfc-u:Centimetre",
+          "dfc-b:hasPhysicalDimension": "dfc-d:Width",
+          "dfc-b:value": "30"
+        },
+        {
+          "@type":"dfc-b:PhysicalCharacteristic",
+          "dfc-b:hasUnit": "dfc-u:Centimetre",
+          "dfc-b:hasPhysicalDimension": "dfc-d:Depth",
+          "dfc-b:value": "20"
+        }        
       ]
     },
    {
@@ -132,11 +163,10 @@
     {
       "@id": "catalogItem/catalogItemId1",
       "@type": "dfc-b:CatalogItem",
-      "dfc-b:sku": "catalog item gtin or sku",
+      "dfc-b:sku": "123456789",
       "dfc-b:stockLimitation": "999",
       "dfc-b:offeredThrough": [
-          "offer/offerId1",
-          "offer/offerId2"
+          "offer/offerId1"
       ]
     },
     {
@@ -153,14 +183,7 @@
       "@id": "offer/offerId1",
       "@type": "dfc-b:Offer",
       "dfc-b:offeres": "/customerCategory/customerCategoryId1",
-      "dfc-b:price": "0",
-      "dfc-b:stockLimitation": "999"
-    },
-    {
-      "@id": "offer/offerId2",
-      "@type": "dfc-b:Offer",
-      "dfc-b:offeres": "/customerCategory/customerCategoryId2",
-      "dfc-b:price": "999",
+      "dfc-b:price": "2",
       "dfc-b:stockLimitation": "999"
     },
     {
