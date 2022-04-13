@@ -141,7 +141,8 @@
           "dfc-b:hasPhysicalDimension": "dfc-d:Depth",
           "dfc-b:value": "20"
         }        
-      ]
+      ],
+      "dfc-b:hasGeographicalOrigin":"dfc-g:france"
     },
    {
       "@id": "suppliedProduct/item4",
