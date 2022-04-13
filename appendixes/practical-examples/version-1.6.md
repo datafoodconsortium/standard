@@ -26,7 +26,7 @@
     "dfc-b:references":{
       "@type":"@id"
     },
-    "dfc-b:offeredThroug":{
+    "dfc-b:offeredThrough":{
       "@type":"@id"
     },
     "dfc-b:offeres":{
@@ -38,27 +38,27 @@
     "dfc-b:defines":{
       "@type":"@id"
     },
-    "@base": "http://maPlateformeNationale/"
+    "@base": "https://maplateforme.com/"
   },
   "@graph" : [
     {
      "@id": "person/personId",
       "@type": "dfc-b:Person",
-      "dfc-b:familyName": "Doe",
-      "dfc-b:firtsName": "Jhon",
-      "dfc-b:hasAdress": {
+      "dfc-b:familyName": "Dupont",
+      "dfc-b:firtsName": "Jean",
+      "dfc-b:hasAddress": {
         "@type": "dfc-b:Address",
-        "dfc-b:city": "",
-        "dfc-b:country": "",
-        "dfc-b:postcode": "",
-        "dfc-b:street": ""
+        "dfc-b:city": "Beausoleil",
+        "dfc-b:country": "France",
+        "dfc-b:postcode": "12345",
+        "dfc-b:street": "21, rue du printemps"
       },
       "dfc-b:affiliates": [
         "entreprise/entrepriseId"
       ]
     },
     {
-      "@id": "entreprise/entrepriseId",
+      "@id": "entreprise/la-ferme-beausoleil",
       "@type": "dfc-b:Entreprise",
       "dfc-b:VATnumber": "",
       "dfc-b:defines": [
