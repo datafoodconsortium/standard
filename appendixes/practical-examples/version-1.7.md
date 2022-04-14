@@ -74,7 +74,7 @@
     {
       "@id": "brand/brand1",
       "@type": "dfc-b:Brand",
-      "dfc-b:description": "ma marque"
+      "dfc-b:description": "les Biau-Yaourts"
     },
     {
       "@id": "suppliedProduct/item3",
