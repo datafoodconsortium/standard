@@ -1,7 +1,5 @@
 # version 1.7
 
-
-
 ### Changes log from version 1.6.1
 
 * replace raw context by inline (optional)
@@ -119,7 +117,7 @@
       "dfc-b:hasPhysicalCharacteristic":[
         {
           "@type":"dfc-b:PhysicalCharacteristic",
-          "dfc-b:hasUnit": "dfc-u:Centimetre",
+          "dfc-b:hasUnit": "dfc-u:Gram",
           "dfc-b:hasPhysicalDimension": "dfc-d:Weight",
           "dfc-b:value": "300"
         },
