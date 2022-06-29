@@ -1,4 +1,4 @@
-# version 1.6.2
+# version 1.6.1
 
 
 
@@ -12,12 +12,37 @@
 
 ```javascript
   {
-     "@context": [
-      "http://static.datafoodconsortium.org/ontologies/context.json",
-      {
-        "@base":"http://maPlateformeNationale/"
-      }
-    ],
+    "@context": {
+      "dfc-b": "http://static.datafoodconsortium.org/ontologies/dfc_FullModel.owl#",
+      "dfc-p": "http://static.datafoodconsortium.org/ontologies/DFC_ProductOntology.owl#",
+      "dfc-u": "http://static.datafoodconsortium.org/data/units.rdf#",
+      "dfc-pt": "http://static.datafoodconsortium.org/data/types.rdf#",
+      "dfc-p:hasUnit":{
+        "@type":"@id"
+      },
+      "dfc-p:hasType":{
+        "@type":"@id"
+      },
+      "dfc-b:references":{
+        "@type":"@id"
+      },
+      "dfc-b:offeredThrough":{
+        "@type":"@id"
+      },
+      "dfc-b:offeres":{
+        "@type":"@id"
+      },
+      "dfc-b:supplies":{
+        "@type":"@id"
+      },
+      "dfc-b:defines":{
+        "@type":"@id"
+      },
+      "dfc-b:manages":{
+        "@type":"@id"
+      },
+      "@base": "http://maPlateformeNationale/"
+    },
     "@graph" : [
       {
        "@id": "person/personId",
