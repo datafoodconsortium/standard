@@ -12,20 +12,32 @@
 ```javascript
   {
     "@context": {
-      "dfc-b": "http://static.datafoodconsortium.org/ontologies/dfc_FullModel.owl#",
+      "dfc": "http://static.datafoodconsortium.org/ontologies/DFC_FullModel.owl#",
+      "dfc-b": "http://static.datafoodconsortium.org/ontologies/DFC_BusinessOntology.owl#",
       "dfc-p": "http://static.datafoodconsortium.org/ontologies/DFC_ProductOntology.owl#",
+      "dfc-t": "http://static.datafoodconsortium.org/ontologies/DFC_TechnicalOntology.owl#",
       "dfc-u": "http://static.datafoodconsortium.org/data/units.rdf#",
-      "dfc-pt": "http://static.datafoodconsortium.org/data/types.rdf#",
+      "dfc-pt": "http://static.datafoodconsortium.org/data/productTypes.rdf#",
+      "dfc-a": "http://static.datafoodconsortium.org/data/claims.rdf#",
+      "dfc-d": "http://static.datafoodconsortium.org/data/dimensions.rdf#",
+      "dfc-c": "http://static.datafoodconsortium.org/data/certifications.rdf#",
+      "dfc-g": "http://static.datafoodconsortium.org/data/geoOrigin.rdf#",
       "dfc-p:hasUnit":{
+        "@type":"@id"
+      },
+      "dfc-b:hasUnit":{
         "@type":"@id"
       },
       "dfc-p:hasType":{
         "@type":"@id"
       },
+      "dfc-b:hasType":{
+        "@type":"@id"
+      },
       "dfc-b:references":{
         "@type":"@id"
       },
-      "dfc-b:offeredThrough":{
+      "dfc-b:referencedBy":{
         "@type":"@id"
       },
       "dfc-b:offeres":{
@@ -37,7 +49,46 @@
       "dfc-b:defines":{
         "@type":"@id"
       },
+      "dfc-b:affiliates":{
+        "@type":"@id"
+      },
+      "dfc-b:hasQuantity":{
+        "@type":"@id"
+      },
       "dfc-b:manages":{
+        "@type":"@id"
+      },
+      "dfc-b:offeredThrough":{
+        "@type":"@id"
+      },
+      "dfc-b:hasBrand":{
+        "@type":"@id"
+      },
+      "dfc-b:hasGeographicalOrigin":{
+        "@type":"@id"
+      },
+      "dfc-b:hasClaim":{
+        "@type":"@id"
+      },
+      "dfc-b:hasAllergenDimension":{
+        "@type":"@id"
+      },
+      "dfc-b:hasNutrimentDimension":{
+        "@type":"@id"
+      },
+      "dfc-b:hasPhysicalDimension":{
+        "@type":"@id"
+      },
+      "dfc:owner":{
+        "@type":"@id"
+      },
+      "dfc-t:hostedBy":{
+        "@type":"@id"
+      },
+      "dfc-t:hasPivot":{
+        "@type":"@id"
+      },
+      "dfc-t:represent":{
         "@type":"@id"
       },
       "@base": "http://maPlateformeNationale/"
