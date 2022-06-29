@@ -36,6 +36,7 @@
 * [Appendix 3. Practical Examples](appendixes/practical-examples/README.md)
   * [version 1.7](appendixes/practical-examples/version-1.7.md)
   * [version 1.6.1](appendixes/practical-examples/version-1.6.1.md)
+  * [version 1.6.2](appendixes/practical-examples/version-1.6.1-1.md)
   * [version 1.6](appendixes/practical-examples/version-1.6.md)
   * [version 1.5.1](appendixes/practical-examples/version-1.5.1.md)
   * [version 1.5](appendixes/practical-examples/version-1-5.md)
