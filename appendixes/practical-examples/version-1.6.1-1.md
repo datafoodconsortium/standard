@@ -5,10 +5,9 @@
 ### Changes log from version 1.6
 
 * context fix
-
-### GET User Data
-
 * @base and @id respect W3C json-ld standard
+
+## GET User Data
 
 ```javascript
   {

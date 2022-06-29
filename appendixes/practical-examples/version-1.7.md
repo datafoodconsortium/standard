@@ -1,6 +1,6 @@
 # version 1.7
 
-### Changes log from version 1.6.1
+### Changes log from version 1.6.2
 
 * replace raw context by inline (optional)
 * add and replace properties of ontology V?
@@ -10,9 +10,7 @@
 * hasType in usinees ontology and not product ontology
 * hasUnit in usinees ontology and not product ontology
 
-### GET User Data
-
-* @base and @id respect W3C json-ld standard
+## GET User Data
 
 ```javascript
   {

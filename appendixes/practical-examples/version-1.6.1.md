@@ -2,13 +2,11 @@
 
 
 
-### Changes log from version 1.6
-
-* context fix
-
-### GET User Data
+### Changes log from version 1.6.1
 
 * compose context by remote official context combine with @base
+
+## GET User Data
 
 ```javascript
   {

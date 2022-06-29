@@ -3,12 +3,9 @@
 ## Changes log from version 1.5.1
 
 * support of flat graph structure
-
-
+* @base and @id respect W3C json-ld standard
 
 ## GET User Data
-
-* @base and @id respect W3C json-ld standard
 
 ```javascript
 {
