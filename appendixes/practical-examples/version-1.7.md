@@ -14,11 +14,12 @@
 
 ```javascript
   {
-  "@context":   [
-    "http://static.datafoodconsortium.org/ontologies/context.json",
-    {
-      "@base": "http://maPlateformeNationale/"
-    },
+  "@context": [
+      "http://static.datafoodconsortium.org/ontologies/context.json",
+      {
+        "@base":"http://maPlateformeNationale/"
+      }
+    ],
   "@graph" : [
     {
      "@id": "person/personId",
@@ -39,7 +40,6 @@
     {
       "@id": "entreprise/entrepriseId",
       "@type": "dfc-b:Entreprise",
-      "dfc-b:description": "La ferme beausoleil",
       "dfc-b:VATnumber": "",
       "dfc-b:defines": [
         "customerCategory/customerCategoryId1",
@@ -52,118 +52,92 @@
       "dfc-b:manages": [
         "catalogItem/catalogItemId1",
         "catalogItem/catalogItemId2"
-      ],
-      "dfc-b:owns": [
-        "brand/brand1",
       ]
     },
     {
-      "@id": "customerCategory/customerCategoryId1",
-      "@type": "dfc-b:CustomerCategory",
-      "dfc-b:description": "particulier"
-    },
-    {
-      "@id": "customerCategory/customerCategoryId1",
-      "@type": "dfc-b:CustomerCategory",
-      "dfc-b:description": "particulier"
-    },
-    {
-      "@id": "brand/brand1",
+      "@id": "brand/brandId1",
       "@type": "dfc-b:Brand",
-      "dfc-b:description": "les Biau-Yaourts"
+      "dfc-b:description": "brand description 1",
+      "rdfs:label":"label brand 1"
+    },
+    {
+      "@id": "customerCategory/customerCategoryId1",
+      "@type": "dfc-b:CustomerCategory",
+      "dfc-b:description": "member"
+    },
+    {
+      "@id": "customerCategory/customerCategoryId2",
+      "@type": "dfc-b:CustomerCategory",
+      "dfc-b:description": "non member"
     },
     {
       "@id": "suppliedProduct/item3",
       "@type": "dfc-b:SuppliedProduct",
-      "dfc-b:description": "Magnifique lot de 6 yaourts",
-      "dfc-b:hasType": "dfc-pt:cow-dairy-product",
-      "dfc-b:referencedBy":[
-          "/catalogItem/catalogItemId1"
-      ],
       "dfc-b:hasQuantity":{
-        "@type":"dfc-b:QuantitativeValue",
-        "dfc-b:hasUnit": "dfc-u:u",
-        "dfc-b:value": "1",
+          "@type":"dfc-b:QuantitiveValue",
+          "dfc-b:hasUnit":"dfc-m:Gram",
+          "dfc-b:value":"1000"
       },
-      "dfc-b:specificCondition": "Conserver au frais",
+      "dfc-p:hasType": "dfc-pt:egg",
+      "dfc-b:description": "supply description 1",
       "dfc-b:totalTheoriticalStock": "999",
-      "dfc-b:hasBrand":"brand/brand1",
-      "dfc-b:hasCertification":[
-        "dfc-c:OrganicLabel"
-      ],
-      "dfc-b:hasClaim":[
-        "dfc-a:nutriScore"
-      ],
-      "dfc-b:image": "https://cdn.pixabay.com/photo/2013/07/13/09/50/yoghurt-156133_960_720.png",
-      "dfc-b:lifeTime": "supply lifeTime",
-      "dfc-b:hasAllergenCharacteristic":[
-        {
+      "dfc-b:hasBrand": "brand/brandId1",
+      "dfc-b:hasCertification": "dfc-f:Organic-AB",
+      "dfc-b:hasClaim": [
+          "dfc-f:NoAddedSugars",
+          "dfc-f:LowSodiumSalt",
+          "dfc-f:IncreasedNutrient"
+        ],
+      "dfc-b:hasNutrientCharacteristic": {
+          "@type":"dfc-b:NutrientCharacteristic",
+          "dfc-b:hasNutrientDimension":"dfc-m:Magnesium",
+          "dfc-b:hasUnit":"dfc-m:Gram",
+          "dfc-b:value":"10"
+      },
+      "dfc-b:hasPhysicalCharacteristic": {
+          "@type":"dfc-b:PhysicalCharacteristic",
+          "dfc-b:hasPhysicalDimension":"dfc-m:Weight",
+          "dfc-b:hasUnit":"dfc-m:Gram",
+          "dfc-b:value":"100"
+      },
+      "dfc-b:hasAllergenCharacteristic": {
           "@type":"dfc-b:AllergenCharacteristic",
-          "dfc-b:hasUnit": "dfc-u:Percent",
-          "dfc-b:hasAllergenDimension": "dfc-d:LactoseMilks",
-          "dfc-b:value": "90"
-        }
+          "dfc-b:hasAllergenDimension":"dfc-m:allergenCharacteristic1",
+          "dfc-b:hasUnit":"dfc-m:Allenit1",
+          "dfc-b:value":"1"
+      },
+      "dfc-b:hasGeographicalOrigin": "dfc-f:CentreValLoire",
+      "dfc-b:hasNatureOrigin": "dfc-f:PlantOrigin",
+      "dfc-b:hasPartOrigin": "dfc-f:PlantPartOrigin",
+      "dfc-b:hasProcess": [
+        "suppliedProduct/item4"
       ],
-      "dfc-b:hasNutrimentCharacteristic":[
-        {
-          "@type":"dfc-b:NutrimentCharacteristic",
-          "dfc-b:hasUnit": "dfc-u:Percent",
-          "dfc-b:hasNutrimentDimension": "dfc-d:Fat",
-          "dfc-b:value": "6,2"
-        }
-      ],
-      "dfc-b:hasPhysicalCharacteristic":[
-        {
-          "@type":"dfc-b:PhysicalCharacteristic",
-          "dfc-b:hasUnit": "dfc-u:Gram",
-          "dfc-b:hasPhysicalDimension": "dfc-d:Weight",
-          "dfc-b:value": "300"
-        },
-        {
-          "@type":"dfc-b:PhysicalCharacteristic",
-          "dfc-b:hasUnit": "dfc-u:Centimetre",
-          "dfc-b:hasPhysicalDimension": "dfc-d:Height",
-          "dfc-b:value": "10"
-        },
-        {
-          "@type":"dfc-b:PhysicalCharacteristic",
-          "dfc-b:hasUnit": "dfc-u:Centimetre",
-          "dfc-b:hasPhysicalDimension": "dfc-d:Width",
-          "dfc-b:value": "30"
-        },
-        {
-          "@type":"dfc-b:PhysicalCharacteristic",
-          "dfc-b:hasUnit": "dfc-u:Centimetre",
-          "dfc-b:hasPhysicalDimension": "dfc-d:Depth",
-          "dfc-b:value": "20"
-        }        
-      ],
-      "dfc-b:hasGeographicalOrigin":"dfc-g:france"
+      "dfc-b:image": "supply image url",
+      "dfc-b:lifeTime": "supply lifeTime",
     },
    {
       "@id": "suppliedProduct/item4",
       "@type": "dfc-b:SuppliedProduct",
-      "dfc-b:referencedBy":[
-          "/catalogItem/catalogItemId2"
-      ],
-      "dfc-p:hasUnit": "dfc-u:u",
-      "dfc-b:quantity": "1",
+      "dfc-b:hasQuantity":{
+          "@type":"dfc-b:QuantitiveValue",
+          "dfc-b:hasUnit":"dfc-m:Gram",
+          "dfc-b:value":"1000"
+      },
       "dfc-p:hasType": "dfc-pt:strawberry",
       "dfc-b:description": "supply description 2",
       "dfc-b:totalTheoriticalStock": "999",
-      "dfc-b:brand": "supply brand",
-      "dfc-b:claim": "supply claim",
       "dfc-b:image": "supply image url",
       "dfc-b:lifeTime": "supply lifeTime",
-      "dfc-b:physicalCharacterisctics": "supply physical characterisctics"
     },
     {
       "@id": "catalogItem/catalogItemId1",
       "@type": "dfc-b:CatalogItem",
-      "dfc-b:sku": "123456789",
+      "dfc-b:references": "/suppliedProduct/item3",
+      "dfc-b:sku": "catalog item gtin or sku",
       "dfc-b:stockLimitation": "999",
       "dfc-b:offeredThrough": [
-          "offer/offerId1"
+          "offer/offerId1",
+          "offer/offerId2"
       ]
     },
     {
@@ -171,6 +145,7 @@
       "@type": "dfc-b:CatalogItem",
       "dfc-b:sku": "catalog item gtin or sku",
       "dfc-b:stockLimitation": "999",
+      "dfc-b:references": "/suppliedProduct/item4",
       "dfc-b:offeredThrough": [
         "offer/offerId3",
         "offer/offerId4"
@@ -180,7 +155,14 @@
       "@id": "offer/offerId1",
       "@type": "dfc-b:Offer",
       "dfc-b:offeres": "/customerCategory/customerCategoryId1",
-      "dfc-b:price": "2",
+      "dfc-b:price": "0",
+      "dfc-b:stockLimitation": "999"
+    },
+    {
+      "@id": "offer/offerId2",
+      "@type": "dfc-b:Offer",
+      "dfc-b:offeres": "/customerCategory/customerCategoryId2",
+      "dfc-b:price": "999",
       "dfc-b:stockLimitation": "999"
     },
     {
