@@ -7,8 +7,8 @@
   * facet refactor
   * characteristic refactor
 * focus to supplied product instead catalogItem (same ontology, just an other perspective)
-* hasType in usinees ontology and not product ontology
-* hasUnit in usinees ontology and not product ontology
+* hasType in Businees ontology and not product ontology
+* hasUnit in Businees ontology and not product ontology
 
 ## GET User Data
 
