@@ -25,7 +25,7 @@
      "@id": "person/personId",
       "@type": "dfc-b:Person",
       "dfc-b:familyName": "Doe",
-      "dfc-b:firtsName": "Jhon",
+      "dfc-b:firstName": "Jhon",
       "dfc-b:hasAdress": {
         "@type": "dfc-b:Address",
         "dfc-b:city": "",
