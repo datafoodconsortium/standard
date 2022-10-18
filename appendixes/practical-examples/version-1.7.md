@@ -82,12 +82,14 @@
       "dfc-b:description": "supply description 1",
       "dfc-b:totalTheoriticalStock": "999",
       "dfc-b:hasBrand": "brand/brandId1",
-      "dfc-b:hasCertification": "dfc-f:Organic-AB",
+      "dfc-b:hasCertification": [
+          "dfc-f:Organic-AB"
+      ],
       "dfc-b:hasClaim": [
           "dfc-f:NoAddedSugars",
           "dfc-f:LowSodiumSalt",
           "dfc-f:IncreasedNutrient"
-        ],
+      ],
       "dfc-b:hasNutrientCharacteristic": {
           "@type":"dfc-b:NutrientCharacteristic",
           "dfc-b:hasNutrientDimension":"dfc-m:Magnesium",
@@ -107,8 +109,12 @@
           "dfc-b:value":"1"
       },
       "dfc-b:hasGeographicalOrigin": "dfc-f:CentreValLoire",
-      "dfc-b:hasNatureOrigin": "dfc-f:PlantOrigin",
-      "dfc-b:hasPartOrigin": "dfc-f:PlantPartOrigin",
+      "dfc-b:hasNatureOrigin": [
+          "dfc-f:PlantOrigin"
+      ],
+      "dfc-b:hasPartOrigin": [
+          "dfc-f:PlantPartOrigin"
+      ],
       "dfc-b:hasProcess": [
         "suppliedProduct/item4"
       ],
