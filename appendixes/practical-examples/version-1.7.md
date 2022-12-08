@@ -58,7 +58,7 @@
       "@id": "brand/brandId1",
       "@type": "dfc-b:Brand",
       "dfc-b:description": "brand description 1",
-      "rdfs:label":"label brand 1"
+      "dfc-b:description":"label brand 1"
     },
     {
       "@id": "customerCategory/customerCategoryId1",
@@ -82,18 +82,16 @@
       "dfc-b:description": "supply description 1",
       "dfc-b:totalTheoriticalStock": "999",
       "dfc-b:hasBrand": "brand/brandId1",
-      "dfc-b:hasCertification": [
-          "dfc-f:Organic-AB"
-      ],
+      "dfc-b:hasCertification": "dfc-f:Organic-AB",
       "dfc-b:hasClaim": [
           "dfc-f:NoAddedSugars",
           "dfc-f:LowSodiumSalt",
           "dfc-f:IncreasedNutrient"
-      ],
+        ],
       "dfc-b:hasNutrientCharacteristic": {
           "@type":"dfc-b:NutrientCharacteristic",
           "dfc-b:hasNutrientDimension":"dfc-m:Magnesium",
-          "dfc-b:hasUnit":"dfc-m:Gram",
+          "dfc-b:hasUnit":"dfc-u:Gram",
           "dfc-b:value":"10"
       },
       "dfc-b:hasPhysicalCharacteristic": {
@@ -109,17 +107,13 @@
           "dfc-b:value":"1"
       },
       "dfc-b:hasGeographicalOrigin": "dfc-f:CentreValLoire",
-      "dfc-b:hasNatureOrigin": [
-          "dfc-f:PlantOrigin"
-      ],
-      "dfc-b:hasPartOrigin": [
-          "dfc-f:PlantPartOrigin"
-      ],
+      "dfc-b:hasNatureOrigin": "dfc-f:PlantOrigin",
+      "dfc-b:hasPartOrigin": "dfc-f:PlantPartOrigin",
       "dfc-b:hasProcess": [
         "suppliedProduct/item4"
       ],
       "dfc-b:image": "supply image url",
-      "dfc-b:lifeTime": "supply lifeTime",
+      "dfc-b:lifeTime": "supply lifeTime"
     },
    {
       "@id": "suppliedProduct/item4",
@@ -133,7 +127,7 @@
       "dfc-b:description": "supply description 2",
       "dfc-b:totalTheoriticalStock": "999",
       "dfc-b:image": "supply image url",
-      "dfc-b:lifeTime": "supply lifeTime",
+      "dfc-b:lifeTime": "supply lifeTime"
     },
     {
       "@id": "catalogItem/catalogItemId1",
