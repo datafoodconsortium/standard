@@ -11,45 +11,11 @@ For instance:
 
 Some pros and cons of each approach:
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left"></th>
-      <th style="text-align:left">Pros</th>
-      <th style="text-align:left">Cons</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">High granularity service</td>
-      <td style="text-align:left">
-        <p>- Easier to maintain and debug</p>
-        <p>- Less data being transmitted as only what is needed is requested</p>
-        <p>- More flexible and future proof</p>
-        <p>- <b>Easier autorisation management</b>
-        </p>
-      </td>
-      <td style="text-align:left">More services to keep track of</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">Low granularity service</td>
-      <td style="text-align:left">
-        <p>- Less service calls</p>
-        <p>- Easier to develop</p>
-        <p>- Performance gains when it comes to assembling data via for instance
-          joints at the DB level</p>
-      </td>
-      <td style="text-align:left">
-        <p>- Services are more complex and difficult to maintain</p>
-        <p>- Often requires ad-hoc development when new usage appear
-          <br />
-        </p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+|                          | Pros                                                                                                                                                                                                         | Cons                                                                                                                             |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| High granularity service | <p>- Easier to maintain and debug</p><p>- Less data being transmitted as only what is needed is requested</p><p>- More flexible and future proof</p><p>- <strong>Easier autorisation management</strong></p> | More services to keep track of                                                                                                   |
+| Low granularity service  | <p>- Less service calls</p><p>- Easier to develop</p><p>- Performance gains when it comes to assembling data via for instance joints at the DB level</p>                                                     | <p>- Services are more complex and difficult to maintain</p><p>- Often requires ad-hoc development when new usage appear<br></p> |
 
-**The main advantage of highly granular services in the context of interoperability with authorization management is the simplicity of development on the server side.** For instance it is easy to answer in an interface that the owner of some data denies access to it for a specific client. The service will just use the standard HTTP responses \(401 or 403\). This becomes more complex if this entity is nested in another \(as for a low granularity service\). In this case, the server will respond well to the interface with the root data but will have to express one way or another that its answer is not complete because it lacks a part for which the user has no rights.
+**The main advantage of highly granular services in the context of interoperability with authorization management is the simplicity of development on the server side.** For instance it is easy to answer in an interface that the owner of some data denies access to it for a specific client. The service will just use the standard HTTP responses (401 or 403). This becomes more complex if this entity is nested in another (as for a low granularity service). In this case, the server will respond well to the interface with the root data but will have to express one way or another that its answer is not complete because it lacks a part for which the user has no rights.
 
 **Conclusion: implement the needed low granularity services for phase 1 and in phase 2, implement in addition more granular query based services.**
-

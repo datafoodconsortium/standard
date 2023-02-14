@@ -4,20 +4,20 @@ This ontology will help to describe the business model applied to the products d
 
 ## History and references
 
-This specification has been built since March 2017, through itertions of field interviews and modelling. We have been supported in that work by an ontologist, [Bernard Chabot](https://docs.google.com/document/d/1vLYI4pv-lqcy7WLoMN9XWROPh1FayXFU5g4zA5blmEQ/edit?usp=sharing).
+This specification has been built since March 2017, through iterations of field interviews and modelling. We have been supported in that work by an ontologist, [Bernard Chabot](https://docs.google.com/document/d/1vLYI4pv-lqcy7WLoMN9XWROPh1FayXFU5g4zA5blmEQ/edit?usp=sharing).
 
 The human readable models can be represented as follows:
 
-![](https://lh5.googleusercontent.com/KzmDJ63oH6uLhA7z9qgknOEwdEGWQRWIVkJFvFOtTGSEwyf9XjCo44evKK1a4prG4pbUkaPCKwJQAGNaG_9SkYLgd_dABOvkXetf9xJNo4kXtjliAZT28WlL8VwBi8nndUA_VWUc)
+<figure><img src="../.gitbook/assets/DFC_Business_1_8 (3).png" alt=""><figcaption></figcaption></figure>
 
-[Click here to access a zoomable version of the document.](https://docs.google.com/presentation/d/157i0ySW3T89KviZHmderXl7X0ywuvtz0QunaHJcEF_Q/edit?usp=sharing)
+[Click here to access a zoomable version of the document.](https://docs.google.com/presentation/d/157i0ySW3T89KviZHmderXl7X0ywuvtz0QunaHJcEF\_Q/edit?usp=sharing)
 
 Published on [LOV](https://lov.linkeddata.es/dataset/lov/vocabs/dfc-b)
 
 ## Products
 
-* We have identified the different concepts of products we manipulate. We distinguished the product “need” \(what I want as a customer\), from the product “answer” \(what I propose as a distributor to satisfy your need\), from the product “supply” \(what I propose as a producer that enable distributors to meet their promises to customers\), all those products being manipulated without any “location” notion.
-* Then a producer identifies a location where their products are supposed to be when they become real products. We call them “localised products”, which is a combination between an ID product \(what product it is\) and an ID place \(where it is\). For instance, the potatoes of “Awesome farm” are in theory localised in the farm itself.
+* We have identified the different concepts of products we manipulate. We distinguished the product “need” (what I want as a customer), from the product “answer” (what I propose as a distributor to satisfy your need), from the product “supply” (what I propose as a producer that enable distributors to meet their promises to customers), all those products being manipulated without any “location” notion.
+* Then a producer identifies a location where their products are supposed to be when they become real products. We call them “localised products”, which is a combination between an ID product (what product it is) and an ID place (where it is). For instance, the potatoes of “Awesome farm” are in theory localised in the farm itself.
 * When the potatoes get harvested they become “physical products”, real products that you can hold in your hand. A physical product is also always located somewhere, and belongs to a product batch.
 
 ## Transformations
@@ -28,12 +28,11 @@ Published on [LOV](https://lov.linkeddata.es/dataset/lov/vocabs/dfc-b)
 
 ## Sales operations
 
-* A distributor \(an enterprise\) constitutes its catalogue, made of “catalogue items”, and build offers for them given their customer categories. The product offered can be, depending on the sales and marketing strategy of the distributor, a functional product \(ex: tomatoes to stuff\), a technical product \(ex: beefsteak tomatoes\) or a supplied product \(ex: beefsteak tomatoes from Awesome Farm\). A given agent can have a catalogue on various repositories \(i.e. platforms\) so a same enterprise can have multiple catalogue items for the same product, if they use multiple platforms for instance. We will be able to match them using the unique product identifier.
-* A sale session aggregates offers under certain shopping conditions \(opening / closing dates, etc.\)
-* The customer makes an order with various order lines in a specific sale session and choose a shipping option - that can be delivery \(they are delivered to their home or business address\) or pick-up \(they need to collect the product in a location defined by the distributor\) - and a payment option among those defined by the distributor.
-* The sale happens in a place that can be physical \(a physical store\) or virtual \(an online store\). Note that this works as well for a physical store: technically each day the store opens and close at a define time, and each day can be considered as a specific sale session. In the case of physical store sales, the shipping option is implicitly “collect on site”.
+* A distributor (an enterprise) constitutes its catalogue, made of “catalogue items”, and build offers for them given their customer categories. The product offered can be, depending on the sales and marketing strategy of the distributor, a functional product (ex: tomatoes to stuff), a technical product (ex: beefsteak tomatoes) or a supplied product (ex: beefsteak tomatoes from Awesome Farm). A given agent can have a catalogue on various repositories (i.e. platforms) so a same enterprise can have multiple catalogue items for the same product, if they use multiple platforms for instance. We will be able to match them using the unique product identifier.
+* A sale session aggregates offers under certain shopping conditions (opening / closing dates, etc.)
+* The customer makes an order with various order lines in a specific sale session and choose a shipping option - that can be delivery (they are delivered to their home or business address) or pick-up (they need to collect the product in a location defined by the distributor) - and a payment option among those defined by the distributor.
+* The sale happens in a place that can be physical (a physical store) or virtual (an online store). Note that this works as well for a physical store: technically each day the store opens and close at a define time, and each day can be considered as a specific sale session. In the case of physical store sales, the shipping option is implicitly “collect on site”.
 
 ## Transactions
 
-When an agent has ordered products and products has been delivered through a last transformation flow \(transport\), the ownership of the product changes hands. The transaction is then officially happening and the previous product owner can invoice the customer.
-
+When an agent has ordered products and products has been delivered through a last transformation flow (transport), the ownership of the product changes hands. The transaction is then officially happening and the previous product owner can invoice the customer.
