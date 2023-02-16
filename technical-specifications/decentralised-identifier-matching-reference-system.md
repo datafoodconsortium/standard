@@ -14,16 +14,16 @@ The DFC prototype use a meta identifier, a _pivot_ that groups together the URIs
 
 Before data can be synchronized, it has to be imported into the DFC prototype. Moreover, the data has to be manually matched together using the prototype user interface. The following image shows the process of matching the data of two platforms into the prototype database. As you will notice, a `DFCid` is created for storing the matching of the equivalent items managed by two different platforms.
 
-![](../.gitbook/assets/Sélection\_629.png)
+![](../.gitbook/assets/selection\_629.png)
 
 #### A platform can directly request a change on a second one&#x20;
 
 After data is matched inside the DFC prototype, a platform 1 can request to change an item managed by a platform 2 after getting its identifier (URI) using the DFC prototype API. For example, the platform 1 can request to update the name of the equivalent item stored on the platform 2.
 
-![](../.gitbook/assets/Sélection\_627.png)
+![](../.gitbook/assets/selection\_627.png)
 
 #### A platform can ask the DFC prototype to request a change on a second one (delegation)
 
 If the platform 1 does not want to request a change on the platform 2 by itself, it can request the DFC prototype to request that change for it.
 
-![](../.gitbook/assets/Sélection\_628.png)
+![](../.gitbook/assets/selection\_628.png)

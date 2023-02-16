@@ -12,7 +12,7 @@ DFC provides way to build links repository of subject hosted in platforms thanks
 
 All Subject of Business and Product Glossary extend RepresentedThing. A Represented Thing is hosted in Platform and linked to other Represented Things thanks to Representation Pivot.
 
-![](../.gitbook/assets/Sélection\_676.png)
+![](../.gitbook/assets/selection\_676.png)
 
 DFC prototype create a copy of imported Subject from platform and, during first import from one platform,  a DFC subject which fork platform subject and link platform subject and DFC subject. Subject imported from an other platform later have to be linked to those two previous subject by user thanks to User Interface or algorithms or both.
 

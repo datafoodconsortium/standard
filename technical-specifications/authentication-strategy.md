@@ -18,6 +18,6 @@ Basically, these token are based on encoding JSON data into base 64. The token i
 
 ## Explanatory scheme
 
-![Platform Authentificaiton not OIDC driven](../.gitbook/assets/Sélection\_622.png)
+![Platform Authentificaiton not OIDC driven](../.gitbook/assets/selection\_622.png)
 
-![Platform Authentificaiton OIDC driven](../.gitbook/assets/Sélection\_624.png)
+![Platform Authentificaiton OIDC driven](../.gitbook/assets/selection\_624.png)

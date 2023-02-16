@@ -1,8 +1,14 @@
-# version 1.7.1
+# version 1.7
 
-### Changes log from version 1.7
+### Changes log from version 1.6.2
 
-* `Offer:price` is now a blank node containing the price, the VAT rate and the currency.
+* replace raw context by inline (optional)
+* add and replace properties of ontology V?
+  * facet refactor
+  * characteristic refactor
+* focus to supplied product instead catalogItem (same ontology, just an other perspective)
+* hasType in Businees ontology and not product ontology
+* hasUnit in Businees ontology and not product ontology
 
 ## GET User Data
 
@@ -149,48 +155,28 @@
       "@id": "offer/offerId1",
       "@type": "dfc-b:Offer",
       "dfc-b:offeres": "/customerCategory/customerCategoryId1",
-      "dfc-b:hasPrice": {
-        "@type": "dfc-b:Price",
-        "dfc-b:value": "10.2",
-        "dfc-b:VATrate": "5",
-        "dfc-b:hasUnit": "dfc-m:Euro"
-      },
+      "dfc-b:price": "0",
       "dfc-b:stockLimitation": "999"
     },
     {
       "@id": "offer/offerId2",
       "@type": "dfc-b:Offer",
       "dfc-b:offeres": "/customerCategory/customerCategoryId2",
-      "dfc-b:hasPrice": {
-        "@type": "dfc-b:Price",
-        "dfc-b:value": "8.67",
-        "dfc-b:VATrate": "5",
-        "dfc-b:hasUnit": "dfc-m:Euro"
-      },
+      "dfc-b:price": "999",
       "dfc-b:stockLimitation": "999"
     },
     {
       "@id": "offer/offerId3",
       "@type": "dfc-b:Offer",
       "dfc-b:offeres": "/customerCategory/customerCategoryId1",
-      "dfc-b:hasPrice": {
-        "@type": "dfc-b:Price",
-        "dfc-b:value": "12.4",
-        "dfc-b:VATrate": "5",
-        "dfc-b:hasUnit": "dfc-m:Euro"
-      },
+      "dfc-b:price": "000",
       "dfc-b:stockLimitation": "999"
     },
     {
       "@id": "offer/offerId4",
       "@type": "dfc-b:Offer",
       "dfc-b:offeres": "/customerCategory/customerCategoryId2",
-      "dfc-b:hasPrice": {
-        "@type": "dfc-b:Price",
-        "dfc-b:value": "22",
-        "dfc-b:VATrate": "5",
-        "dfc-b:hasUnit": "dfc-m:Euro"
-      },
+      "dfc-b:price": "999",
       "dfc-b:stockLimitation": "999"
     }
   ]
