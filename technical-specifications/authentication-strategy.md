@@ -8,7 +8,9 @@ This technology is active since years and heavily supported by many big actors o
 
 It will allow us to separate the authentication layer from the business logic one by calling a third-party application.
 
-OIDC is federeted and centralized athentification protocol. Other decentralized protocol as WebID-OIDC exists but are not mature.
+Each platform wishing to join the project must create a client on the server of our partner lescommuns.org. Contact the DFC team for this.
+
+OIDC is federeted and centralized athentification protocol. Other decentralized protocol as WebID-OIDC or DID exists but are not mature.
 
 ## JWT token
 
