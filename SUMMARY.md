@@ -35,6 +35,7 @@
   * [Right delegation between platforms and DFC](appendixes/technical-decisions/right-delegation-between-platforms-and-dfc.md)
 * [Appendix 3. Practical Examples](appendixes/practical-examples/README.md)
   * [Version 1.8](appendixes/practical-examples/version-1.8.md)
+  * [version 1.7.3](appendixes/practical-examples/version-1.7.3.md)
   * [version 1.7.1](appendixes/practical-examples/version-1.7.md)
   * [version 1.7](appendixes/practical-examples/version-1.7-1.md)
   * [version 1.6.2](appendixes/practical-examples/version-1.6.2.md)
