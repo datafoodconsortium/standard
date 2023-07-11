@@ -1,6 +1,6 @@
 # version 1.7.4
 
-### Changes log from version 1.7.1
+### Changes log from version 1.7.3
 
 * change context
 * fix dfc-p obsolet prefix to dfc-b for hasType predicate
@@ -10,7 +10,7 @@
 ```json
 {
   "@context": [
-      "http://static.datafoodconsortium.org/ontologies/context.json",
+      "https://www.datafoodconsortium.org",
       {
         "@base":"http://maPlateformeNationale/"
       }
