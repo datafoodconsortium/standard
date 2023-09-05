@@ -1,0 +1,347 @@
+---
+description: >-
+  This page define a Solid client-to-client standard to build DFC compliant
+  Solid applications.
+---
+
+# 🚧 Solid specifications
+
+## Conformance
+
+Conformance requirements are expressed with a combination of descriptive assertions and RFC 2119 terminology. The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in the normative parts of this document are to be interpreted as described in RFC 2119. However, for readability, these words do not appear in all uppercase letters in this specification.
+
+All of the text of this specification is normative except sections explicitly marked as non-normative, examples, and notes. [\[RFC2119\]](file:///home/malecoq/Projets/Mycelium/specs/index.html#biblio-rfc2119)
+
+## Introduction
+
+_This section is non-normative_.
+
+## Namespaces
+
+<table><thead><tr><th width="249">Prefix</th><th>Namespace</th><th>Description</th></tr></thead><tbody><tr><td><code>solid</code></td><td><a href="http://www.w3.org/ns/solid/terms">http://www.w3.org/ns/solid/terms#</a></td><td>Solid Terms.</td></tr><tr><td><code>dfc-b</code></td><td><a href="https://www.datafoodconsortium.org">https://www.datafoodconsortium.org#</a></td><td>Data Food Consortium business ontology.</td></tr></tbody></table>
+
+## Storage
+
+### Root container
+
+The root folder MUST be defined using the `dfc-b:solidRootContainer` attribute. This attribute MUST be part of the user profile document.
+
+If the `dfc-b:solidRootContainer` is not already defined in the user profile document, a DFC application SHOULD ask the user to select the container he/she wants to use as the root folder. A DFC application COULD propose to the user a default folder like a `datafoodconsortium` folder at the root of the user's storage.
+
+## Resource definition and location
+
+In this section we assume to use the `dfc-b:solidRootContainer` as the root for all the following defined locations.
+
+Resource must use the DFC ontology and taxonomies.
+
+### Catalogs
+
+A `dfc-b:Catalog` MUST be stored in a `catalog.ttl` file inside a folder in the `/catalogs/` LDP container.
+
+<details>
+
+<summary>Example of a <code>dfc-b:Catalog</code> in turtle</summary>
+
+```turtle
+@prefix : <#>.
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+
+<> 
+    a dfc-b:Catalog;
+```
+
+</details>
+
+### Catalog items
+
+A `dfc-b:CatalogItem` MUST be stored in the `/catalogs/<catalog>/items/` LDP container. All the related `dfc-b:Offer` MUST be stored in the catalog item document.
+
+<details>
+
+<summary>Example of a <code>dfc-b:CatalogItem</code> in turtle</summary>
+
+```turtle
+@prefix : <#>.
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+
+<> 
+    a dfc-b:CatalogItem;
+```
+
+</details>
+
+### Customer categories
+
+All `dfc-b:CustomerCategory` MUST be defined in the `/agents/customerCategories.ttl` turtle file.
+
+<details>
+
+<summary>Example of a <code>dfc-b:CustomerCategory</code> in turtle</summary>
+
+```turtle
+@prefix : <#>.
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+
+<> 
+    a dfc-b:CustomerCategory;
+```
+
+</details>
+
+### Enterprises
+
+A `dfc-b:Enterprise` MUST be stored in the `/agents/enterprises/` [\[LDP\]](file:///home/malecoq/Projets/Mycelium/specs/index.html#biblio-ldp) container. An enterprise RDF resource MUST contain only one `dfc-b:Enterprise`.
+
+<details>
+
+<summary>Example of an <code>dfc-b:Enterprise</code> in turtle</summary>
+
+{% code fullWidth="true" %}
+```turtle
+@prefix dfc-root: </>.
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+@prefix products: <dfc-root:catalogs/default/products/>.
+@prefix customerCategories: <dfc-root:agents/customerCategories.ttl#>.
+
+<>
+    a dfc-b:Enterprise;
+    dfc-b:name "Name of the enterprise";
+    dfc-b:VATnumber 0512658491;
+    dfc-b:defines <customerCategories:default>;
+    dfc-b:supplies <products:tomato.ttl>, <products:carrot.ttl>;
+    dfc-b:manages <products:tomato.ttl#catalogItem1>, <products:carrot.ttl#catalogItem1>.
+```
+{% endcode %}
+
+</details>
+
+### Functional products
+
+A `dfc-b:FunctionalProduct` MUST be stored in the `/products/functional/` LDP container.
+
+<details>
+
+<summary>Example of an <code>dfc-b:FunctionalProduct</code> in turtle</summary>
+
+```turtle
+@prefix : <#>.
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+
+<> 
+    a dfc-b:FunctionalProduct;
+```
+
+</details>
+
+### Offers
+
+A `dfc-b:Offer` MUST be stored as a resource of its parent `dfc-b:CatalogItem` document.
+
+<details>
+
+<summary>Example of an <code>dfc-b:Offer</code> in turtle</summary>
+
+```turtle
+@prefix : <#>.
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+
+<> 
+    a dfc-b:Offer;
+```
+
+</details>
+
+### Orders
+
+A `dfc-b:Order` MUST be stored in the `/orders/` LDP container.
+
+<details>
+
+<summary>Example of an <code>dfc-b:Order</code> in turtle</summary>
+
+```turtle
+@prefix : <#>.
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+
+<> 
+    a dfc-b:Order;
+```
+
+</details>
+
+### Order lines
+
+A `dfc-b:OrderLine` MUST be stored as a resource of its parent `dfc-b:Order` document.
+
+<details>
+
+<summary>Example of an <code>dfc-b:OrderLine</code> in turtle</summary>
+
+```turtle
+@prefix : <#>.
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+
+<> 
+    a dfc-b:OrderLine;
+```
+
+</details>
+
+### Persons
+
+A `dfc-b:Person` MUST be stored in the `/agents/persons/` [\[LDP\]](file:///home/malecoq/Projets/Mycelium/specs/index.html#biblio-ldp) container. A person RDF resource MUST contain only one `dfc-b:Person`.
+
+<details>
+
+<summary>Example of a <code>dfc-b:Person</code> in turtle</summary>
+
+```turtle
+@prefix : <#>.
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+
+<> 
+    a dfc-b:Person;
+    dfc-b:firstName "Jean";
+    dfc-b:familyName "Dupont";
+    dfc-b:hasAddress [
+        a dfc-b:Address;
+        dfc-b:street "2, rue du pont";
+        dfc-b:city "Bagnoles-de-l’Orne";
+        dfc-b:postcode "61200";
+        dfc-b:country: "France"  
+    ].
+```
+
+</details>
+
+### Technical products
+
+A `dfc-b:TechnicalProduct` MUST be stored in the `/products/technical/` LDP container.
+
+<details>
+
+<summary>Example of an <code>dfc-b:TechnicalProduct</code> in turtle</summary>
+
+```turtle
+@prefix : <#>.
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+
+<> 
+    a dfc-b:TechnicalProduct;
+```
+
+</details>
+
+### Sale sessions
+
+TBD.
+
+<details>
+
+<summary>Example of an <code>dfc-b:SaleSession</code> in turtle</summary>
+
+```turtle
+@prefix : <#>.
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+
+<> 
+    a dfc-b:SaleSession;
+```
+
+</details>
+
+### Supplied products
+
+A `dfc-b:SuppliedProduct` MUST be stored in the `/products/supplied/` LDP container.
+
+<details>
+
+<summary>Example of an <code>dfc-b:SupplyProduct</code> in turtle</summary>
+
+```turtle
+@prefix : <#>.
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+
+<> 
+    a dfc-b:SupplyProduct;
+```
+
+</details>
+
+## Indexing
+
+### TypeIndex
+
+A DFC Solid compliant application MUST advertise its containers in the public TypeIndex.
+
+<details>
+
+<summary>Example of the registration of DFC containers in a turtle TypeIndex</summary>
+
+```turtle
+@prefix solid: <http://www.w3.org/ns/solid/terms#>.
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+
+<>
+    a solid:TypeIndex ;
+    a solid:ListedDocument.
+
+<#ab09fd> a solid:TypeRegistration;
+    solid:forClass <dfc-b:Enterprise>;
+    solid:instanceContainer </path/to/Enterprises>.
+```
+
+</details>
+
+### Product types
+
+Product types MUST be indexed in a `productTypes.ttl` file stored at the root of a `dfc-b:Catalog`.&#x20;
+
+This index is currently a combinaison of the vocabularies from TypeIndex and DFC.&#x20;
+
+<details>
+
+<summary>Example of a product type index in turtle</summary>
+
+```turtle
+@prefix solid: <http://www.w3.org/ns/solid/terms#>.
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+@prefix dfc-pt: <https://www.datafoodconsortium.org/productTypes#>.
+
+<#ab09fd> a solid:TypeRegistration;
+    dfc-b:hasType <dfc-pt:artichoke>;
+    solid:instance <./items/artichoke.ttl>.
+```
+
+</details>
+
+## Revisions and automated backups
+
+Should we be able to automatically backup the storage?
+
+## Encryption
+
+## Error codes
+
+## Notifications
+
+## Access rights
+
+## Appendixes
+
+### Resources locations index
+
+| Resource type             | Resource location in the root container    |
+| ------------------------- | ------------------------------------------ |
+| `dfc-b:Catalog`           | /`catalogs/`                               |
+| `dfc-b:CatalogItem`       | /catalogs/\<catalog>/items/                |
+| `dfc-b:CustomerCategory`  | `/agents/customerCategories.ttl`           |
+| `dfc-b:Enterprise`        | `/agents/enterprises/`                     |
+| `dfc-b:FunctionalProduct` | `/catalogs/<catalog>/products/functional/` |
+| `dfc-b:Offer`             | /catalogs/\<catalog>/items/\<item>#        |
+| `dfc-b:Order`             | /orders/                                   |
+| `dfc-b:OrderLine`         | /orders/\<order>#                          |
+| `dfc-b:Person`            | `/agents/persons/`                         |
+| `dfc-b:SaleSession`       |                                            |
+| `dfc-b:SuppliedProduct`   | `/catalogs/<catalog>/products/supplied/`   |
+| `dfc-b:TechnicalProduct`  | `/catalogs/<catalog>/products/technical/`  |
