@@ -30,6 +30,8 @@ If the `dfc-b:solidRootContainer` is not already defined in the user profile doc
 
 ### Reserved locations
 
+In this section we assume to use the `dfc-b:solidRootContainer` as the root for all the following listed locations.
+
 The following locations are reserved and SHOULD NOT be edited directly by end users:
 
 * /addresses/
@@ -48,16 +50,19 @@ The following locations are reserved and SHOULD NOT be edited directly by end us
 * /defined-products/supplied-products/
 * /orders/
 * /orders/index0.ttl
+* /sale-sessions/
 
 ## Resource definition and location
 
 In this section we assume to use the `dfc-b:solidRootContainer` as the root for all the following defined locations.
 
-Resource must use the DFC ontology and taxonomies.
+Resources must expressed using the DFC ontology and taxonomies.
+
+An example dataset could be found at [https://github.com/datafoodconsortium/solid-dataset-example](https://github.com/datafoodconsortium/solid-dataset-example).
 
 ### Addresses
 
-A `dfc-b:Address` MUST be stored in the `/addresses/` LDP containers.
+A `dfc-b:Address` MUST be stored in the `/addresses/` LDP container. One RDF resource MUST contain only one address.
 
 <details>
 
@@ -123,7 +128,8 @@ A `dfc-b:CatalogItem` MUST be stored in the `/catalogs/<catalog>/items/` LDP con
     dfc-b:offeredTo </agents/customer-categories.tll#default>;
     dfc-b:offers <./>;
     dfc-b:hasPrice :price1;
-    dfc-b:stockLimitation 12.
+    dfc-b:stockLimitation 12;
+    dfc-b:listedIn </sale-sessions/sale-session1.ttl>.
 
 :offer2
     a dfc-b:Offer;
@@ -168,11 +174,11 @@ All `dfc-b:CustomerCategory` MUST be defined in the `/agents/customerCategories.
 
 ### Enterprises
 
-A `dfc-b:Enterprise` MUST be stored in the `/agents/enterprises/` [\[LDP\]](file:///home/malecoq/Projets/Mycelium/specs/index.html#biblio-ldp) container. An enterprise RDF resource MUST contain only one `dfc-b:Enterprise`.
+A `dfc-b:Enterprise` MUST be stored in the `/agents/enterprises/` [\[LDP\]](file:///home/malecoq/Projets/Mycelium/specs/index.html#biblio-ldp) container. One RDF resource MUST contain only one enterprise.
 
 <details>
 
-<summary>Example of an <code>dfc-b:Enterprise</code> in turtle</summary>
+<summary>Example of a <code>dfc-b:Enterprise</code> in turtle</summary>
 
 {% code fullWidth="true" %}
 ```turtle
@@ -195,11 +201,11 @@ A `dfc-b:Enterprise` MUST be stored in the `/agents/enterprises/` [\[LDP\]](file
 
 ### Functional products
 
-A `dfc-b:FunctionalProduct` MUST be stored in the `/products/functional/` LDP container.
+A `dfc-b:FunctionalProduct` MUST be stored in the `/products/functional/` LDP container. One RDF resource MUST contain only one functional product.
 
 <details>
 
-<summary>Example of an <code>dfc-b:FunctionalProduct</code> in turtle</summary>
+<summary>Example of a <code>dfc-b:FunctionalProduct</code> in turtle</summary>
 
 ```turtle
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
@@ -221,7 +227,7 @@ A `dfc-b:Offer` MUST be stored as a resource of its parent `dfc-b:CatalogItem` d
 
 <details>
 
-<summary>Example of an <code>dfc-b:Offer</code> in turtle</summary>
+<summary>Example of a <code>dfc-b:Offer</code> in turtle</summary>
 
 See the example in the [Catalog items](solid-specifications.md#catalog-items) section.
 
@@ -229,11 +235,11 @@ See the example in the [Catalog items](solid-specifications.md#catalog-items) se
 
 ### Orders
 
-A `dfc-b:Order` MUST be stored in the `/orders/` LDP container.
+A `dfc-b:Order` MUST be stored in the `/orders/` LDP container. One RDF resource MUST contain only one order.
 
 <details>
 
-<summary>Example of an <code>dfc-b:Order</code> in turtle</summary>
+<summary>Example of a <code>dfc-b:Order</code> in turtle</summary>
 
 ```turtle
 @prefix : <#>.
@@ -271,7 +277,7 @@ A `dfc-b:OrderLine` MUST be stored as a resource of its parent `dfc-b:Order` doc
 
 <details>
 
-<summary>Example of an <code>dfc-b:OrderLine</code> in turtle</summary>
+<summary>Example of a <code>dfc-b:OrderLine</code> in turtle</summary>
 
 See the example of the [Order section](solid-specifications.md#orders).
 
@@ -279,7 +285,7 @@ See the example of the [Order section](solid-specifications.md#orders).
 
 ### Persons
 
-A `dfc-b:Person` MUST be stored in the `/agents/persons/` [\[LDP\]](file:///home/malecoq/Projets/Mycelium/specs/index.html#biblio-ldp) container. A person RDF resource MUST contain only one `dfc-b:Person`.
+A `dfc-b:Person` MUST be stored in the `/agents/persons/` [\[LDP\]](file:///home/malecoq/Projets/Mycelium/specs/index.html#biblio-ldp) container. One RDF resource MUST contain only one person.
 
 <details>
 
@@ -299,11 +305,11 @@ A `dfc-b:Person` MUST be stored in the `/agents/persons/` [\[LDP\]](file:///home
 
 ### Technical products
 
-A `dfc-b:TechnicalProduct` MUST be stored in the `/products/technical/` LDP container.
+A `dfc-b:TechnicalProduct` MUST be stored in the `/products/technical/` LDP container. One RDF resource MUST contain only one technical product.
 
 <details>
 
-<summary>Example of an <code>dfc-b:TechnicalProduct</code> in turtle</summary>
+<summary>Example of a <code>dfc-b:TechnicalProduct</code> in turtle</summary>
 
 ```turtle
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
@@ -321,29 +327,31 @@ A `dfc-b:TechnicalProduct` MUST be stored in the `/products/technical/` LDP cont
 
 ### Sale sessions
 
-TBD.
+All `dfc-b:SaleSession` MUST be stored in the `/sale-sessions/` LDP container. One RDF resource MUST contain only one sale session.
 
 <details>
 
-<summary>Example of an <code>dfc-b:SaleSession</code> in turtle</summary>
+<summary>Example of a <code>dfc-b:SaleSession</code> in turtle</summary>
 
 ```turtle
-@prefix : <#>.
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
 
-<> 
+<>
     a dfc-b:SaleSession;
+    dfc-b:beginDate "December 26, 2022 14:00:00";
+    dfc-b:endDate "December 26, 2022 18:00:00";
+    dfc-b:lists </catalogs/default/catalog-items/catalog-item1.tll#offer1>.
 ```
 
 </details>
 
 ### Supplied products
 
-A `dfc-b:SuppliedProduct` MUST be stored in the `/products/supplied/` LDP container.
+A `dfc-b:SuppliedProduct` MUST be stored in the `/products/supplied/` LDP container. One RDF resource MUST contain only one supplied product.
 
 <details>
 
-<summary>Example of an <code>dfc-b:SupplyProduct</code> in turtle</summary>
+<summary>Example of a <code>dfc-b:SuppliedProduct</code> in turtle</summary>
 
 ```turtle
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
