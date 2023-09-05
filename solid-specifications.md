@@ -18,7 +18,7 @@ _This section is non-normative_.
 
 ## Namespaces
 
-<table><thead><tr><th width="249">Prefix</th><th>Namespace</th><th>Description</th></tr></thead><tbody><tr><td><code>solid</code></td><td><a href="http://www.w3.org/ns/solid/terms">http://www.w3.org/ns/solid/terms#</a></td><td>Solid Terms.</td></tr><tr><td><code>dfc-b</code></td><td><a href="https://www.datafoodconsortium.org">https://www.datafoodconsortium.org#</a></td><td>Data Food Consortium business ontology.</td></tr></tbody></table>
+<table><thead><tr><th width="249">Prefix</th><th>Namespace</th><th>Description</th></tr></thead><tbody><tr><td><code>solid</code></td><td><a href="http://www.w3.org/ns/solid/terms">http://www.w3.org/ns/solid/terms#</a></td><td>Solid Terms.</td></tr><tr><td><code>dfc-b</code></td><td><a href="https://www.datafoodconsortium.org">https://www.datafoodconsortium.org#</a></td><td>Data Food Consortium business ontology.</td></tr><tr><td><code>dfc-pt</code></td><td>TBD</td><td>DFC product types SKOS taxonomy.</td></tr></tbody></table>
 
 ## Storage
 
@@ -28,11 +28,53 @@ The root folder MUST be defined using the `dfc-b:solidRootContainer` attribute. 
 
 If the `dfc-b:solidRootContainer` is not already defined in the user profile document, a DFC application SHOULD ask the user to select the container he/she wants to use as the root folder. A DFC application COULD propose to the user a default folder like a `datafoodconsortium` folder at the root of the user's storage.
 
+### Reserved locations
+
+The following locations are reserved and SHOULD NOT be edited directly by end users:
+
+* /addresses/
+* /agents/
+* /agents/customer-categories.ttl
+* /agents/enterprises/
+* /agents/persons/
+* /agents/persons/index0.ttl
+* /catalogs/
+* /catalogs/\<catalog>/catalog.ttl
+* /catalogs/\<catalog>/index0.ttl
+* /catalogs/\<catalog>/catalog-items/
+* /defined-products/
+* /defined-products/functional-products/
+* /defined-products/technical-products/
+* /defined-products/supplied-products/
+* /orders/
+* /orders/index0.ttl
+
 ## Resource definition and location
 
 In this section we assume to use the `dfc-b:solidRootContainer` as the root for all the following defined locations.
 
 Resource must use the DFC ontology and taxonomies.
+
+### Addresses
+
+A `dfc-b:Address` MUST be stored in the `/addresses/` LDP containers.
+
+<details>
+
+<summary>Example of a <code>dfc-b:Address</code> in turtle</summary>
+
+```turtle
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+
+<>
+    a dfc-b:Address;
+    dfc-b:street "A street";
+    dfc-b:city "A city name";
+    dfc-b:postcode "A post code";
+    dfc-b:country: "A country".
+```
+
+</details>
 
 ### Catalogs
 
@@ -43,11 +85,11 @@ A `dfc-b:Catalog` MUST be stored in a `catalog.ttl` file inside a folder in the 
 <summary>Example of a <code>dfc-b:Catalog</code> in turtle</summary>
 
 ```turtle
-@prefix : <#>.
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
 
-<> 
+<>
     a dfc-b:Catalog;
+    dfc-b:lists </catalogs/default/catalog-items/catalog-item1#catalogItem1>.
 ```
 
 </details>
@@ -61,11 +103,46 @@ A `dfc-b:CatalogItem` MUST be stored in the `/catalogs/<catalog>/items/` LDP con
 <summary>Example of a <code>dfc-b:CatalogItem</code> in turtle</summary>
 
 ```turtle
-@prefix : <#>.
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
+@prefix dfc-pt: <https://www.datafoodconsortium.org/product-types#>.
+@prefix dfc-f: <https://www.datafoodconsortium.org/facets#>.
+@prefix dfc-m: <https://www.datafoodconsortium.org/measures#>.
 
-<> 
+<>
     a dfc-b:CatalogItem;
+    dfc-b:references </defined-products/supplied-products/product1.ttl>;
+    dfc-b:sku "catalog item gtin or sku";
+    dfc-b:stockLimitation 24;
+    dfc-b:offeredThrough 
+        :offer1,
+        :offer2;
+    dfc-b:listedIn </catalogs/default/catalog.ttl>.
+
+:offer1
+    a dfc-b:Offer;
+    dfc-b:offeredTo </agents/customer-categories.tll#default>;
+    dfc-b:offers <./>;
+    dfc-b:hasPrice :price1;
+    dfc-b:stockLimitation 12.
+
+:offer2
+    a dfc-b:Offer;
+    dfc-b:offeredTo </agents/customer-categories.ttl#default>;
+    dfc-b:offers <./>;
+    dfc-b:hasPrice :price2;
+    dfc-b:stockLimitation 10.
+
+:price1
+    a dfc-b:Price;
+    dfc-b:value 3.4;
+    dfc-b:VATrate 5.5;
+    dfc-b:hasUnit dfc-m:Euro.
+
+:price2
+    a dfc-b:Price;
+    dfc-b:value 5.4;
+    dfc-b:VATrate 5.5;
+    dfc-b:hasUnit dfc-m:Euro.
 ```
 
 </details>
@@ -82,8 +159,9 @@ All `dfc-b:CustomerCategory` MUST be defined in the `/agents/customerCategories.
 @prefix : <#>.
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
 
-<> 
+:default
     a dfc-b:CustomerCategory;
+    dfc-b:description "Regular clients".
 ```
 
 </details>
@@ -98,18 +176,18 @@ A `dfc-b:Enterprise` MUST be stored in the `/agents/enterprises/` [\[LDP\]](file
 
 {% code fullWidth="true" %}
 ```turtle
-@prefix dfc-root: </>.
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
-@prefix products: <dfc-root:catalogs/default/products/>.
-@prefix customerCategories: <dfc-root:agents/customerCategories.ttl#>.
 
 <>
     a dfc-b:Enterprise;
-    dfc-b:name "Name of the enterprise";
-    dfc-b:VATnumber 0512658491;
-    dfc-b:defines <customerCategories:default>;
-    dfc-b:supplies <products:tomato.ttl>, <products:carrot.ttl>;
-    dfc-b:manages <products:tomato.ttl#catalogItem1>, <products:carrot.ttl#catalogItem1>.
+    dfc-b:hasAddress </addresses/address1.ttl>;
+    dfc-b:description "Enterprise description.";
+    dfc-b:VATnumber 0123456789;
+    dfc-b:defines </agents/customer-categories.ttl#default>;
+    dfc-b:requests </defined-products/functional-products/product1.ttl>;
+    dfc-b:proposes </defined-products/technical-products/product1.ttl>;
+    dfc-b:supplies </defined-products/supplied-products/product1.ttl>;
+    dfc-b:manages </catalogs/default/catalog-items/catalog-item1.ttl#catalogItem1>.
 ```
 {% endcode %}
 
@@ -124,11 +202,15 @@ A `dfc-b:FunctionalProduct` MUST be stored in the `/products/functional/` LDP co
 <summary>Example of an <code>dfc-b:FunctionalProduct</code> in turtle</summary>
 
 ```turtle
-@prefix : <#>.
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
+@prefix dfc-pt: <https://www.datafoodconsortium.org/product-types#>.
 
-<> 
+<>
     a dfc-b:FunctionalProduct;
+    dfc-b:hasType dfc-pt:tomato;
+    dfc-b:description "Tomato";
+    dfc-b:requestedBy </agents/enterprises/enterprise1.ttl>;
+    dfc-b:satisfiedBy </defined-products/technical-products/product1.ttl>.
 ```
 
 </details>
@@ -141,13 +223,7 @@ A `dfc-b:Offer` MUST be stored as a resource of its parent `dfc-b:CatalogItem` d
 
 <summary>Example of an <code>dfc-b:Offer</code> in turtle</summary>
 
-```turtle
-@prefix : <#>.
-@prefix dfc-b: <https://www.datafoodconsortium.org#>.
-
-<> 
-    a dfc-b:Offer;
-```
+See the example in the [Catalog items](solid-specifications.md#catalog-items) section.
 
 </details>
 
@@ -163,8 +239,28 @@ A `dfc-b:Order` MUST be stored in the `/orders/` LDP container.
 @prefix : <#>.
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
 
-<> 
+<>
     a dfc-b:Order;
+    dfc-b:orderNumber "0001";
+    dfc-b:date "December 26, 2022 15:02:18";
+    dfc-b:orderedBy </agents/persons/person1.ttl>;
+    dfc-b:hasPart
+        :orderLine1, 
+        :orderLine2.
+
+:orderLine1
+    a dfc-b:OrderLine;
+    dfc-b:description "Catalog item 1 solded for 2.5€";
+    dfc-b:partOf <>;
+    dfc-b:concerns </catalogs/default/catalog-items/catalog-item1#offer1>;
+    dfc-b:quantity 2.5.
+
+:orderLine2
+    a dfc-b:OrderLine;
+    dfc-b:description "Catalog item solded for 1€";
+    dfc-b:partOf <>;
+    dfc-b:concerns </catalogs/default/catalog-items/catalog-item1#offer2>;
+    dfc-b:quantity 1.0.
 ```
 
 </details>
@@ -177,13 +273,7 @@ A `dfc-b:OrderLine` MUST be stored as a resource of its parent `dfc-b:Order` doc
 
 <summary>Example of an <code>dfc-b:OrderLine</code> in turtle</summary>
 
-```turtle
-@prefix : <#>.
-@prefix dfc-b: <https://www.datafoodconsortium.org#>.
-
-<> 
-    a dfc-b:OrderLine;
-```
+See the example of the [Order section](solid-specifications.md#orders).
 
 </details>
 
@@ -196,20 +286,13 @@ A `dfc-b:Person` MUST be stored in the `/agents/persons/` [\[LDP\]](file:///home
 <summary>Example of a <code>dfc-b:Person</code> in turtle</summary>
 
 ```turtle
-@prefix : <#>.
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
 
-<> 
+<>
     a dfc-b:Person;
-    dfc-b:firstName "Jean";
-    dfc-b:familyName "Dupont";
-    dfc-b:hasAddress [
-        a dfc-b:Address;
-        dfc-b:street "2, rue du pont";
-        dfc-b:city "Bagnoles-de-l’Orne";
-        dfc-b:postcode "61200";
-        dfc-b:country: "France"  
-    ].
+    dfc-b:firstName "A first name";
+    dfc-b:familyName "A family name";
+    dfc-b:hasAddress </addresses/address1.ttl>.
 ```
 
 </details>
@@ -223,11 +306,15 @@ A `dfc-b:TechnicalProduct` MUST be stored in the `/products/technical/` LDP cont
 <summary>Example of an <code>dfc-b:TechnicalProduct</code> in turtle</summary>
 
 ```turtle
-@prefix : <#>.
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
+@prefix dfc-pt: <https://www.datafoodconsortium.org/product-types#>.
 
-<> 
+<>
     a dfc-b:TechnicalProduct;
+    dfc-b:hasType dfc-pt:tomato;
+    dfc-b:description "Tomato";
+    dfc-b:satisfy </defined-products/functional-products/product1.ttl>;
+    dfc-b:industrializedBy </defined-products/supplied-products/product1.ttl>.
 ```
 
 </details>
@@ -259,16 +346,102 @@ A `dfc-b:SuppliedProduct` MUST be stored in the `/products/supplied/` LDP contai
 <summary>Example of an <code>dfc-b:SupplyProduct</code> in turtle</summary>
 
 ```turtle
-@prefix : <#>.
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
+@prefix dfc-pt: <https://www.datafoodconsortium.org/product-types#>.
+@prefix dfc-f: <https://www.datafoodconsortium.org/facets#>.
+@prefix dfc-m: <https://www.datafoodconsortium.org/measures#>.
 
-<> 
-    a dfc-b:SupplyProduct;
+<>
+    a dfc-b:SuppliedProduct;
+    dfc-b:hasType dfc-pt:hierloom-tomato;
+    dfc-b:description "Hierloom tomato AB";
+    dfc-b:hasCertification dfc-f:Organic-AB;
+    dfc-b:hasQuantity [
+        a dfc-b:QuantitativeValue;
+        dfc-b:hasUnit dfc-m:Kilogram;
+        dfc-b:value 1
+    ];
+    dfc-b:image <./product1.jpg>;
+    dfc-b:industrializedBy </defined-products/technical-products/product1.ttl>.
 ```
 
 </details>
 
 ## Indexing
+
+### Orders
+
+All `dfc-b:Order` MUST be indexed in the `index0.ttl` file at the root of the `/orders/` container.
+
+<details>
+
+<summary>Example of a <code>dfc-b:Order</code> index in turtle</summary>
+
+```turtle
+@prefix : <#>.
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+@prefix dfc-m: <https://www.datafoodconsortium.org/measures#>.
+
+:1
+    a dfc-b:OrderIndexEntry;
+    dfc-b:indexes </orders/order1.ttl>;
+    dfc-b:orderNumber "0001";
+    dfc-b:date "December 26, 2022 15:02:18";
+    dfc-b:orderedBy </agents/persons/person1.ttl>;
+    dfc-b:hasPrice :p1;
+    dfc-b:hasParts 2.
+
+:p1
+    a dfc-b:Price;
+    dfc-b:value 12.20;
+    dfc-b:VATrate 5.5;
+    dfc-b:hasUnit dfc-m:Euro.
+
+```
+
+</details>
+
+### Persons
+
+All `dfc-b:Person` MUST be indexed by their `dfc-b:familyName` property in the `index0.ttl`  file in the `/agents/persons/` container.
+
+<details>
+
+<summary>Example of a <code>dfc-b:Person</code> index in turtle</summary>
+
+```turtle
+@prefix : <#>.
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+
+:1
+    a dfc-b:PersonIndexEntry;
+    dfc-b:indexes </agents/persons/person1.ttl>;
+    dfc-b:familyName "A family name".
+```
+
+</details>
+
+### Product types
+
+All `dfc-b:CatalogItem` MUST be indexed by their `dfc-b:hasType` property (product type) in the `index0.ttl` file stored at the root of a `dfc-b:Catalog`.&#x20;
+
+This index is currently a combination of the vocabularies from TypeIndex and DFC.&#x20;
+
+<details>
+
+<summary>Example of a product type index in turtle</summary>
+
+```turtle
+@prefix solid: <http://www.w3.org/ns/solid/terms#>.
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+@prefix dfc-pt: <https://www.datafoodconsortium.org/productTypes#>.
+
+<#ab09fd> a solid:TypeRegistration;
+    dfc-b:hasType <dfc-pt:artichoke>;
+    solid:instance <./items/artichoke.ttl>.
+```
+
+</details>
 
 ### TypeIndex
 
@@ -288,29 +461,7 @@ A DFC Solid compliant application MUST advertise its containers in the public Ty
 
 <#ab09fd> a solid:TypeRegistration;
     solid:forClass <dfc-b:Enterprise>;
-    solid:instanceContainer </path/to/Enterprises>.
-```
-
-</details>
-
-### Product types
-
-Product types MUST be indexed in a `productTypes.ttl` file stored at the root of a `dfc-b:Catalog`.&#x20;
-
-This index is currently a combinaison of the vocabularies from TypeIndex and DFC.&#x20;
-
-<details>
-
-<summary>Example of a product type index in turtle</summary>
-
-```turtle
-@prefix solid: <http://www.w3.org/ns/solid/terms#>.
-@prefix dfc-b: <https://www.datafoodconsortium.org#>.
-@prefix dfc-pt: <https://www.datafoodconsortium.org/productTypes#>.
-
-<#ab09fd> a solid:TypeRegistration;
-    dfc-b:hasType <dfc-pt:artichoke>;
-    solid:instance <./items/artichoke.ttl>.
+    solid:instanceContainer </agents/enterprises/>.
 ```
 
 </details>
