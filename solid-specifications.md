@@ -285,6 +285,8 @@ See the example of the [Order section](solid-specifications.md#orders).
 
 ### Persons
 
+When there are less than 100 persons
+
 A `dfc-b:Person` MUST be stored in the `/agents/persons/` [\[LDP\]](file:///home/malecoq/Projets/Mycelium/specs/index.html#biblio-ldp) container. One RDF resource MUST contain only one person.
 
 <details>
@@ -411,20 +413,34 @@ All `dfc-b:Order` MUST be indexed in the `index0.ttl` file at the root of the `/
 
 ### Persons
 
-All `dfc-b:Person` MUST be indexed by their `dfc-b:familyName` property in the `index0.ttl`  file in the `/agents/persons/` container.
+#### Indexing the first letter of the family name
+
+All `dfc-b:Person` MUST be indexed in the `/agents/persons/index0.ttl` file.  This index MUST contain triples of the form `#anchor dfc-b:references <person URI>` .
+
+The `#anchor` MUST be named by the first letter of the family name of the person (value of the `dfc-b:familyName` property).
 
 <details>
 
-<summary>Example of a <code>dfc-b:Person</code> index in turtle</summary>
+<summary>Example of a <code>/agents/persons/index0.ttl</code> file</summary>
 
 ```turtle
 @prefix : <#>.
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
 
-:1
-    a dfc-b:PersonIndexEntry;
-    dfc-b:indexes </agents/persons/person1.ttl>;
-    dfc-b:familyName "A family name".
+# This is indexing persons with a family name starting with the letter "a".
+:a dfc-b:references 
+    </agents/persons/person32.ttl>,
+    </agents/persons/person12.ttl>.
+
+# This is indexing persons with a family name starting with the letter "b".
+:b dfc-b:references  
+    </agents/persons/person56.ttl>,
+    </agents/persons/person78.ttl>.
+
+# This is indexing persons with a family name starting with the letter "z".    
+:z dfc-b:references  
+    </agents/persons/person2.ttl>,
+    </agents/persons/person63.ttl>.
 ```
 
 </details>
