@@ -18,19 +18,19 @@ _This section is non-normative_.
 
 ## Namespaces
 
-<table><thead><tr><th width="249">Prefix</th><th>Namespace</th><th>Description</th></tr></thead><tbody><tr><td><code>solid</code></td><td><a href="http://www.w3.org/ns/solid/terms">http://www.w3.org/ns/solid/terms#</a></td><td>Solid Terms.</td></tr><tr><td><code>dfc-b</code></td><td><a href="https://www.datafoodconsortium.org">https://www.datafoodconsortium.org#</a></td><td>Data Food Consortium business ontology.</td></tr><tr><td><code>dfc-pt</code></td><td>TBD</td><td>DFC product types SKOS taxonomy.</td></tr></tbody></table>
+<table><thead><tr><th width="249">Prefix</th><th>Namespace</th><th>Description</th></tr></thead><tbody><tr><td><code>solid</code></td><td><a href="http://www.w3.org/ns/solid/terms">http://www.w3.org/ns/solid/terms#</a></td><td>Solid Terms.</td></tr><tr><td><code>dfc-b</code></td><td><a href="https://www.datafoodconsortium.org">https://www.datafoodconsortium.org#</a></td><td>Data Food Consortium business ontology.</td></tr><tr><td><code>dfc-f</code></td><td>TBD.</td><td>Data Food Consortium facets taxonomy.</td></tr><tr><td><code>dfc-m</code></td><td>TBD.</td><td>Data Food Consortium measures taxonomy.</td></tr><tr><td><code>dfc-pt</code></td><td>TBD.</td><td>DFC product types SKOS taxonomy.</td></tr><tr><td><code>dfc-t</code></td><td>TBD.</td><td>Data Food Consortium technical ontology.</td></tr></tbody></table>
 
 ## Storage
 
 ### Root container
 
-The root folder MUST be defined using the `dfc-b:solidRootContainer` attribute. This attribute MUST be part of the user profile document.
+The root folder MUST be defined using the `dfc-t:solidRootContainer` attribute. This attribute MUST be part of the user profile document.
 
-If the `dfc-b:solidRootContainer` is not already defined in the user profile document, a DFC application SHOULD ask the user to select the container he/she wants to use as the root folder. A DFC application COULD propose to the user a default folder like a `datafoodconsortium` folder at the root of the user's storage.
+If the `dfc-t:solidRootContainer` is not already defined in the user profile document, a DFC application SHOULD ask the user to select the container he/she wants to use as the root folder. A DFC application COULD propose to the user a default folder like a `datafoodconsortium` folder at the root of the user's storage.
 
 ### Reserved locations
 
-In this section we assume to use the `dfc-b:solidRootContainer` as the root for all the following listed locations.
+In this section we assume to use the `dfc-t:solidRootContainer` as the root for all the following listed locations.
 
 The following locations are reserved and SHOULD NOT be edited directly by end users:
 
@@ -54,7 +54,7 @@ The following locations are reserved and SHOULD NOT be edited directly by end us
 
 ## Resource definition and location
 
-In this section we assume to use the `dfc-b:solidRootContainer` as the root for all the following defined locations.
+In this section we assume to use the `dfc-t:solidRootContainer` as the root for all the following defined locations.
 
 Resources must expressed using the DFC ontology and taxonomies.
 
@@ -506,17 +506,18 @@ Should we be able to automatically backup the storage?
 
 ### Resources locations index
 
-| Resource type             | Resource location in the root container    |
-| ------------------------- | ------------------------------------------ |
-| `dfc-b:Catalog`           | /`catalogs/`                               |
-| `dfc-b:CatalogItem`       | /catalogs/\<catalog>/items/                |
-| `dfc-b:CustomerCategory`  | `/agents/customerCategories.ttl`           |
-| `dfc-b:Enterprise`        | `/agents/enterprises/`                     |
-| `dfc-b:FunctionalProduct` | `/catalogs/<catalog>/products/functional/` |
-| `dfc-b:Offer`             | /catalogs/\<catalog>/items/\<item>#        |
-| `dfc-b:Order`             | /orders/                                   |
-| `dfc-b:OrderLine`         | /orders/\<order>#                          |
-| `dfc-b:Person`            | `/agents/persons/`                         |
-| `dfc-b:SaleSession`       |                                            |
-| `dfc-b:SuppliedProduct`   | `/catalogs/<catalog>/products/supplied/`   |
-| `dfc-b:TechnicalProduct`  | `/catalogs/<catalog>/products/technical/`  |
+| Resource type             | Resource location in the root container  |
+| ------------------------- | ---------------------------------------- |
+| `dfc-b:Address`           | `/addresses/`                            |
+| `dfc-b:Catalog`           | `/catalogs/`                             |
+| `dfc-b:CatalogItem`       | `/catalogs/<catalog>/catalog-items/`     |
+| `dfc-b:CustomerCategory`  | `/agents/customer-categories.ttl`        |
+| `dfc-b:Enterprise`        | `/agents/enterprises/`                   |
+| `dfc-b:FunctionalProduct` | `/defined-products/functional-products/` |
+| `dfc-b:Offer`             | `/catalogs/<catalog>/items/<item>#`      |
+| `dfc-b:Order`             | `/orders/`                               |
+| `dfc-b:OrderLine`         | `/orders/<order>#<order-line>`           |
+| `dfc-b:Person`            | `/agents/persons/`                       |
+| `dfc-b:SaleSession`       | `/sale-sessions/`                        |
+| `dfc-b:SuppliedProduct`   | `/defined-products/supplied-products/`   |
+| `dfc-b:TechnicalProduct`  | `/defined-products/technical-products/`  |
