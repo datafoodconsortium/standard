@@ -18,12 +18,12 @@ Platform have to contact DFC to add this url to be inclued in the Consortium.&#x
 
 ## Prototype
 
-### Pivot
+### link
 
 Main usage of DFC server is to provide identifier reconciliation of platforms included in consortium. A non LDP API provides this feature to platform : "What are identifiers (uri) of data in others platforme from my uri".
 
 ```
-https://server/pivot?uri=myPlatformDataUri
+https://server/link/myPlatformDataUri
 ```
 
 Result of this API use [Technical Ontology](../semantic-specifications/technical-ontology.md) whith pivot.&#x20;
@@ -57,20 +57,38 @@ Result of this API use [Technical Ontology](../semantic-specifications/technical
 }
 ```
 
-### Same As
+### linkSimple
 
-This more compact and more Simple API compute Pivot API to standard sameAs predicates.
+This more compact and more Simple API compute link API to standard sameAs predicates.
 
 ```
-https://server/sameAs?uri=myPlatformDataUri
+https://server/linkSimple/myPlatformDataUri
 ```
 
 ```
 {
     @id : myPlatformDataUri,
-    sameAs : [
+    owl:sameAs : [
         otherPlatformDataUri1,
         otherPlatformDataUri2
     ]
 }
+```
+
+### my-data
+
+Return prototype data of a platform data. owl:sameAs added to platform provided data
+
+```
+https://server/my-data/myPlatformDataUri
+```
+
+```
+{
+	@id": myPlatformDataUri,
+	predicate : value
+	owl:sameAs: [
+	        otherPlatformDataUri1,
+	        otherPlatformDataUri2
+	]
 ```
