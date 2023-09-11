@@ -379,34 +379,42 @@ A `dfc-b:SuppliedProduct` MUST be stored in the `/products/supplied/` LDP contai
 
 ## Indexing
 
+Any DFC application need to be able to find information quickly and indexing is a way to do it in Solid. This DFC standard provides several indexes to find some useful piece of data. These indexes are updated when data changes (is added, edited or deleted).
+
 ### Orders
 
-All `dfc-b:Order` MUST be indexed in the `index0.ttl` file at the root of the `/orders/` container.
+#### Indexing the year and month of orders
+
+Thins index can be used to retrieve orders for a certain period of time like a year or a month of a year.
+
+All `dfc-b:Order` MUST be indexed by their year and month in the `index0.ttl` file at the root of the `/orders/` container.
 
 <details>
 
-<summary>Example of a <code>dfc-b:Order</code> index in turtle</summary>
+<summary>Example of the <code>/orders/index0.ttl</code> index file in turtle</summary>
 
 ```turtle
-@prefix : <#>.
+@base <https://example.pod/username/datafoodconsortium>.
+@prefix solid: <http://www.w3.org/ns/solid/terms#>.
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
 @prefix dfc-m: <https://www.datafoodconsortium.org/measures#>.
+@prefix index: <TBD>.
 
-:1
-    a dfc-b:OrderIndexEntry;
-    dfc-b:indexes </orders/order1.ttl>;
-    dfc-b:orderNumber "0001";
-    dfc-b:date "December 26, 2022 15:02:18";
-    dfc-b:orderedBy </agents/persons/person1.ttl>;
-    dfc-b:hasPrice :p1;
-    dfc-b:hasParts 2.
-
-:p1
-    a dfc-b:Price;
-    dfc-b:value 12.20;
-    dfc-b:VATrate 5.5;
-    dfc-b:hasUnit dfc-m:Euro.
-
+<>
+    a index:Index;
+    a solid:ListedDocument;
+    
+<#1>
+    a index:Registration;
+    index:year 2022;
+    index:month 12;
+    solid:instance </orders/order2.ttl>.
+    
+<#2>
+    a index:Registration;
+    index:year 2022;
+    index:month 11;
+    solid:instance </orders/order1.ttl>.
 ```
 
 </details>
@@ -415,92 +423,121 @@ All `dfc-b:Order` MUST be indexed in the `index0.ttl` file at the root of the `/
 
 #### Indexing the first letter of the family name
 
-All `dfc-b:Person` MUST be indexed in the `/agents/persons/index0.ttl` file.  This index MUST contain triples of the form `#anchor dfc-b:references <person URI>` .
+Such an index can be used to display quickly a person when the user types the beginning of a family name.
 
-The `#anchor` MUST be named by the first letter of the family name of the person (value of the `dfc-b:familyName` property).
+All `dfc-b:Person` MUST be indexed in the `/agents/persons/index0.ttl` file. This index MUST contain a registration for each first symbol used in the family name of all the persons.
 
 <details>
 
-<summary>Example of a <code>/agents/persons/index0.ttl</code> file</summary>
+<summary>Example for the <code>/agents/persons/index0.ttl</code> file</summary>
 
 ```turtle
-@prefix : <#>.
+@base <https://example.pod/username/datafoodconsortium>.
+@prefix solid: <http://www.w3.org/ns/solid/terms#>.
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
+@prefix index: <TDB>.
+
+<>
+    a index:Index;
+    a solid:ListedDocument;
+    index:forProperty dfc-b:familyName.
 
 # This is indexing persons with a family name starting with the letter "a".
-:a dfc-b:references 
-    </agents/persons/person32.ttl>,
-    </agents/persons/person12.ttl>.
+<#ab09fd> a index:Registration;
+    index:strstarts "a";
+    solid:instance  </agents/persons/person32.ttl>, </agents/persons/person12.ttl>.
 
 # This is indexing persons with a family name starting with the letter "b".
-:b dfc-b:references  
-    </agents/persons/person56.ttl>,
-    </agents/persons/person78.ttl>.
+<#zx45yh> a index:Registration;
+    index:strstarts "b";
+    solid:instance  </agents/persons/person56.ttl>, </agents/persons/person78.ttl>.
 
-# This is indexing persons with a family name starting with the letter "z".    
-:z dfc-b:references  
-    </agents/persons/person2.ttl>,
-    </agents/persons/person63.ttl>.
+# This is indexing persons with a family name starting with the letter "z".
+<#sk17vb> a index:Registration;
+    index:strstarts "z";
+    solid:instance  </agents/persons/person2.ttl>, </agents/persons/person63.ttl>.
 ```
 
 </details>
 
 ### Product types
 
-All `dfc-b:CatalogItem` MUST be indexed by their `dfc-b:hasType` property (product type) in the `index0.ttl` file stored at the root of a `dfc-b:Catalog`.&#x20;
+#### Indexing the product types contained in a catalog
 
-This index is currently a combination of the vocabularies from TypeIndex and DFC.&#x20;
+This index can be used to quickly find all the catalog items referencing a product of a given type. For instance, it can be used to find all the tomatoes listed in a catalog.
+
+All `dfc-b:CatalogItem` MUST be indexed in the `index0.ttl` file at the root of a `dfc-b:Catalog`. It MUST contain registrations mentionning product type.
 
 <details>
 
-<summary>Example of a product type index in turtle</summary>
+<summary>Example for the <code>/catalogs/default/index0.ttl</code> file in turtle</summary>
 
 ```turtle
+@base <https://example.pod/username/datafoodconsortium>.
 @prefix solid: <http://www.w3.org/ns/solid/terms#>.
-@prefix dfc-b: <https://www.datafoodconsortium.org#>.
 @prefix dfc-pt: <https://www.datafoodconsortium.org/productTypes#>.
+@prefix index: <TBD>.
 
-<#ab09fd> a solid:TypeRegistration;
-    dfc-b:hasType <dfc-pt:artichoke>;
-    solid:instance <./items/artichoke.ttl>.
+<>
+    a index:Index;
+    a solid:ListedDocument.
+
+<#ab09fd> a index:Registration;
+    solid:instance </catalogs/default/catalog-items/artichoke.ttl>;
+    index:mentions dfc-pt:artichoke.
+    
+<#tf76pl> a index:Registration;
+    solid:instance 
+        </catalogs/default/catalog-items/round-tomato.ttl>,
+        </catalogs/default/catalog-items/cherry-tomato.ttl>;
+    index:mentions dfc-pt:tomato.
 ```
 
 </details>
 
 ### TypeIndex
 
-A DFC Solid compliant application MUST advertise its containers in the public TypeIndex.
+A DFC Solid compliant application MUST advertise its containers and all the indexes in the public TypeIndex.
 
 <details>
 
-<summary>Example of the registration of DFC containers in a turtle TypeIndex</summary>
+<summary>Example of a DFC app public TypeIndex in turtle</summary>
 
 ```turtle
+@base <https://example.pod/username/datafoodconsortium>.
 @prefix solid: <http://www.w3.org/ns/solid/terms#>.
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
+@prefix index: <TBD>.
 
 <>
-    a solid:TypeIndex ;
+    a solid:TypeIndex;
     a solid:ListedDocument.
 
 <#ab09fd> a solid:TypeRegistration;
-    solid:forClass <dfc-b:Enterprise>;
+    solid:forClass dfc-b:Enterprise;
     solid:instanceContainer </agents/enterprises/>.
+    
+<#qr52ub> a solid:TypeRegistration;
+    solid:forClass index:Index;
+    solid:instance 
+        </agents/persons/index0.ttl>,
+        </catalogs/default/index0.ttl>,
+        </orders/index0.ttl>.
 ```
 
 </details>
+
+## Access rights
+
+## Notifications
+
+## Error codes
 
 ## Revisions and automated backups
 
 Should we be able to automatically backup the storage?
 
 ## Encryption
-
-## Error codes
-
-## Notifications
-
-## Access rights
 
 ## Appendixes
 
