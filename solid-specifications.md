@@ -79,6 +79,44 @@ A `dfc-b:Address` MUST be stored in the `/addresses/` LDP container. One RDF res
 
 <details>
 
+<summary>Shape of a <code>dfc-b:Address</code></summary>
+
+```turtle
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dfc-b: <https://www.datafoodconsortium.org#>.
+
+<>
+	a sh:NodeShape;
+	sh:targetClass dfc-b:Address;
+	sh:property [
+		sh:path dfc-b:street;
+		sh:maxCount 1;
+		sh:datatype xsd:string;
+	];
+	sh:property [
+		sh:path dfc-b:postcode;
+		sh:maxCount 1;
+		sh:datatype xsd:string;
+	];
+	sh:property [
+		sh:path dfc-b:city;
+		sh:maxCount 1;
+		sh:datatype xsd:string;
+	];
+	sh:property [
+		sh:path dfc-b:country;
+		sh:maxCount 1;
+		sh:datatype xsd:string;
+	];
+	sh:closed true;
+	sh:ignoredProperties ( rdf:type ).
+```
+
+</details>
+
+<details>
+
 <summary>Example of a <code>dfc-b:Address</code> in turtle</summary>
 
 ```turtle
