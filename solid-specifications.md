@@ -540,6 +540,10 @@ A DFC Solid compliant application MUST advertise its containers and all the inde
 
 </details>
 
+## Paging and sorting
+
+This section defines how data is paged and sorted.
+
 ## Access rights
 
 ## Notifications
