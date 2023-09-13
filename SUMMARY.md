@@ -14,7 +14,7 @@
   * [Authentication strategy](technical-specifications/authentication-strategy.md)
   * [Architecture representations](technical-specifications/architecture-representations.md)
 * [Prototype specifications](prototype-specifications.md)
-* [🚧 Solid specifications](solid-specifications.md)
+* [🚧 Solid client protocol](solid-client-protocol.md)
 
 ## Appendixes
 

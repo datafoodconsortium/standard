@@ -4,7 +4,7 @@ description: >-
   Solid applications.
 ---
 
-# 🚧 Solid specifications
+# 🚧 Solid client protocol
 
 ## Conformance
 
@@ -16,30 +16,65 @@ All of the text of this specification is normative except sections explicitly ma
 
 _This section is non-normative_.
 
+## Terminology
+
+_This section is non-normative._
+
+The Solid Client Protocol specification defines the following terms. These terms are referenced throughout this specification.
+
+#### application
+
+Refers to an application that follows this [client protocol](solid-client-protocol.md#client-protocol).
+
+#### client protocol
+
+The DFC Solid Cient Protocol refers to this specification: the document you are currently reading.
+
 ## Namespaces
 
 <table><thead><tr><th width="249">Prefix</th><th>Namespace</th><th>Description</th></tr></thead><tbody><tr><td><code>solid</code></td><td><a href="http://www.w3.org/ns/solid/terms">http://www.w3.org/ns/solid/terms#</a></td><td>Solid Terms.</td></tr><tr><td><code>dfc-b</code></td><td><a href="https://www.datafoodconsortium.org">https://www.datafoodconsortium.org#</a></td><td>Data Food Consortium business ontology.</td></tr><tr><td><code>dfc-f</code></td><td>TBD.</td><td>Data Food Consortium facets taxonomy.</td></tr><tr><td><code>dfc-m</code></td><td>TBD.</td><td>Data Food Consortium measures taxonomy.</td></tr><tr><td><code>dfc-pt</code></td><td>TBD.</td><td>DFC product types SKOS taxonomy.</td></tr><tr><td><code>dfc-t</code></td><td>TBD.</td><td>Data Food Consortium technical ontology.</td></tr></tbody></table>
 
-## Storage
+## Configuration
 
-### Root container
+Any [application](solid-client-protocol.md#application) SHOULD find at least one `dfc-t:solidInstallation` resource in the [user's preferences document](https://solid.github.io/webid-profile/#private-preferences). If there is no installation defined, the [application](solid-client-protocol.md#application) MUST define one.
 
-The whole DFC data model MUST be contained in a root folder. This root folder MUST be defined in the user's [private preferences document](https://solid.github.io/webid-profile/#private-preferences) using the `dfc-t:solidRootContainer` predicate.
+A `dfc-t:solidInstallation` MUST provide a value for all the following predicates:
 
-If the DFC root folder is not already set, a DFC application SHOULD ask the user to select the container he/she wants to use as the root folder. A DFC application COULD propose to the user a default folder like  `/datafoodconsortium`.
+| Predicate                                   | Description                                                                                                                                                                                           |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dfc-t:solidSupportedClientProtocolVersion` | Defines which version of the [client protocol](solid-client-protocol.md#client-protocol) is used by the installation. See [this section](solid-client-protocol.md#supported-client-protocol-version). |
+| `dfc-t:solidRootContainer`                  | Defines the root LDP container for the installation. See [this section](solid-client-protocol.md#root-container).                                                                                     |
 
 <details>
 
-<summary>Example of the user's private preferences file in turtle</summary>
+<summary>Example of a user's preferences file in turtle</summary>
 
 ```turtle
 @base <https://example.pod/username>.
 @prefix dfc-t: <TDB>.
 
-<#zb78gj> dfc-t:solidRootContainer </datafoodconsortium/>.
+<#zb78gj> a dfc-t:solidInstallation 
+    dfc-t:solidSupportedClientProtocolVersion "2.0";
+    dfc-t:solidRootContainer </datafoodconsortium/v2.0/>.
+    
+<#gv42lk> a dfc-t:solidInstallation
+    dfc-t:solidSupportedClientProtocolVersion "1.0", "1.1";
+    dfc-t:solidRootContainer </datafoodconsortium/v1.0/>.
 ```
 
 </details>
+
+### Supported client protocol version
+
+The `dfc-t:solidSupportedClientProtocolVersion` predicate defines which version of the [client protocol](solid-client-protocol.md#client-protocol) is supported by the installation. The value assigned to this predicate MUST reference a version of the [client protocol](solid-client-protocol.md#client-protocol) using the form `<MAJOR>.<minor>` like `1.0`.
+
+### Root container
+
+The whole DFC data model MUST be contained in a root LDP container. This root folder MUST be defined in the user's [preferences document](https://solid.github.io/webid-profile/#private-preferences) using the `dfc-t:solidRootContainer` predicate.
+
+If the DFC root folder is not already set, an [application](solid-client-protocol.md#application) SHOULD ask the user to select the container he/she wants to use as the root folder. An [application](solid-client-protocol.md#application) COULD propose to the user a default folder like  `/datafoodconsortium`.
+
+## Storage
 
 ### Reserved locations
 
@@ -77,10 +112,8 @@ An example dataset could be found at [https://github.com/datafoodconsortium/soli
 
 A `dfc-b:Address` MUST be stored in the `/addresses/` LDP container. One RDF resource MUST contain only one address.
 
-<details>
-
-<summary>Shape of a <code>dfc-b:Address</code></summary>
-
+{% tabs %}
+{% tab title="Shape of a dfc-b:Address" %}
 ```turtle
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
@@ -112,13 +145,9 @@ A `dfc-b:Address` MUST be stored in the `/addresses/` LDP container. One RDF res
 	sh:closed true;
 	sh:ignoredProperties ( rdf:type ).
 ```
+{% endtab %}
 
-</details>
-
-<details>
-
-<summary>Example of a <code>dfc-b:Address</code> in turtle</summary>
-
+{% tab title="Example of a dfc-b:Address in turtle" %}
 ```turtle
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
 
@@ -129,8 +158,8 @@ A `dfc-b:Address` MUST be stored in the `/addresses/` LDP container. One RDF res
     dfc-b:postcode "A post code";
     dfc-b:country: "A country".
 ```
-
-</details>
+{% endtab %}
+{% endtabs %}
 
 ### Catalogs
 
@@ -280,7 +309,7 @@ A `dfc-b:Offer` MUST be stored as a resource of its parent `dfc-b:CatalogItem` d
 
 <summary>Example of a <code>dfc-b:Offer</code> in turtle</summary>
 
-See the example in the [Catalog items](solid-specifications.md#catalog-items) section.
+See the example in the [Catalog items](solid-client-protocol.md#catalog-items) section.
 
 </details>
 
@@ -330,7 +359,7 @@ A `dfc-b:OrderLine` MUST be stored as a resource of its parent `dfc-b:Order` doc
 
 <summary>Example of a <code>dfc-b:OrderLine</code> in turtle</summary>
 
-See the example of the [Order section](solid-specifications.md#orders).
+See the example of the [Order section](solid-client-protocol.md#orders).
 
 </details>
 
