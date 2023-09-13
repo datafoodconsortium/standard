@@ -24,9 +24,22 @@ _This section is non-normative_.
 
 ### Root container
 
-The root folder MUST be defined using the `dfc-t:solidRootContainer` attribute. This attribute MUST be part of the user profile document.
+The whole DFC data model MUST be contained in a root folder. This root folder MUST be defined in the user's [private preferences document](https://solid.github.io/webid-profile/#private-preferences) using the `dfc-t:solidRootContainer` predicate.
 
-If the `dfc-t:solidRootContainer` is not already defined in the user profile document, a DFC application SHOULD ask the user to select the container he/she wants to use as the root folder. A DFC application COULD propose to the user a default folder like a `datafoodconsortium` folder at the root of the user's storage.
+If the DFC root folder is not already set, a DFC application SHOULD ask the user to select the container he/she wants to use as the root folder. A DFC application COULD propose to the user a default folder like  `/datafoodconsortium`.
+
+<details>
+
+<summary>Example of the user's private preferences file in turtle</summary>
+
+```turtle
+@base <https://example.pod/username>.
+@prefix dfc-t: <TDB>.
+
+<#zb78gj> dfc-t:solidRootContainer </datafoodconsortium/>.
+```
+
+</details>
 
 ### Reserved locations
 
