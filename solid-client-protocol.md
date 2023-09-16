@@ -36,14 +36,9 @@ The DFC Solid Cient Protocol refers to this specification: the document you are 
 
 ## Configuration
 
-Any [application](solid-client-protocol.md#application) SHOULD find at least one `dfc-t:solidInstallation` resource in the [user's preferences document](https://solid.github.io/webid-profile/#private-preferences). If there is no installation defined, the [application](solid-client-protocol.md#application) MUST define one.
+An [application](solid-client-protocol.md#application) SHOULD save its settings in the [user's preferences document](https://solid.github.io/webid-profile/#private-preferences).
 
-A `dfc-t:solidInstallation` MUST provide a value for all the following predicates:
-
-| Predicate                                   | Description                                                                                                                                                                                           |
-| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `dfc-t:solidSupportedClientProtocolVersion` | Defines which version of the [client protocol](solid-client-protocol.md#client-protocol) is used by the installation. See [this section](solid-client-protocol.md#supported-client-protocol-version). |
-| `dfc-t:solidRootContainer`                  | Defines the root LDP container for the installation. See [this section](solid-client-protocol.md#root-container).                                                                                     |
+In the [user's preferences document](https://solid.github.io/webid-profile/#private-preferences), an [application](solid-client-protocol.md#application) COULD find a link to a DFC dedicated `solid:TypeIndex` containing only registrations related to DFC resources. This type index can be used to reduce the parsing of an entire `solid:TypeIndex` which can contain a huge amount of registrations. This type index MUST be indicated with triples of the form `?preference a dfc-t:typeIndex; solid:instance ?typeIndexFile.` as shown in the following example:
 
 <details>
 
@@ -51,66 +46,58 @@ A `dfc-t:solidInstallation` MUST provide a value for all the following predicate
 
 ```turtle
 @base <https://example.pod/username>.
+@prefix solid: <http://www.w3.org/ns/solid/terms#>.
 @prefix dfc-t: <TDB>.
 
-<#zb78gj> a dfc-t:solidInstallation 
-    dfc-t:solidSupportedClientProtocolVersion "2.0";
-    dfc-t:solidRootContainer </datafoodconsortium/v2.0/>.
-    
-<#gv42lk> a dfc-t:solidInstallation
-    dfc-t:solidSupportedClientProtocolVersion "1.0", "1.1";
-    dfc-t:solidRootContainer </datafoodconsortium/v1.0/>.
+<#zb78gj> a dfc-t:typeIndex; 
+    solid:instance </datafoodconsortium/typeIndex.ttl>.
 ```
 
 </details>
 
-### Supported client protocol version
-
-The `dfc-t:solidSupportedClientProtocolVersion` predicate defines which version of the [client protocol](solid-client-protocol.md#client-protocol) is supported by the installation. The value assigned to this predicate MUST reference a version of the [client protocol](solid-client-protocol.md#client-protocol) using the form `<MAJOR>.<minor>` like `1.0`.
-
-### Root container
-
-The whole DFC data model MUST be contained in a root LDP container. This root folder MUST be defined in the user's [preferences document](https://solid.github.io/webid-profile/#private-preferences) using the `dfc-t:solidRootContainer` predicate.
-
-If the DFC root folder is not already set, an [application](solid-client-protocol.md#application) SHOULD ask the user to select the container he/she wants to use as the root folder. An [application](solid-client-protocol.md#application) COULD propose to the user a default folder like  `/datafoodconsortium`.
-
 ## Storage
 
-### Reserved locations
+Resources location MUST be defined in a `solid:TypeIndex`. An [application](solid-client-protocol.md#application) MUST let the user choose where he/she want to store data and write the location in the type index. See the [TypeIndex section](solid-client-protocol.md#typeindex) for more details.&#x20;
 
-In this section we assume to use the `dfc-t:solidRootContainer` as the root for all the following listed locations.
+Resources that share the same `rdf:type` related to the DFC ontology SHOULD be stored in a same LDP container. For instance, all resource with a `rdf:type` being `dfc-b:Enterprise` SHOULD be stored in one container like `/enterprises/`.
 
-The following locations are reserved and SHOULD NOT be edited directly by end users:
+An [application](solid-client-protocol.md#application) SHOULD propose a default location for every kind of DFC resources. If no DFC resources are found on the user's POD, an [application](solid-client-protocol.md#application) SHOULD propose a default root location like `/datafoodconsortium/` which contain a default tree structure like the following one:
 
-* /addresses/
-* /agents/
-* /agents/customer-categories.ttl
-* /agents/enterprises/
-* /agents/persons/
-* /agents/persons/index0.ttl
-* /catalogs/
-* /catalogs/\<catalog>/catalog.ttl
-* /catalogs/\<catalog>/index0.ttl
-* /catalogs/\<catalog>/catalog-items/
-* /defined-products/
-* /defined-products/functional-products/
-* /defined-products/technical-products/
-* /defined-products/supplied-products/
-* /orders/
-* /orders/index0.ttl
-* /sale-sessions/
+<details>
 
-## Resource definition and location
+<summary>Example of a default tree structure</summary>
 
-In this section we assume to use the `dfc-t:solidRootContainer` as the root for all the following defined locations.
+* datafoodconsortium/
+  * address/
+  * agents/
+    * enterprises/
+    * persons/
+  * catalogs/
+    * default
+      * catalog.ttl
+      * index0.ttl
+      * catalog-items/
+  * defined-products/
+    * functional-products/
+    * supplied-products/
+    * technical-products/
+  * orders/
+    * index0.ttl
+  * sale-sessions/
 
-Resources must expressed using the DFC ontology and taxonomies.
+</details>
+
+### Resource definition
+
+Resources MUST be expressed using the DFC ontology and taxonomies.
 
 An example dataset could be found at [https://github.com/datafoodconsortium/solid-dataset-example](https://github.com/datafoodconsortium/solid-dataset-example).
 
-### Addresses
+All the following resource SHOULD be stored in dedicated LDP containers.
 
-A `dfc-b:Address` MUST be stored in the `/addresses/` LDP container. One RDF resource MUST contain only one address.
+#### Addresses
+
+All `dfc-b:Address` SHOULD be stored in a dedicated LDP container. One address RDF resource MUST contain only one address.
 
 {% tabs %}
 {% tab title="Shape of a dfc-b:Address" %}
@@ -161,9 +148,9 @@ A `dfc-b:Address` MUST be stored in the `/addresses/` LDP container. One RDF res
 {% endtab %}
 {% endtabs %}
 
-### Catalogs
+#### Catalogs
 
-A `dfc-b:Catalog` MUST be stored in a `catalog.ttl` file inside a folder in the `/catalogs/` LDP container.
+All `dfc-b:Catalog` MUST be stored in a file inside the LDP container dedicated to this catalog. This file SHOULD be named `catalog.ttl`.
 
 <details>
 
@@ -179,9 +166,11 @@ A `dfc-b:Catalog` MUST be stored in a `catalog.ttl` file inside a folder in the 
 
 </details>
 
-### Catalog items
+#### Catalog items
 
-A `dfc-b:CatalogItem` MUST be stored in the `/catalogs/<catalog>/items/` LDP container. All the related `dfc-b:Offer` MUST be stored in the catalog item document.
+All `dfc-b:CatalogItem` SHOULD be stored in a dedicated LDP container. All the related `dfc-b:Offer` MUST be stored in the catalog item document.
+
+When the user want to edit a `dfc-b:CatalogItem`, an [application](solid-client-protocol.md#application) MUST ask the user if he/she want to edit all the occurrences of the catalog item (i.e. in all the other catalogs) or if he/she want to edit the catalog item only for one or several catalogs (it might be the catalog being edited). If the user want to edit the catalog item for one or several catalogs only, the catalog item MUST be copied to a new resource.
 
 <details>
 
@@ -233,9 +222,9 @@ A `dfc-b:CatalogItem` MUST be stored in the `/catalogs/<catalog>/items/` LDP con
 
 </details>
 
-### Customer categories
+#### Customer categories
 
-All `dfc-b:CustomerCategory` MUST be defined in the `/agents/customerCategories.ttl` turtle file.
+All `dfc-b:CustomerCategory` MUST be defined in a file like `/agents/customerCategories.ttl`.
 
 <details>
 
@@ -252,9 +241,9 @@ All `dfc-b:CustomerCategory` MUST be defined in the `/agents/customerCategories.
 
 </details>
 
-### Enterprises
+#### Enterprises
 
-A `dfc-b:Enterprise` MUST be stored in the `/agents/enterprises/` [\[LDP\]](file:///home/malecoq/Projets/Mycelium/specs/index.html#biblio-ldp) container. One RDF resource MUST contain only one enterprise.
+All `dfc-b:Enterprise` SHOULD be stored in a dedicated [\[LDP\]](file:///home/malecoq/Projets/Mycelium/specs/index.html#biblio-ldp) container. One enterprise RDF resource MUST contain only one enterprise.
 
 <details>
 
@@ -279,9 +268,9 @@ A `dfc-b:Enterprise` MUST be stored in the `/agents/enterprises/` [\[LDP\]](file
 
 </details>
 
-### Functional products
+#### Functional products
 
-A `dfc-b:FunctionalProduct` MUST be stored in the `/products/functional/` LDP container. One RDF resource MUST contain only one functional product.
+All `dfc-b:FunctionalProduct` SHOULD be stored in a dedicated LDP container. One functional product RDF resource MUST contain only one functional product.
 
 <details>
 
@@ -301,9 +290,9 @@ A `dfc-b:FunctionalProduct` MUST be stored in the `/products/functional/` LDP co
 
 </details>
 
-### Offers
+#### Offers
 
-A `dfc-b:Offer` MUST be stored as a resource of its parent `dfc-b:CatalogItem` document.
+All `dfc-b:Offer` MUST be stored as a resource of its parent `dfc-b:CatalogItem` document.
 
 <details>
 
@@ -313,9 +302,9 @@ See the example in the [Catalog items](solid-client-protocol.md#catalog-items) s
 
 </details>
 
-### Orders
+#### Orders
 
-A `dfc-b:Order` MUST be stored in the `/orders/` LDP container. One RDF resource MUST contain only one order.
+All `dfc-b:Order` SHOULD be stored in a dedicated LDP container. One order RDF resource MUST contain only one order.
 
 <details>
 
@@ -351,9 +340,9 @@ A `dfc-b:Order` MUST be stored in the `/orders/` LDP container. One RDF resource
 
 </details>
 
-### Order lines
+#### Order lines
 
-A `dfc-b:OrderLine` MUST be stored as a resource of its parent `dfc-b:Order` document.
+All `dfc-b:OrderLine` MUST be stored as a resource of its parent `dfc-b:Order` document.
 
 <details>
 
@@ -363,11 +352,9 @@ See the example of the [Order section](solid-client-protocol.md#orders).
 
 </details>
 
-### Persons
+#### Persons
 
-When there are less than 100 persons
-
-A `dfc-b:Person` MUST be stored in the `/agents/persons/` [\[LDP\]](file:///home/malecoq/Projets/Mycelium/specs/index.html#biblio-ldp) container. One RDF resource MUST contain only one person.
+All `dfc-b:Person` SHOULD be stored in a dedicated [\[LDP\]](file:///home/malecoq/Projets/Mycelium/specs/index.html#biblio-ldp) container. One person RDF resource MUST contain only one person.
 
 <details>
 
@@ -385,9 +372,9 @@ A `dfc-b:Person` MUST be stored in the `/agents/persons/` [\[LDP\]](file:///home
 
 </details>
 
-### Technical products
+#### Technical products
 
-A `dfc-b:TechnicalProduct` MUST be stored in the `/products/technical/` LDP container. One RDF resource MUST contain only one technical product.
+All `dfc-b:TechnicalProduct` SHOULD be stored in a dedicated LDP container. One technical product RDF resource MUST contain only one technical product.
 
 <details>
 
@@ -407,9 +394,9 @@ A `dfc-b:TechnicalProduct` MUST be stored in the `/products/technical/` LDP cont
 
 </details>
 
-### Sale sessions
+#### Sale sessions
 
-All `dfc-b:SaleSession` MUST be stored in the `/sale-sessions/` LDP container. One RDF resource MUST contain only one sale session.
+All `dfc-b:SaleSession` SHOULD be stored in a dedicated LDP container. One sale session RDF resource MUST contain only one sale session.
 
 <details>
 
@@ -427,9 +414,9 @@ All `dfc-b:SaleSession` MUST be stored in the `/sale-sessions/` LDP container. O
 
 </details>
 
-### Supplied products
+#### Supplied products
 
-A `dfc-b:SuppliedProduct` MUST be stored in the `/products/supplied/` LDP container. One RDF resource MUST contain only one supplied product.
+All `dfc-b:SuppliedProduct` SHOULD be stored in a dedicated LDP container. One supplied product RDF resource MUST contain only one supplied product.
 
 <details>
 
@@ -459,7 +446,7 @@ A `dfc-b:SuppliedProduct` MUST be stored in the `/products/supplied/` LDP contai
 
 ## Indexing
 
-Any DFC application need to be able to find information quickly and indexing is a way to do it in Solid. This DFC standard provides several indexes to find some useful piece of data. These indexes are updated when data changes (is added, edited or deleted).
+Any DFC application need to be able to find information quickly and indexing is a way to do it in Solid. This DFC standard provides several indexes to find some useful piece of data. These indexes are updated when data changes (i.e. data is added, edited or deleted).
 
 ### Orders
 
@@ -593,11 +580,51 @@ A DFC Solid compliant application MUST advertise its containers and all the inde
     a solid:TypeIndex;
     a solid:ListedDocument.
 
-<#ab09fd> a solid:TypeRegistration;
+<#addresses> a solid:TypeRegistration;
+    solid:forClass dfc-b:Address;
+    solid:instanceContainer </addresses/>.
+    
+<#persons> a solid:TypeRegistration;
+    solid:forClass dfc-b:Person;
+    solid:instanceContainer </agents/person/>.
+    
+<#enterprises> a solid:TypeRegistration;
     solid:forClass dfc-b:Enterprise;
     solid:instanceContainer </agents/enterprises/>.
     
-<#qr52ub> a solid:TypeRegistration;
+<#customer-categories> a solid:TypeRegistration;
+    solid:forClass dfc-b:CustomerCategory;
+    solid:instanceContainer </agents/customer-categories>.
+    
+<#catalogs> a solid:TypeRegistration;
+    solid:forClass dfc-b:Catalog;
+    solid:instanceContainer </catalogs/>.
+    
+<#catalog-items> a solid:TypeRegistration;
+    solid:forClass dfc-b:CatalogItem;
+    solid:instanceContainer </catalog-items/>.
+    
+<#functional-products> a solid:TypeRegistration;
+    solid:forClass dfc-b:FunctionalProduct;
+    solid:instanceContainer </defined-products/functional-products/>.
+    
+<#supplied-products> a solid:TypeRegistration;
+    solid:forClass dfc-b:SuppliedProduct;
+    solid:instanceContainer </defined-products/supplied-products/>.
+    
+<#technical-products> a solid:TypeRegistration;
+    solid:forClass dfc-b:TechnicalProduct;
+    solid:instanceContainer </defined-products/technical-products/>.
+    
+<#orders> a solid:TypeRegistration;
+    solid:forClass dfc-b:Order;
+    solid:instanceContainer </orders/>.
+    
+<#sale-sessions> a solid:TypeRegistration;
+    solid:forClass dfc-b:SaleSession;
+    solid:instanceContainer </sale-sessions/>.
+    
+<#indexes> a solid:TypeRegistration;
     solid:forClass index:Index;
     solid:instance 
         </agents/persons/index0.ttl>,
