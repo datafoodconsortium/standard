@@ -68,7 +68,7 @@ An [application](solid-client-protocol.md#application) SHOULD propose a default 
 <summary>Example of a default tree structure</summary>
 
 * datafoodconsortium/
-  * address/
+  * addresses/
   * agents/
     * enterprises/
     * persons/
@@ -76,7 +76,7 @@ An [application](solid-client-protocol.md#application) SHOULD propose a default 
     * default
       * catalog.ttl
       * index0.ttl
-      * catalog-items/
+  * catalog-items/
   * defined-products/
     * functional-products/
     * supplied-products/
@@ -594,7 +594,7 @@ A DFC Solid compliant application MUST advertise its containers and all the inde
     
 <#customer-categories> a solid:TypeRegistration;
     solid:forClass dfc-b:CustomerCategory;
-    solid:instanceContainer </agents/customer-categories>.
+    solid:instance </agents/customer-categories.ttl>.
     
 <#catalogs> a solid:TypeRegistration;
     solid:forClass dfc-b:Catalog;
