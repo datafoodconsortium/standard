@@ -38,7 +38,7 @@ The DFC Solid Cient Protocol refers to this specification: the document you are 
 
 An [application](solid-client-protocol.md#application) SHOULD save its settings in the [user's preferences document](https://solid.github.io/webid-profile/#private-preferences).
 
-In the [user's preferences document](https://solid.github.io/webid-profile/#private-preferences), an [application](solid-client-protocol.md#application) COULD find a link to a DFC dedicated `solid:TypeIndex` containing only registrations related to DFC resources. This type index can be used to reduce the parsing of an entire `solid:TypeIndex` which can contain a huge amount of registrations. This type index MUST be indicated with triples of the form `?preference a dfc-t:typeIndex; solid:instance ?typeIndexFile.` as shown in the following example:
+In the [user's preferences document](https://solid.github.io/webid-profile/#private-preferences), an [application](solid-client-protocol.md#application) COULD find a link to one or several DFC dedicated `solid:TypeIndex` containing only registrations related to DFC resources. These type indexes can be used to reduce the parsing of general type indexes which can contain a huge amount of registrations. When existing, these DFC specific type indexes MUST be indicated with triples of the form `?preference a dfc-t:typeIndex; solid:instance ?typeIndexFile.` as shown in the following example:
 
 <details>
 
@@ -49,426 +49,47 @@ In the [user's preferences document](https://solid.github.io/webid-profile/#priv
 @prefix solid: <http://www.w3.org/ns/solid/terms#>.
 @prefix dfc-t: <TDB>.
 
-<#zb78gj> a dfc-t:typeIndex; 
-    solid:instance </datafoodconsortium/typeIndex.ttl>.
+<#types-indexes> a dfc-t:typeIndex; 
+    solid:instance </datafoodconsortium/publicTypeIndex.ttl>,
+        </datafoodconsortium/privateTypeIndex.ttl>.
 ```
 
 </details>
 
-## Storage
+## Storage and resources
 
-Resources location MUST be defined in a `solid:TypeIndex`. An [application](solid-client-protocol.md#application) MUST let the user choose where he/she want to store data and write the location in the type index. See the [TypeIndex section](solid-client-protocol.md#typeindex) for more details.&#x20;
+Resources MUST be expressed using the [DFC ontology](semantic-specifications/) version 1.8 or later and taxonomies. Arities defined by the [DFC ontology](semantic-specifications/) MUST be respected. An example dataset could be found at [https://github.com/datafoodconsortium/solid-dataset-example](https://github.com/datafoodconsortium/solid-dataset-example).
 
-Resources that share the same `rdf:type` related to the DFC ontology SHOULD be stored in a same LDP container. For instance, all resource with a `rdf:type` being `dfc-b:Enterprise` SHOULD be stored in one container like `/enterprises/`.
+An [application](solid-client-protocol.md#application) MUST let users to choose where they want to store data on their POD(s). Resources location MUST be defined in one or several `solid:TypeIndex`. Each used DFC resource or container MUST be registered in these type indexes. See the [TypeIndex section](solid-client-protocol.md#typeindex) for more details.
 
-An [application](solid-client-protocol.md#application) SHOULD propose a default location for every kind of DFC resources. If no DFC resources are found on the user's POD, an [application](solid-client-protocol.md#application) SHOULD propose a default root location like `/datafoodconsortium/` which contain a default tree structure like the following one:
-
-<details>
-
-<summary>Example of a default tree structure</summary>
-
-* datafoodconsortium/
-  * addresses/
-  * agents/
-    * enterprises/
-    * persons/
-  * catalogs/
-    * default
-      * catalog.ttl
-      * index0.ttl
-  * catalog-items/
-  * defined-products/
-    * functional-products/
-    * supplied-products/
-    * technical-products/
-  * orders/
-    * index0.ttl
-  * sale-sessions/
-
-</details>
-
-### Resource definition
-
-Resources MUST be expressed using the DFC ontology and taxonomies.
-
-An example dataset could be found at [https://github.com/datafoodconsortium/solid-dataset-example](https://github.com/datafoodconsortium/solid-dataset-example).
-
-All the following resource SHOULD be stored in dedicated LDP containers.
-
-#### Addresses
-
-All `dfc-b:Address` SHOULD be stored in a dedicated LDP container. One address RDF resource MUST contain only one address.
-
-{% tabs %}
-{% tab title="Shape of a dfc-b:Address" %}
-```turtle
-@prefix sh: <http://www.w3.org/ns/shacl#>.
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix dfc-b: <https://www.datafoodconsortium.org#>.
-
-<>
-	a sh:NodeShape;
-	sh:targetClass dfc-b:Address;
-	sh:property [
-		sh:path dfc-b:street;
-		sh:maxCount 1;
-		sh:datatype xsd:string;
-	];
-	sh:property [
-		sh:path dfc-b:postcode;
-		sh:maxCount 1;
-		sh:datatype xsd:string;
-	];
-	sh:property [
-		sh:path dfc-b:city;
-		sh:maxCount 1;
-		sh:datatype xsd:string;
-	];
-	sh:property [
-		sh:path dfc-b:country;
-		sh:maxCount 1;
-		sh:datatype xsd:string;
-	];
-	sh:closed true;
-	sh:ignoredProperties ( rdf:type ).
-```
-{% endtab %}
-
-{% tab title="Example of a dfc-b:Address in turtle" %}
-```turtle
-@prefix dfc-b: <https://www.datafoodconsortium.org#>.
-
-<>
-    a dfc-b:Address;
-    dfc-b:street "A street";
-    dfc-b:city "A city name";
-    dfc-b:postcode "A post code";
-    dfc-b:country: "A country".
-```
-{% endtab %}
-{% endtabs %}
-
-#### Catalogs
-
-All `dfc-b:Catalog` MUST be stored in a file inside the LDP container dedicated to this catalog. This file SHOULD be named `catalog.ttl`.
-
-<details>
-
-<summary>Example of a <code>dfc-b:Catalog</code> in turtle</summary>
-
-```turtle
-@prefix dfc-b: <https://www.datafoodconsortium.org#>.
-
-<>
-    a dfc-b:Catalog;
-    dfc-b:lists </catalogs/default/catalog-items/catalog-item1#catalogItem1>.
-```
-
-</details>
-
-#### Catalog items
-
-All `dfc-b:CatalogItem` SHOULD be stored in a dedicated LDP container. All the related `dfc-b:Offer` MUST be stored in the catalog item document.
-
-When the user want to edit a `dfc-b:CatalogItem`, an [application](solid-client-protocol.md#application) MUST ask the user if he/she want to edit all the occurrences of the catalog item (i.e. in all the other catalogs) or if he/she want to edit the catalog item only for one or several catalogs (it might be the catalog being edited). If the user want to edit the catalog item for one or several catalogs only, the catalog item MUST be copied to a new resource.
-
-<details>
-
-<summary>Example of a <code>dfc-b:CatalogItem</code> in turtle</summary>
-
-```turtle
-@prefix dfc-b: <https://www.datafoodconsortium.org#>.
-@prefix dfc-pt: <https://www.datafoodconsortium.org/product-types#>.
-@prefix dfc-f: <https://www.datafoodconsortium.org/facets#>.
-@prefix dfc-m: <https://www.datafoodconsortium.org/measures#>.
-
-<>
-    a dfc-b:CatalogItem;
-    dfc-b:references </defined-products/supplied-products/product1.ttl>;
-    dfc-b:sku "catalog item gtin or sku";
-    dfc-b:stockLimitation 24;
-    dfc-b:offeredThrough 
-        :offer1,
-        :offer2;
-    dfc-b:listedIn </catalogs/default/catalog.ttl>.
-
-:offer1
-    a dfc-b:Offer;
-    dfc-b:offeredTo </agents/customer-categories.tll#default>;
-    dfc-b:offers <./>;
-    dfc-b:hasPrice :price1;
-    dfc-b:stockLimitation 12;
-    dfc-b:listedIn </sale-sessions/sale-session1.ttl>.
-
-:offer2
-    a dfc-b:Offer;
-    dfc-b:offeredTo </agents/customer-categories.ttl#default>;
-    dfc-b:offers <./>;
-    dfc-b:hasPrice :price2;
-    dfc-b:stockLimitation 10.
-
-:price1
-    a dfc-b:Price;
-    dfc-b:value 3.4;
-    dfc-b:VATrate 5.5;
-    dfc-b:hasUnit dfc-m:Euro.
-
-:price2
-    a dfc-b:Price;
-    dfc-b:value 5.4;
-    dfc-b:VATrate 5.5;
-    dfc-b:hasUnit dfc-m:Euro.
-```
-
-</details>
-
-#### Customer categories
-
-All `dfc-b:CustomerCategory` MUST be defined in a file like `/agents/customerCategories.ttl`.
-
-<details>
-
-<summary>Example of a <code>dfc-b:CustomerCategory</code> in turtle</summary>
-
-```turtle
-@prefix : <#>.
-@prefix dfc-b: <https://www.datafoodconsortium.org#>.
-
-:default
-    a dfc-b:CustomerCategory;
-    dfc-b:description "Regular clients".
-```
-
-</details>
-
-#### Enterprises
-
-All `dfc-b:Enterprise` SHOULD be stored in a dedicated [\[LDP\]](file:///home/malecoq/Projets/Mycelium/specs/index.html#biblio-ldp) container. One enterprise RDF resource MUST contain only one enterprise.
-
-<details>
-
-<summary>Example of a <code>dfc-b:Enterprise</code> in turtle</summary>
-
-{% code fullWidth="true" %}
-```turtle
-@prefix dfc-b: <https://www.datafoodconsortium.org#>.
-
-<>
-    a dfc-b:Enterprise;
-    dfc-b:hasAddress </addresses/address1.ttl>;
-    dfc-b:description "Enterprise description.";
-    dfc-b:VATnumber 0123456789;
-    dfc-b:defines </agents/customer-categories.ttl#default>;
-    dfc-b:requests </defined-products/functional-products/product1.ttl>;
-    dfc-b:proposes </defined-products/technical-products/product1.ttl>;
-    dfc-b:supplies </defined-products/supplied-products/product1.ttl>;
-    dfc-b:manages </catalogs/default/catalog-items/catalog-item1.ttl#catalogItem1>.
-```
-{% endcode %}
-
-</details>
-
-#### Functional products
-
-All `dfc-b:FunctionalProduct` SHOULD be stored in a dedicated LDP container. One functional product RDF resource MUST contain only one functional product.
-
-<details>
-
-<summary>Example of a <code>dfc-b:FunctionalProduct</code> in turtle</summary>
-
-```turtle
-@prefix dfc-b: <https://www.datafoodconsortium.org#>.
-@prefix dfc-pt: <https://www.datafoodconsortium.org/product-types#>.
-
-<>
-    a dfc-b:FunctionalProduct;
-    dfc-b:hasType dfc-pt:tomato;
-    dfc-b:description "Tomato";
-    dfc-b:requestedBy </agents/enterprises/enterprise1.ttl>;
-    dfc-b:satisfiedBy </defined-products/technical-products/product1.ttl>.
-```
-
-</details>
-
-#### Offers
-
-All `dfc-b:Offer` MUST be stored as a resource of its parent `dfc-b:CatalogItem` document.
-
-<details>
-
-<summary>Example of a <code>dfc-b:Offer</code> in turtle</summary>
-
-See the example in the [Catalog items](solid-client-protocol.md#catalog-items) section.
-
-</details>
-
-#### Orders
-
-All `dfc-b:Order` SHOULD be stored in a dedicated LDP container. One order RDF resource MUST contain only one order.
-
-<details>
-
-<summary>Example of a <code>dfc-b:Order</code> in turtle</summary>
-
-```turtle
-@prefix : <#>.
-@prefix dfc-b: <https://www.datafoodconsortium.org#>.
-
-<>
-    a dfc-b:Order;
-    dfc-b:orderNumber "0001";
-    dfc-b:date "December 26, 2022 15:02:18";
-    dfc-b:orderedBy </agents/persons/person1.ttl>;
-    dfc-b:hasPart
-        :orderLine1, 
-        :orderLine2.
-
-:orderLine1
-    a dfc-b:OrderLine;
-    dfc-b:description "Catalog item 1 solded for 2.5€";
-    dfc-b:partOf <>;
-    dfc-b:concerns </catalogs/default/catalog-items/catalog-item1#offer1>;
-    dfc-b:quantity 2.5.
-
-:orderLine2
-    a dfc-b:OrderLine;
-    dfc-b:description "Catalog item solded for 1€";
-    dfc-b:partOf <>;
-    dfc-b:concerns </catalogs/default/catalog-items/catalog-item1#offer2>;
-    dfc-b:quantity 1.0.
-```
-
-</details>
-
-#### Order lines
-
-All `dfc-b:OrderLine` MUST be stored as a resource of its parent `dfc-b:Order` document.
-
-<details>
-
-<summary>Example of a <code>dfc-b:OrderLine</code> in turtle</summary>
-
-See the example of the [Order section](solid-client-protocol.md#orders).
-
-</details>
-
-#### Persons
-
-All `dfc-b:Person` SHOULD be stored in a dedicated [\[LDP\]](file:///home/malecoq/Projets/Mycelium/specs/index.html#biblio-ldp) container. One person RDF resource MUST contain only one person.
-
-<details>
-
-<summary>Example of a <code>dfc-b:Person</code> in turtle</summary>
-
-```turtle
-@prefix dfc-b: <https://www.datafoodconsortium.org#>.
-
-<>
-    a dfc-b:Person;
-    dfc-b:firstName "A first name";
-    dfc-b:familyName "A family name";
-    dfc-b:hasAddress </addresses/address1.ttl>.
-```
-
-</details>
-
-#### Technical products
-
-All `dfc-b:TechnicalProduct` SHOULD be stored in a dedicated LDP container. One technical product RDF resource MUST contain only one technical product.
-
-<details>
-
-<summary>Example of a <code>dfc-b:TechnicalProduct</code> in turtle</summary>
-
-```turtle
-@prefix dfc-b: <https://www.datafoodconsortium.org#>.
-@prefix dfc-pt: <https://www.datafoodconsortium.org/product-types#>.
-
-<>
-    a dfc-b:TechnicalProduct;
-    dfc-b:hasType dfc-pt:tomato;
-    dfc-b:description "Tomato";
-    dfc-b:satisfy </defined-products/functional-products/product1.ttl>;
-    dfc-b:industrializedBy </defined-products/supplied-products/product1.ttl>.
-```
-
-</details>
-
-#### Sale sessions
-
-All `dfc-b:SaleSession` SHOULD be stored in a dedicated LDP container. One sale session RDF resource MUST contain only one sale session.
-
-<details>
-
-<summary>Example of a <code>dfc-b:SaleSession</code> in turtle</summary>
-
-```turtle
-@prefix dfc-b: <https://www.datafoodconsortium.org#>.
-
-<>
-    a dfc-b:SaleSession;
-    dfc-b:beginDate "December 26, 2022 14:00:00";
-    dfc-b:endDate "December 26, 2022 18:00:00";
-    dfc-b:lists </catalogs/default/catalog-items/catalog-item1.tll#offer1>.
-```
-
-</details>
-
-#### Supplied products
-
-All `dfc-b:SuppliedProduct` SHOULD be stored in a dedicated LDP container. One supplied product RDF resource MUST contain only one supplied product.
-
-<details>
-
-<summary>Example of a <code>dfc-b:SuppliedProduct</code> in turtle</summary>
-
-```turtle
-@prefix dfc-b: <https://www.datafoodconsortium.org#>.
-@prefix dfc-pt: <https://www.datafoodconsortium.org/product-types#>.
-@prefix dfc-f: <https://www.datafoodconsortium.org/facets#>.
-@prefix dfc-m: <https://www.datafoodconsortium.org/measures#>.
-
-<>
-    a dfc-b:SuppliedProduct;
-    dfc-b:hasType dfc-pt:hierloom-tomato;
-    dfc-b:description "Hierloom tomato AB";
-    dfc-b:hasCertification dfc-f:Organic-AB;
-    dfc-b:hasQuantity [
-        a dfc-b:QuantitativeValue;
-        dfc-b:hasUnit dfc-m:Kilogram;
-        dfc-b:value 1
-    ];
-    dfc-b:image <./product1.jpg>;
-    dfc-b:industrializedBy </defined-products/technical-products/product1.ttl>.
-```
-
-</details>
+When users don't know or don't want to choose where to save their data, an [application](solid-client-protocol.md#application) SHOULD propose a default location like `/datafoodconsortium/` as the root LDP container for DFC data. Following the tree structure defined in the [example dataset](https://github.com/datafoodconsortium/solid-dataset-example) is RECOMMENDED.
 
 ## Indexing
 
-Any DFC application need to be able to find information quickly and indexing is a way to do it in Solid. This DFC standard provides several indexes to find some useful piece of data. These indexes are updated when data changes (i.e. data is added, edited or deleted).
+[Applications](solid-client-protocol.md#application) MUST fill and keep updated several indexes in order to allow quick searching of piece of information. All the following indexes MUST be supported by [`applications`](solid-client-protocol.md#application) and MUST be updated whenever a DFC data is created, edited or deleted.
 
 ### Orders
 
 #### Indexing the year and month of orders
 
-Thins index can be used to retrieve orders for a certain period of time like a year or a month of a year.
+This index MUST be registered in one or several type indexes for the class `dfc-t:OrderIndex`. All `dfc-b:Order` SHOULD be indexed.
 
-All `dfc-b:Order` MUST be indexed by their year and month in the `index0.ttl` file at the root of the `/orders/` container.
+Such an index can be used to retrieve orders for a certain period of time like a year or a month of a year.
 
 <details>
 
-<summary>Example of the <code>/orders/index0.ttl</code> index file in turtle</summary>
+<summary>Example of a <code>dfc-t:OrderIndex</code> in turtle</summary>
 
 ```turtle
 @base <https://example.pod/username/datafoodconsortium>.
 @prefix solid: <http://www.w3.org/ns/solid/terms#>.
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
-@prefix dfc-m: <https://www.datafoodconsortium.org/measures#>.
+@prefix dfc-m: <TBD>.
 @prefix index: <TBD>.
+@prefix dfc-t: <TBD>.
 
 <>
-    a index:Index;
+    a index:Index, dfc-t:OrderIndex;
     a solid:ListedDocument;
     
 <#1>
@@ -490,22 +111,23 @@ All `dfc-b:Order` MUST be indexed by their year and month in the `index0.ttl` fi
 
 #### Indexing the first letter of the family name
 
-Such an index can be used to display quickly a person when the user types the beginning of a family name.
+This index MUST be registered in one or several type indexes for the class `dfc-t:PersonIndex`. All `dfc-b:Person` SHOULD be indexed. It MUST contain a registration for each first symbol used in the family name of all the persons.
 
-All `dfc-b:Person` MUST be indexed in the `/agents/persons/index0.ttl` file. This index MUST contain a registration for each first symbol used in the family name of all the persons.
+Such an index can be used to display quickly a person when the user types the beginning of a family name.
 
 <details>
 
-<summary>Example for the <code>/agents/persons/index0.ttl</code> file</summary>
+<summary>Example of a <code>dfc-t:PersonIndex</code> in turtle</summary>
 
 ```turtle
 @base <https://example.pod/username/datafoodconsortium>.
 @prefix solid: <http://www.w3.org/ns/solid/terms#>.
 @prefix dfc-b: <https://www.datafoodconsortium.org#>.
 @prefix index: <TDB>.
+@prefix dfc-t: <TBD>.
 
 <>
-    a index:Index;
+    a index:Index, dfc-t:PersonIndex;
     a solid:ListedDocument;
     index:forProperty dfc-b:familyName.
 
@@ -531,22 +153,23 @@ All `dfc-b:Person` MUST be indexed in the `/agents/persons/index0.ttl` file. Thi
 
 #### Indexing the product types contained in a catalog
 
-This index can be used to quickly find all the catalog items referencing a product of a given type. For instance, it can be used to find all the tomatoes listed in a catalog.
+This index MUST be registered in one or several type indexes for the class `dfc-t:ProductTypeIndex`. All `dfc-b:CatalogItem` SHOULD be indexed. It MUST contain registrations mentionning product type.
 
-All `dfc-b:CatalogItem` MUST be indexed in the `index0.ttl` file at the root of a `dfc-b:Catalog`. It MUST contain registrations mentionning product type.
+Such an index can be used to quickly find all the catalog items referencing a product of a given type. For instance, it can be used to find all the tomatoes listed in a catalog.
 
 <details>
 
-<summary>Example for the <code>/catalogs/default/index0.ttl</code> file in turtle</summary>
+<summary>Example of a <code>dfc-t:ProductTypeIndex</code> in turtle</summary>
 
 ```turtle
 @base <https://example.pod/username/datafoodconsortium>.
 @prefix solid: <http://www.w3.org/ns/solid/terms#>.
 @prefix dfc-pt: <https://www.datafoodconsortium.org/productTypes#>.
 @prefix index: <TBD>.
+@prefix dfc-t: <TBD>.
 
 <>
-    a index:Index;
+    a index:Index, dfc-t:ProductTypeIndex;
     a solid:ListedDocument.
 
 <#ab09fd> a index:Registration;
@@ -564,11 +187,11 @@ All `dfc-b:CatalogItem` MUST be indexed in the `index0.ttl` file at the root of 
 
 ### TypeIndex
 
-A DFC Solid compliant application MUST advertise its containers and all the indexes in the public TypeIndex.
+[Applications](solid-client-protocol.md#application) MUST advertise their DFC resources, containers and indexes in one or several `solid:TypeIndex`.
 
 <details>
 
-<summary>Example of a DFC app public TypeIndex in turtle</summary>
+<summary>Example of a type index in turtle</summary>
 
 ```turtle
 @base <https://example.pod/username/datafoodconsortium>.
@@ -624,12 +247,17 @@ A DFC Solid compliant application MUST advertise its containers and all the inde
     solid:forClass dfc-b:SaleSession;
     solid:instanceContainer </sale-sessions/>.
     
-<#indexes> a solid:TypeRegistration;
-    solid:forClass index:Index;
-    solid:instance 
-        </agents/persons/index0.ttl>,
-        </catalogs/default/index0.ttl>,
-        </orders/index0.ttl>.
+<#person-index> a solid:TypeRegistration;
+    solid:forClass index:PersonIndex;
+    solid:instance </agents/persons/index0.ttl>.
+    
+<#product-type-index> a solid:TypeRegistration;
+    solid:forClass index:ProductTypeIndex;
+    solid:instance </catalogs/default/index0.ttl>.
+
+<#order-index> a solid:TypeRegistration;
+    solid:forClass index:OrderIndex;
+    solid:instance </orders/index0.ttl>.
 ```
 
 </details>
