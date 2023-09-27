@@ -68,6 +68,8 @@ When users don't know or don't want to choose where to save their data, an [appl
 
 [Applications](solid-client-protocol.md#application) MUST fill and keep updated several indexes in order to allow quick searching of piece of information. All the following indexes MUST be supported by [`applications`](solid-client-protocol.md#application) and MUST be updated whenever a DFC data is created, edited or deleted.
 
+The [application](solid-client-protocol.md#application) who creates, edit or delete data MUST update all the appropriate indexes. While updating indexes is its responsibility, an [application](solid-client-protocol.md#application) can delegate that work to some agent(s).
+
 ### Orders
 
 #### Indexing the year and month of orders
@@ -153,7 +155,9 @@ Such an index can be used to display quickly a person when the user types the be
 
 #### Indexing the product types contained in a catalog
 
-This index MUST be registered in one or several type indexes for the class `dfc-t:ProductTypeIndex`. All `dfc-b:CatalogItem` SHOULD be indexed. It MUST contain registrations mentionning product type.
+This index MUST be registered in one or several type indexes for the class `dfc-t:ProductTypeIndex`. All `dfc-b:CatalogItem` SHOULD be indexed. It MUST contain registrations mentioning product type.
+
+This index MUST contain registrations for inferred product types. For instance, if a registration is created for the `dfc-pt:heirloom-tomato` product type, a registration MUST also be created for both the `dfc-pt:tomato` and the `dfc-pt:vegetable` product types.
 
 Such an index can be used to quickly find all the catalog items referencing a product of a given type. For instance, it can be used to find all the tomatoes listed in a catalog.
 
@@ -162,25 +166,43 @@ Such an index can be used to quickly find all the catalog items referencing a pr
 <summary>Example of a <code>dfc-t:ProductTypeIndex</code> in turtle</summary>
 
 ```turtle
-@base <https://example.pod/username/datafoodconsortium>.
+@base <https://example.pod/username/datafoodconsortium/>.
 @prefix solid: <http://www.w3.org/ns/solid/terms#>.
 @prefix dfc-pt: <https://www.datafoodconsortium.org/productTypes#>.
 @prefix index: <TBD>.
 @prefix dfc-t: <TBD>.
+@prefix : <productTypeIndex>.
 
-<>
+<#>
     a index:Index, dfc-t:ProductTypeIndex;
     a solid:ListedDocument.
 
-<#ab09fd> a index:Registration;
-    solid:instance </catalogs/default/catalog-items/artichoke.ttl>;
+<#artichokes> a index:Registration;
+    solid:instance <catalogs/default/catalog#artichoke>;
     index:mentions dfc-pt:artichoke.
+
+<#round-tomatoes> a index:Registration;
+    solid:instance <catalogs/default/catalog#round-tomato>;
+    index:mentions dfc-pt:round-tomato.
     
-<#tf76pl> a index:Registration;
+<#cherry-tomatoes> a index:Registration;
+    solid:instance <catalogs/default/catalog#cherry-tomato>;
+    index:mentions dfc-pt:cherry-tomato.
+
+# Inferred registration
+<#tomatoes> a index:Registration;
     solid:instance 
-        </catalogs/default/catalog-items/round-tomato.ttl>,
-        </catalogs/default/catalog-items/cherry-tomato.ttl>;
+        <catalogs/default/catalog#round-tomato>,
+        <catalogs/default/catalog#cherry-tomato>;
     index:mentions dfc-pt:tomato.
+
+# Inferred registration
+<#vegetables> a index:Registration;
+    solid:instance 
+        <catalogs/default/catalog#artichoke>,
+        <catalogs/default/catalog#round-tomato>,
+        <catalogs/default/catalog#cherry-tomato>;
+    index:mentions dfc-pt:vegetable.
 ```
 
 </details>
@@ -223,9 +245,10 @@ Such an index can be used to quickly find all the catalog items referencing a pr
     solid:forClass dfc-b:Catalog;
     solid:instanceContainer </catalogs/>.
     
-<#catalog-items> a solid:TypeRegistration;
-    solid:forClass dfc-b:CatalogItem;
-    solid:instanceContainer </catalog-items/>.
+# Every catalog MUST be registered
+<#catalog1> a solid:TypeRegistration;
+    solid:forClass dfc-b:Catalog;
+    solid:instance </catalogs/default/catalog.ttl>.
     
 <#functional-products> a solid:TypeRegistration;
     solid:forClass dfc-b:FunctionalProduct;
@@ -268,9 +291,19 @@ This section defines how data is paged and sorted.
 
 ## Access rights
 
+By default all resources are only accessible to the owner of the POD (private).
+
+When a new `dfc-b:CatalogItem` is created, it inherits the access rights of its parent `dfc-b:Catalog`.
+
 ## Notifications
 
+When data is created, changed or deleted, applications MUST send a ActivityPub notification.
+
 ## Error codes
+
+The following table lists the different errors that can occur in applications. When an error happens, applications SHOULD display the error code and the "user description". Applications SHOULD also display the "technical description" if any. User descriptions are intended to provide clear and easy to understand reason(s) about what caused the error so users may find a way to solve the issue by themselves.
+
+<table><thead><tr><th width="118">Code</th><th>User description</th><th>Technical description</th><th data-hidden>Technical description</th></tr></thead><tbody><tr><td>404</td><td></td><td>Profile document not found.</td><td>Invalid profile document.</td></tr><tr><td></td><td></td><td>Invalid profile document.</td><td>No type index found.</td></tr><tr><td>404</td><td></td><td>Type indexes not found.</td><td></td></tr><tr><td></td><td></td><td>Invalid Type Index.</td><td></td></tr></tbody></table>
 
 ## Revisions and automated backups
 
