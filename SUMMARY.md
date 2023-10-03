@@ -15,6 +15,10 @@
   * [Architecture representations](technical-specifications/architecture-representations.md)
 * [Prototype specifications](prototype-specifications.md)
 * [🚧 Solid client protocol](solid-client-protocol.md)
+* [🚧 Connector](connector/README.md)
+  * [Model specifications](connector/model-specifications.md)
+  * [Semantizer specifications](connector/semantizer-specifications.md)
+  * [Connector specifications](connector/connector-specifications.md)
 
 ## Appendixes
 
