@@ -12,19 +12,19 @@ The consortium is currently facilitated by Caroline Brakel.
 
 Participants vary all the time, but we can mention some active member organizations, that are mainly located in France as the project started there:
 
-* [Open Food France](https://www.openfoodfrance.org/) and [Open Food Network](https://openfoodnetwork.org/) more generaly, project coordinators
+* [Open Food France](https://www.openfoodfrance.org/) and [Open Food Network](https://openfoodnetwork.org/) more generally, project coordinators
 * [Socleo](https://www.socleo.fr/) (ex-Panier Local, CLEOP)
 * [Virtual Assembly](https://www.virtual-assembly.org/association-virtual-assembly/), technical facilitators
-* [The Food Assembly](https://laruchequiditoui.fr/fr) (La Ruche Qui Dit Oui / Equanum)
-* [Cagette](https://www.cagette.net/) (ALILO)
+* [AlmaFood](https://almafood.fr)
+* [Mycelium](https://www.virtual-assembly.org/demo-av-mycelium-des-apps-de-gestion-interoperables-libres-et-ethiques-au-service-des-paysans-19-avril-a-17h/)
 * [Elzeard](https://www.elzeard.co/)
-* [Promus](https://www.promus.fr/)
-* Le chemin des mûres
 * and many others !
 
 ## Funders and supporters
 
 The project started in France and project leaders have found financial support until now mainly through 3 French Foundations and Institutions:
+
+<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 ![](.gitbook/assets/carasso.png)
 

@@ -312,21 +312,3 @@ Should we be able to automatically backup the storage?
 ## Encryption
 
 ## Appendixes
-
-### Resources locations index
-
-| Resource type             | Resource location in the root container  |
-| ------------------------- | ---------------------------------------- |
-| `dfc-b:Address`           | `/addresses/`                            |
-| `dfc-b:Catalog`           | `/catalogs/`                             |
-| `dfc-b:CatalogItem`       | `/catalogs/<catalog>/catalog-items/`     |
-| `dfc-b:CustomerCategory`  | `/agents/customer-categories.ttl`        |
-| `dfc-b:Enterprise`        | `/agents/enterprises/`                   |
-| `dfc-b:FunctionalProduct` | `/defined-products/functional-products/` |
-| `dfc-b:Offer`             | `/catalogs/<catalog>/items/<item>#`      |
-| `dfc-b:Order`             | `/orders/`                               |
-| `dfc-b:OrderLine`         | `/orders/<order>#<order-line>`           |
-| `dfc-b:Person`            | `/agents/persons/`                       |
-| `dfc-b:SaleSession`       | `/sale-sessions/`                        |
-| `dfc-b:SuppliedProduct`   | `/defined-products/supplied-products/`   |
-| `dfc-b:TechnicalProduct`  | `/defined-products/technical-products/`  |
