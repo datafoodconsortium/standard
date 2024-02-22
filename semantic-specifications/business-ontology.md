@@ -8,7 +8,7 @@ This specification has been built since March 2017, through iterations of field 
 
 The human readable models can be represented as follows:
 
-<figure><img src="../.gitbook/assets/DFC_Business_1_8 (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/DFC_Business_1_9.png" alt=""><figcaption></figcaption></figure>
 
 [Click here to access a zoomable version of the document.](https://docs.google.com/presentation/d/157i0ySW3T89KviZHmderXl7X0ywuvtz0QunaHJcEF\_Q/edit?usp=sharing)
 
