@@ -59,4 +59,7 @@ Covering the Product Type hierarchy utilized for categorising products (Defined,
       * Temperature
 
 
+* **Vocabulary**
+
+Contains enumerated lists that do not fit into other areas (e.g. Order States, Transformation Types)
 

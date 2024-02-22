@@ -7,3 +7,5 @@ A major release must be reviewed and signed off by at least 2 members of the ont
 All partner platforms will be notified through their contact email. Platforms must respond confirming acceptance of the release before proceeding to public notification.&#x20;
 
 A major release will then be publicly notified (a minimum of 10 days in advance of release) by broadcast on Slack & Github.
+
+After the appropriate notice period, the release will be marked as "Latest Release"
