@@ -10,20 +10,22 @@ The DFC strives to ensure no-one using our standard is unduly impacted by change
 
 2. We will follow semantic versioning, so any breaking changes should constitute a major version change.
 
-3. We will support 2 major versions with any urgent patch/fixpack Changes
+3. We will support 2 major versions with any urgent patch/fixpack changes.
 
-4. We will maintain an open register of platforms utilising the standard who will be informed of  all changes and consulted on Major changes.
+4. We will maintain an open register of platforms utilising the standard who will be informed of all changes and consulted on Major changes.
+
+5. We will notify of all changes via our [DFC-Releases mailing list](https://framagroupes.org/sympa/subscribe/dfc-releases).
 
 ## Platform Register
 
 Platforms implementing the DFC standard are encouraged to actively participate in our ongoing community-driven development process, register on our [Slack workspace](https://app.slack.com/client/T3CKZMVGR/) and join our [regular calls](./#get-in-touch).
 
-We maintain a register of platforms that are implementing our standard in our [Standard Repository](./standard/). You can add your details to this file via a PR or [open an issue in the Standard Repository](https://github.com/datafoodconsortium/standard/issues/new)
+We maintain a register of platforms that are implementing our standard in our [Standard Repository](./standard/). You can add your details to this file via a PR or [open an issue in the Standard Repository](https://github.com/datafoodconsortium/standard/issues/new).
 
 
 ## Notification of Changes
 
-All registered platforms will be notified, via the details in the Platforms Register, or all changes according to the schedules agreed in the relevant change processes:
+All registered platforms will be notified, via the details in the Platforms Register, of all changes according to the schedules agreed in the relevant change processes:
 
 ### [Major Version Releases](updates-to-the-ontology/major-releases-procedure.md)
 
