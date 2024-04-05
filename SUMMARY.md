@@ -55,10 +55,15 @@
 
 ## Contributing
 
-* [🚧 Procedures](contributing/general-decisions/README.md)
+* [Procedures](contributing/general-decisions/README.md)
   * [Updates to the ontology](contributing/general-decisions/updates-to-the-ontology/README.md)
     * [Patch releases procedure](contributing/general-decisions/updates-to-the-ontology/patch-releases-procedure.md)
     * [Minor releases procedure](contributing/general-decisions/updates-to-the-ontology/minor-releases-procedure.md)
     * [Major releases procedure](contributing/general-decisions/updates-to-the-ontology/major-releases-procedure.md)
   * [Taxonomy enrichment](contributing/general-decisions/taxonomy-enrichment/README.md)
     * [Taxonomy updates](contributing/general-decisions/taxonomy-enrichment/taxonomy-updates.md)
+* [Platform Notifcations](contributing/platform-notifications.md)
+
+## Platform Register
+
+* [Platform Register](register/platformRegister.md)
