@@ -10,4 +10,4 @@ This gives us the most robust implementation of the standard: allowing an applic
 
 ## Decision
 
-* When transmitting data via the DFC standard. All relationships (including any/all inverse links) in the ontology MUST be provided.
+* When transmitting data via the DFC standard any and all inverse relations (that exist in the ontology) MUST be provided for each transferred property.
