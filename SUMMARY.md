@@ -38,6 +38,7 @@
   * [Transport layer](appendixes/technical-decisions/transport-layer.md)
   * [Multi- or single-resource requests?](appendixes/technical-decisions/multi-or-single-resource-requests.md)
   * [Right delegation between platforms and DFC](appendixes/technical-decisions/right-delegation-between-platforms-and-dfc.md)
+  * [Data validity and inferences](appendixes/technical-decisions/data-validity-and-inferences.md)
 * [Appendix 3. Practical Examples](appendixes/practical-examples/README.md)
   * [Version 1.9](appendixes/practical-examples/version-1.9.md)
   * [Version 1.8.2](appendixes/practical-examples/version-1.8.2.md)
