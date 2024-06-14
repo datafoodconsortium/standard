@@ -3,7 +3,9 @@
 * [Introduction](README.md)
 * [Sources and licences](sources-and-licences.md)
 * [Contact and partners](contact-and-partners.md)
-* [Enterprise](enterprise.md)
+
+## DFC protocol
+
 * [Semantic specifications](semantic-specifications/README.md)
   * [Business ontology](semantic-specifications/business-ontology.md)
   * [Product ontology](semantic-specifications/product-ontology.md)
@@ -14,12 +16,20 @@
   * [Specifics API](technical-specifications/non-ldp-api.md)
   * [Authentication strategy](technical-specifications/authentication-strategy.md)
   * [Architecture representations](technical-specifications/architecture-representations.md)
-* [Prototype specifications](prototype-specifications.md)
-* [🚧 Solid client protocol](solid-client-protocol.md)
+
+## Client protocols
+* [Enterprise](enterprise.md)
+
+## Connectors
+
 * [🚧 Connector](connector/README.md)
   * [Model specifications](connector/model-specifications.md)
   * [Semantizer specifications](connector/semantizer-specifications.md)
   * [Connector specifications](connector/connector-specifications.md)
+
+## DFC prototype
+
+* [Prototype specifications](prototype-specifications.md)
 
 ## Appendixes
 
