@@ -19,6 +19,7 @@
 
 ## Client protocols
 * [Enterprise](enterprise.md)
+* [Catalog](catalog.md)
 
 ## Connectors
 

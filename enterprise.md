@@ -1,23 +1,65 @@
-# Abstract
-
 TBD.
 
-# Enterprise
+# Structure
 
 This document describes the structure of the data in a enterprise, the main class of which is `dfc-b:Enterprise`. The enterprise data is a set of RDF triples - linked data links. When reading an enterprise, where there are links, those must be followed, and no assumptions made about the URIs.
 
-An enterprise is all built inside a single folder (LDP Container). Let us call the URI of that folder -- less its final '/' -- $ROOT. It could be say, https://example.org/enterprise. Developers must never make assumptions about where an enterprise is stored as enterprises are used within other apps which create the container for them.
+An enterprise is all built inside a single folder (LDP Container). Let us call the URI of that folder -- less its final '/' -- $ROOT. It could be say, https://example.org/myEnterprise. Developers must never make assumptions about where an enterprise is stored as enterprises are used within other apps which create the container for them.
+
+For instance, a request to get the enterprise folder at https://example.org/myEnterprise/:
+```http
+GET /myEnterprise/ HTTP/1.1
+Host: example.org
+Accept: application/ld+json
+```
+
+Should respond something like:
+```http
+HTTP/1.1 200 OK
+Content-Type: application/ld+json
+
+{
+    "@context": {
+        "ldp": "http://www.w3.org/ns/ldp#",
+        "ldp:contains": {
+            "@type": "@id"
+        }
+    },
+    "@base": "https://example.org/myEnterprise/",
+    "@graph": [
+        {
+            "@id": "./",
+            "@type": "ldp:BasicContainer",
+            "ldp:contains": [
+                "./index",
+                "./typeIndex"
+            ]
+        }
+    ]
+}
+```
 
 Within that folder, the enterprise object is normally defined at $ROOT/index#this. The enterprise object MUST have the type `dfc-b:Enterprise` and the `dfc-b:name` and `dfc-b:hasTypeIndex` properties MUST be defined. Other properties can be defined like listed in the enterprise shape below.
 
-Here is an example of the root document of an enterprise:
+A request to get the root document of the enterprise https://example.org/myEnterprise/index#this:
+```http
+GET /myEnterprise/index HTTP/1.1
+Host: example.org
+Accept: application/ld+json
+```
 
-```json
+Should respond something like:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/ld+json
+
 {
     "@context": "https://www.datafoodconsortium.org",
+    "@base": "https://example.org/myEnterprise/",
     "@graph": [
         {
-            "@id": "https://example.org/enterprise/index#this",
+            "@id": "./index#this",
             "@type": "dfc-b:Enterprise",
             "dfc-b:name": "My enterprise",
             "dfc-b:hasTypeIndex": "./typeIndex"
@@ -26,19 +68,31 @@ Here is an example of the root document of an enterprise:
 }
 ```
 
+The enterprise folder can contain 
+
 # Internal type index
 
 Within the enterprise root document the value of the property `dfc-b:hasTypeIndex` MUST link to a `solid:TypeIndex` document contained into the enterprise folder (normally at the root level). This type index contains links to where certain type of data can be found into the enterprise folder (LDP container).
 
 The semantics of the Solid Type Indexes applies. 
 
+```http
+GET /myEnterprise/typeIndex HTTP/1.1
+Host: example.org
+Accept: application/ld+json
+```
+
 Here is an example of a complete type index:
-```json
+```http
+HTTP/1.1 200 OK
+Content-Type: application/ld+json
+
 {
     "@context": "https://www.datafoodconsortium.org",
+    "@base": "https://example.org/myEnterprise/",
     "@graph": [
         {
-            "@id": "https://example.org/enterprise/typeIndex",
+            "@id": "/myEnterprise/typeIndex",
             "@type": "solid:TypeIndex"
         },
         {
@@ -111,7 +165,7 @@ Here is an example of a complete type index:
 }
 ```
 
-# Enterprise shape and examples
+# Shape
 
 ```
 :EnterpriseShape a sh:NodeShape;
@@ -206,35 +260,33 @@ Here is an example of a complete type index:
     ];
 ```
 
+# Examples
+
 ```json
 {
     "@context": "https://www.datafoodconsortium.org",
+    "@base": "https://example.org/myEnterprise/",
     "@graph": [
         {
-            "@id": "https://example.org/enterprise/index#this",
+            "@id": "./index#this",
             "@type": "dfc-b:Enterprise",
             "dfc-b:name": "My enterprise",
-        },
-        {
-            "@id": "https://example.org/enterprise/index#this",
-            "@type": "dfc-b:Enterprise",
-            "dfc-b:name": "Name of the farm",
-            "dfc-b:maintains": "https://example.org/catalog1/index#this"
+            "dfc-b:maintains": "./catalogs/catalog1/index#this"
         }
         {
-            "@id": "https://example.org/catalog1/index#item1",
+            "@id": "./catalogs/catalog1/index#item1",
             "@type": "dfc-b:CatalogItem",
             "dfc-b:name": "Tomato",
-            "dfc-b:references": "https://example.org/enterprise/products#tomato",
-            "dfc-b:offeredThrough": "https://example.org/catalog1/index#offer1"
+            "dfc-b:references": "./products#tomato",
+            "dfc-b:offeredThrough": "./catalogs/catalog1/index#offer1"
         },
         {
-            "@id": "https://example.org/enterprise/products#tomato",
+            "@id": "./products#tomato",
             "@type": "dfc-b:SuppliedProduct",
             "dfc-b:name": "Tomato"
         },
         {
-            "@id": "https://example.org/catalog1/index#offer1",
+            "@id": "./catalogs/catalog1/index#offer1",
             "@type": "dfc-b:Offer",
         }
     ]
@@ -273,3 +325,9 @@ Here is an example of a complete type index:
 ```
 
 # Discovery
+
+The RDF class used to register an instance of a catalog is `dfc-b:Enterprise`.
+
+Type Indexes may be used with that class to register enterprises of a storage.
+
+To make a link to an enterprise, one does not have to be the owner of it. The access control does not have to match: it is possible to have a private link to a public resource and vice-versa. 
