@@ -3,6 +3,7 @@
 * [Introduction](README.md)
 * [Sources and licences](sources-and-licences.md)
 * [Contact and partners](contact-and-partners.md)
+* [Enterprise](enterprise.md)
 * [Semantic specifications](semantic-specifications/README.md)
   * [Business ontology](semantic-specifications/business-ontology.md)
   * [Product ontology](semantic-specifications/product-ontology.md)
