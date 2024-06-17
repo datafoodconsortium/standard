@@ -1,4 +1,4 @@
-TBD.
+The enterprise ...
 
 # Structure
 
@@ -39,7 +39,7 @@ Content-Type: application/ld+json
 }
 ```
 
-Within that folder, the enterprise object is normally defined at $ROOT/index#this. The enterprise object MUST have the type `dfc-b:Enterprise` and the `dfc-b:name` and `dfc-b:hasTypeIndex` properties MUST be defined. Other properties can be defined like listed in the enterprise shape below.
+Within that folder the enterprise object is normally defined at $ROOT/index#this. This document is a WebId. The enterprise object MUST have the type `dfc-b:Enterprise` and the `dfc-b:name` and `dfc-b:hasTypeIndex` properties MUST be defined. Other properties can be defined like listed in the enterprise shape below.
 
 A request to get the root document of the enterprise https://example.org/myEnterprise/index#this:
 ```http
@@ -59,111 +59,176 @@ Content-Type: application/ld+json
     "@base": "https://example.org/myEnterprise/",
     "@graph": [
         {
+            "@id": "./index",
+            "@type": "foaf:personalProfileDocument",
+            "foaf:primaryTopic": "./index#this"
+        },
+        {
             "@id": "./index#this",
-            "@type": "dfc-b:Enterprise",
+            "@type": [
+                "foaf:Agent",
+                "foaf:Organization",
+                "dfc-b:Enterprise"
+            ]
             "dfc-b:name": "My enterprise",
-            "dfc-b:hasTypeIndex": "./typeIndex"
+            "dfc-b:hasAddress": {
+                "@type": "dfc-b:Address",
+                "dfc-b:country": "France"
+            },
+            "dfc-b:VATnumber": "12346789",
+            "solid:publicTypeIndex": "",
+            "solid:preferencesFile": "",
+            "rdfs:seeAlso": "",
+            "owl:sameAs": ""
         }
     ]
 }
 ```
 
-The enterprise folder can contain 
+# Products
 
-# Internal type index
+The products of the entreprise MUST be stored in the $ROOT/products folder (LPD container). This folder MUST contain an index document that contains the products identifier.
 
-Within the enterprise root document the value of the property `dfc-b:hasTypeIndex` MUST link to a `solid:TypeIndex` document contained into the enterprise folder (normally at the root level). This type index contains links to where certain type of data can be found into the enterprise folder (LDP container).
-
-The semantics of the Solid Type Indexes applies. 
-
+Getting the products folder:
 ```http
-GET /myEnterprise/typeIndex HTTP/1.1
+GET /myEnterprise/products/ HTTP/1.1
 Host: example.org
 Accept: application/ld+json
 ```
 
-Here is an example of a complete type index:
+Should respond something like:
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/ld+json
 
 {
-    "@context": "https://www.datafoodconsortium.org",
-    "@base": "https://example.org/myEnterprise/",
+    "@context": {
+        "ldp": "http://www.w3.org/ns/ldp#",
+        "ldp:contains": {
+            "@type": "@id"
+        }
+    },
+    "@base": "https://example.org/myEnterprise/products/",
     "@graph": [
         {
-            "@id": "/myEnterprise/typeIndex",
-            "@type": "solid:TypeIndex"
-        },
-        {
-            "@id": "#functionalProducts",
-            "@type": "solid:TypeRegistration",
-            "solid:forClass": "dfc:FunctionalProduct",
-            "solid:instance": "./products"
-        },
-        {
-            "@id": "#technicalProducts",
-            "@type": "solid:TypeRegistration",
-            "solid:forClass": "dfc:TechnicalProduct",
-            "solid:instance": "./products"
-        },
-        {
-            "@id": "#suppliedProducts",
-            "@type": "solid:TypeRegistration",
-            "solid:forClass": "dfc:SuppliedProduct",
-            "solid:instance": "./products"
-        },
-        {
-            "@id": "#localizedProducts",
-            "@type": "solid:TypeRegistration",
-            "solid:forClass": "dfc:LocalizedProduct",
-            "solid:instance": "./products"
-        },
-        {
-            "@id": "#physicalProducts",
-            "@type": "solid:TypeRegistration",
-            "solid:forClass": "dfc:PhysicalProduct",
-            "solid:instance": "./products"
-        },
-        {
-            "@id": "#persons",
-            "@type": "solid:TypeRegistration",
-            "solid:forClass": "dfc:Person",
-            "solid:instanceContainer": "./thirdParties/"
-        },
-        {
-            "@id": "#enterprises",
-            "@type": "solid:TypeRegistration",
-            "solid:forClass": "dfc:Enterprise",
-            "solid:instanceContainer": "./thirdParties/"
-        },
-        {
-            "@id": "#catalogs",
-            "@type": "solid:TypeRegistration",
-            "solid:forClass": "dfc:Catalog",
-            "solid:instanceContainer": "./catalogs/"
-        },
-        {
-            "@id": "#customerCategories",
-            "@type": "solid:TypeRegistration",
-            "solid:forClass": "dfc:CustomerCategory",
-            "solid:instance": "./persons"
-        },
-        {
-            "@id": "#saleSessions",
-            "@type": "solid:TypeRegistration",
-            "solid:forClass": "dfc:SaleSession",
-            "solid:instanceContainer": "./saleSessions/"
-        },
-        {
-            "@id": "#orders",
-            "@type": "solid:TypeRegistration",
-            "solid:forClass": "dfc:Order",
-            "solid:instanceContainer": "./orders/"
+            "@id": "./",
+            "@type": "ldp:BasicContainer",
+            "ldp:contains": [
+                "./index"
+            ]
         }
     ]
 }
 ```
+
+Within the products folder there MUST be an index document. This document defines products identifier which will be used by other objects like catalogs. This document can provide all the information of products or only a part. Additional information could be gave in other documents using the `rdf:seeAlso` predicate. This is particulary useful when some information must be access restricted. For instance, the index document could be public and links to other protected document for certain details about the products.
+
+Getting the index document of the products folder:
+```http
+GET /myEnterprise/products/index HTTP/1.1
+Host: example.org
+Accept: application/ld+json
+```
+
+Should respond something like:
+```http
+HTTP/1.1 200 OK
+Content-Type: application/ld+json
+
+{
+    "@context": "www.datafoodconsortium.org",
+    "@base": "https://example.org/myEnterprise/products/index",
+    "@graph": [
+        {
+            "@id": ".",
+            "@type": "dfc-b:ProductBook"
+        },
+        {
+            "@id": "#p1",
+            "@type": "dfc-b:SuppliedProduct",
+            "dfc-b:name": "Tomato",
+            "rdfs:seeAlso": "./protected"
+        },
+        {
+            "@id": "#p2",
+            "rdfs:seeAlso": "./protected" 
+        }
+    ]
+}
+```
+
+The two products https://example.org/myEnterprise/products/index#p1 and https://example.org/myEnterprise/products/index#p2.
+
+Getting a protected access product document:
+```http
+GET /myEnterprise/products/protected HTTP/1.1
+Host: example.org
+Accept: application/ld+json
+```
+
+Should respond something like:
+```http
+HTTP/1.1 200 OK
+Content-Type: application/ld+json
+
+{
+    "@context": "www.datafoodconsortium.org",
+    "@base": "https://example.org/myEnterprise/products/index",
+    "@graph": [
+        {
+            "@id": "#p1",
+            "dfc-b:description": "Description is access protected."
+        },
+        {
+            "@id": "#p2",
+            "@type": "dfc-b:SuppliedProduct",
+            "dfc-b:name": "My product",
+            "dfc-b:description": "Description is access protected." 
+        }
+    ]
+}
+```
+
+# Catalogs
+
+# Sale sessions
+
+# Orders
+
+## Placed orders
+
+## Received orders
+
+# Indexes
+
+```json
+{
+    "@context": "https://www.datafoodconsortium.org",
+    "@graph": [
+        {
+            "@id": "https://example.org/myEnterprise/index#this",
+            "@type": "dfc-b:Enterprise",
+            "dfc-b:name": "My enterprise",
+            "dfc-b:placedOrderByDateIndex": "",
+            "dfc-b:receivedOrderByDateIndex": "",
+            "dfc-b:saleSessionByDateIndex": ""
+        }
+    ]
+}
+```
+
+# Access control
+
+The access control for an enterprise must be set to reflect the user's wishes. One can recognize three roles: the owner of the enterprise who creates it, the salaries who are allowed to write to it, and the viewers who are allowed to read it. 
+
+# Discovery
+
+The RDF class used to register an instance of a catalog is `dfc-b:Enterprise`.
+
+Type Indexes may be used with that class to register enterprises of a storage.
+
+To make a link to an enterprise, one does not have to be the owner of it. The access control does not have to match: it is possible to have a private link to a public resource and vice-versa. 
+
 
 # Shape
 
@@ -261,73 +326,3 @@ Content-Type: application/ld+json
 ```
 
 # Examples
-
-```json
-{
-    "@context": "https://www.datafoodconsortium.org",
-    "@base": "https://example.org/myEnterprise/",
-    "@graph": [
-        {
-            "@id": "./index#this",
-            "@type": "dfc-b:Enterprise",
-            "dfc-b:name": "My enterprise",
-            "dfc-b:maintains": "./catalogs/catalog1/index#this"
-        }
-        {
-            "@id": "./catalogs/catalog1/index#item1",
-            "@type": "dfc-b:CatalogItem",
-            "dfc-b:name": "Tomato",
-            "dfc-b:references": "./products#tomato",
-            "dfc-b:offeredThrough": "./catalogs/catalog1/index#offer1"
-        },
-        {
-            "@id": "./products#tomato",
-            "@type": "dfc-b:SuppliedProduct",
-            "dfc-b:name": "Tomato"
-        },
-        {
-            "@id": "./catalogs/catalog1/index#offer1",
-            "@type": "dfc-b:Offer",
-        }
-    ]
-}
-```
-
-# Products
-
-# Catalogs
-
-# Sale sessions
-
-# Orders
-
-## Placed orders
-
-## Received orders
-
-# Indexes
-
-```json
-{
-    "@context": "https://www.datafoodconsortium.org",
-    "@graph": [
-        {
-            "@id": "https://example.org/enterprise/index#this",
-            "@type": "dfc-b:Enterprise",
-            "dfc-b:name": "My enterprise",
-            "dfc-b:hasTypeIndex": "./typeIndex",
-            "dfc-b:placedOrderByDateIndex": "",
-            "dfc-b:receivedOrderByDateIndex": "",
-            "dfc-b:saleSessionByDateIndex": ""
-        }
-    ]
-}
-```
-
-# Discovery
-
-The RDF class used to register an instance of a catalog is `dfc-b:Enterprise`.
-
-Type Indexes may be used with that class to register enterprises of a storage.
-
-To make a link to an enterprise, one does not have to be the owner of it. The access control does not have to match: it is possible to have a private link to a public resource and vice-versa. 
