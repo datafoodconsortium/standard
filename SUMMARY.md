@@ -16,11 +16,12 @@
   * [Specifics API](technical-specifications/non-ldp-api.md)
   * [Authentication strategy](technical-specifications/authentication-strategy.md)
   * [Architecture representations](technical-specifications/architecture-representations.md)
+* [Object representation](object-representation/README.md)
+  * [Enterprise](object-representation/enterprise.md)
+  * [Person](object-representation/person.md)
+  * [Catalog](object-representation/catalog.md)
 
 ## Client protocols
-* [Enterprise](enterprise.md)
-* [Person](person.md)
-* [Catalog](catalog.md)
 
 ## Connectors
 

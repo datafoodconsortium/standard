@@ -1,6 +1,4 @@
 
-# Abstract
-
 A catalog is an object which holds a collection of products that is shown to clients and prospects. A catalog is usualy created and maintained by producers or by people responsible of the distribution. Then a catalog is shared to its audience who can view the different items in the catalog and buy some products if the catalog contains some offers and the used application provides the feature.
 
 # Catalog
@@ -83,6 +81,14 @@ Below is an example of a catalog where all the data is contained in a single doc
     ]
 }
 ```
+
+# Verifying ownership
+
+Like anybody can create a catalog one should be aware that some catalogs may not be "official" in the sense they are not approved by the owner of the catalog data (items, offers, products).
+
+When displaying a catalog, one should verify the catalog is maintained by the enterprise by checking that the catalog is part of the `dfc-b:maintains` property of the enterprise.
+
+This is not sufficient: we should instead verify that each data of the catalog is true regarding the data of the producer.
 
 # Discovery
 

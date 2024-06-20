@@ -42,7 +42,7 @@ Content-Type: application/ld+json
 }
 ```
 
-Within that folder the enterprise object is normally defined at $ROOT/index#this. This document is a WebId. The enterprise object MUST be of type `dfc-b:Enterprise` and the `dfc-b:name` property MUST be valued. Other properties can be defined like listed in the enterprise shape below.
+Within that folder the enterprise object is normally defined at $ROOT/index#this. This document is a [WebId](https://www.w3.org/2005/Incubator/webid/spec/identity/). The enterprise object MUST be of type `dfc-b:Enterprise` and the `dfc-b:name` property MUST be valued. Other properties can be defined like listed in the enterprise shape below.
 
 A request to get the root document of the enterprise https://example.org/myEnterprise/index#this:
 ```http
@@ -345,6 +345,7 @@ Content-Type: application/ld+json
 
 Third parties can be individual customers or other enterprises. Third parties MUST be stored into the $ROOT/parties folder (LDP container). Individual customer MUST follow the Person specification while enterprise MUST follow the Enterprise specification (this document).
 
+Third parties can be indexed by name, postal code.
 
 # Orders
 
@@ -368,7 +369,10 @@ The received orders of the enterprise MUST be stored in the orders folder of the
             "dfc-b:name": "My enterprise",
             "dfc-b:placedOrderByDateIndex": "",
             "dfc-b:receivedOrderByDateIndex": "",
-            "dfc-b:saleSessionByDateIndex": ""
+            "dfc-b:saleSessionByDateIndex": "",
+            "dfc-b:thirdPartyByNameIndex": "",
+            "dfc-b:thirdPartyByPostalCodeIndex": "",
+            "dfc-b:hasIndexes": "list of self-describing indexes",
         }
     ]
 }
