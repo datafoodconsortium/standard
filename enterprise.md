@@ -266,11 +266,95 @@ Content-Type: application/ld+json
 
 # Sale sessions
 
+The sale sessions of the entreprise MUST be stored in the $ROOT/sales folder (LPD container). This folder MUST contain an index document that contains the sale sessions identifier.
+
+Getting the sales folder:
+```http
+GET /myEnterprise/sales/ HTTP/1.1
+Host: example.org
+Accept: application/ld+json
+```
+
+Should respond something like:
+```http
+HTTP/1.1 200 OK
+Content-Type: application/ld+json
+
+{
+    "@context": {
+        "ldp": "http://www.w3.org/ns/ldp#",
+        "ldp:contains": {
+            "@type": "@id"
+        }
+    },
+    "@base": "https://example.org/myEnterprise/sales/",
+    "@graph": [
+        {
+            "@id": "./",
+            "@type": "ldp:BasicContainer",
+            "ldp:contains": [
+                "./index"
+            ]
+        }
+    ]
+}
+```
+
+Within the sales folder there MUST be an index document. This document defines sale sessions identifier which will be used by other objects like orders. This document can provide all the information of sale sessions or only a part. Additional information could be gave in other documents using the rdf:seeAlso predicate. This is particulary useful when some information must be access restricted. For instance, the index document could be public and links to other protected document for certain details about the sale session.
+
+Getting the index document of the sales folder:
+```http
+GET /myEnterprise/sales/index HTTP/1.1
+Host: example.org
+Accept: application/ld+json
+```
+
+Should respond something like:
+```http
+HTTP/1.1 200 OK
+Content-Type: application/ld+json
+
+{
+    "@context": "www.datafoodconsortium.org",
+    "@base": "https://example.org/myEnterprise/sales/index",
+    "@graph": [
+        {
+            "@id": ".",
+            "@type": "dfc-b:SaleSessionBook"
+        },
+        {
+            "@id": "#sale1",
+            "@type": "dfc-b:SaleSession",
+            "dfc-b:hasStartDate": "",
+            "dfc-b:hasEndDate": "",
+            "dfc-b:lists": [
+                "../catalogs/catalog1/index#offer1",
+                "../catalogs/catalog1/index#offer2"
+            ]
+            "rdfs:seeAlso": "./protected"
+        },
+        {
+            "@id": "#sale2",
+            "rdfs:seeAlso": "./protected" 
+        }
+    ]
+}
+```
+
+# Third parties
+
+Third parties can be individual customers or other enterprises. Third parties MUST be stored into the $ROOT/parties folder (LDP container). Individual customer MUST follow the Person specification while enterprise MUST follow the Enterprise specification (this document).
+
+
 # Orders
 
 ## Placed orders
 
+The orders placed by the entreprise MUST be stored in the $ROOT/orders folder (LPD container). This folder MUST contain an index document that contains the orders identifier.
+
 ## Received orders
+
+The received orders of the enterprise MUST be stored in the orders folder of the third party who ordered the order.
 
 # Indexes
 
