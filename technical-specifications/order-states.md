@@ -17,7 +17,7 @@ Within the DFC Standard is it necessary to indicate what the status of an Order 
 | Fulfilment States | Held | Order is Complete, but cannot be fulfilled at this time (e.g. order is a scheduled future order) |  | shipment/pending | Fulfilment/On Hold <br>Fulfilment/Scheduled |
 |  | Unfulfilled | Order is ready for fulfilment/shipment | In preparation <br>prepared | shipment/ready | Fulfilment/Unfilfillled |
 |  | 	Fulfillled | Order has been fulfilled/shipped | Shipped <br>Delivered | shipment/shipped | Fulfilment/Fulfilled |
-|  | Cancelled | Order is cancelled, no further fulfilment activity should be carried out |  |  | shipment/canceled | Order/Cancelled |
+|  | Cancelled | Order is cancelled, no further fulfilment activity should be carried out |  | shipment/cancelled | shipment/cancelled | Order/Cancelled |
 | Payment States | Unpaid | Full or partial payment is still required on the order |  | payment/checkout <br>payment/balance_due <br>payment/processing <br>payment/requires_authorization <br>payment/failed | Payment/Unpaid (including: <br>Payment/Pending <br>Payment/Overdue <br>Payment/Authorised <br>Payment/PartiallyPaid ) |
 |  | Paid | Full payment has been successfully received on the order |  | payment/credit_owed <br>payment/completed | Payment/Paid |
 |  | Cancelled	Payment has been cancelled, Order State should be Held or Cancelled & no further activity should be carried out until Payment issues are resolved. |  | payment/void | Payment/Voided |
