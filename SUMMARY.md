@@ -19,6 +19,12 @@
   * [Model specifications](connector/model-specifications.md)
   * [Semantizer specifications](connector/semantizer-specifications.md)
   * [Connector specifications](connector/connector-specifications.md)
+* [Use Cases](use-cases/README.md)
+  * [Product Use Cases](use-cases/product-use-cases.md)
+  * [Orders](use-cases/orders.md)
+  * [Order Use Cases](use-cases/order-use-cases/README.md)
+    * [Wholesale Order Processing](use-cases/order-use-cases/wholesale-order-processing.md)
+  * [Page](use-cases/page.md)
 
 ## Appendixes
 
