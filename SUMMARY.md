@@ -24,7 +24,6 @@
   * [Orders](use-cases/orders.md)
   * [Order Use Cases](use-cases/order-use-cases/README.md)
     * [Wholesale Order Processing](use-cases/order-use-cases/wholesale-order-processing.md)
-  * [Page](use-cases/page.md)
 
 ## Appendixes
 
