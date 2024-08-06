@@ -12,7 +12,7 @@ Within the DFC Standard is it necessary to indicate what the status of an Order 
 | :---------- | :--------- | :------------------------------ | :--------------: | :----------------: | :--------------: |
 | Order States | Draft | Order is in a draft state - generally before it is ready for completion - customer can still amend the order. Stock is not reserved. | draft |	cart <br>address <br>delivery <br>confirmation <br>payment <br>resumed | Order/Open |
 |  | Held | Order is held - no activity should be carried out, but order cannot be amended by the customer. Could be due to a variety of conditions (e.g. payment rejected, out of stock errors) | invoiced | | Order/Open |
-| | Complete | Order is finalied and will be ready for fulfilment (although that may not be yet, see Fulfilment States) | validated <br>closed <br>awaiting_payment | complete | Order/Archived |
+| | Complete | Order is finalized and will be ready for fulfilment (although that may not be yet, see Fulfilment States) | validated <br>closed <br>awaiting_payment | complete | Order/Archived |
 | | Cancelled | Order has been cancelled - no further activity should be carried out on the order | canceled <br>retracted <br>refused | canceled | Order/Cancelled |
 | Fulfilment States | Held | Order is Complete, but cannot be fulfilled at this time (e.g. order is a scheduled future order) |  | shipment/pending | Fulfilment/On Hold <br>Fulfilment/Scheduled |
 |  | Unfulfilled | Order is ready for fulfilment/shipment | In preparation <br>prepared | shipment/ready | Fulfilment/Unfilfillled |
