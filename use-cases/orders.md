@@ -58,3 +58,5 @@ dfc-b:hasPart:
   dfc-b:discount: []
 
 ```
+
+<figure><img src="../.gitbook/assets/DFC Ontologie-Catalog -_ Order.drawio (1).png" alt="Diagram showing the Catalog &#x26; Orders Sections of the Ontology"><figcaption><p>Diagram showing the Catalog &#x26; Orders Sections of the Ontology</p></figcaption></figure>

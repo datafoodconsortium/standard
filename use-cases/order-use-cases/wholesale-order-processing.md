@@ -4,7 +4,7 @@ To manage wholesale ordering across platforms, we need to define a process to ma
 
 Traders will generate a single, consolidated Order for a producer, from multiple Customer orders within a Sales Session.
 
-However, when a customer order is generated, we need to ensure stock is reserved/held, so that the Order can be fulfilled.
+However, when a Customer Order is generated, we need to ensure stock is reserved/held, so that the Order can be fulfilled.
 
 An example:
 
@@ -29,4 +29,9 @@ This is managed (using Order & Fulfillment States) with the following flow:
 1. When Customer initiates checkout: Create or Update an Order with the Producer to include all additional Products in Customer basket. Place Order in a `Held` `OrderState` (to reserve Producer stock), and with a `FulfilmentState` of `Held`, pending payment processing.
 2. On successful completion of checkout of Customer Order: do nothing.
 3. On unsuccessful completion of checkout of Customer Order: update Producer Order to remove additional Products required to fulfill that Order (or delete to newly created).
-4. On completion of the Trader's Sales Session: submit (aggregate) the Producer Order by updating `OrderState` to `Complete` and the `FulfilmentState` to `Unfulfilled`.
+4. On completion of the Trader's [Sales Session](#user-content-fn-1)[^1]: submit the (aggregate) Producer Order by updating `OrderState` to `Complete` and the `FulfilmentState` to `Unfulfilled`.
+5. Order Cancellation Processing: if a Customer Order is `Cancelled` within a Sales Session, is it necessary to immediately update the wholesale Order to reflect any reduced requirement. This allows stock to be available for other Customers in the network.
+
+
+
+[^1]: **N.B.** This needs to be after any final Order updates the Trader makes, which may be later than the end of the Customer-facing Sales Session.

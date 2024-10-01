@@ -18,7 +18,9 @@ description: Use cases related to Orders
 
 7. As a Trader I need orders to complete if no inventory information is available so that orders can still be processed by platforms that have not yet implemented inventory management.\
 
-8. As a trader I need to flexibly apply sales-based discounts to orders, so that I can give customers the best deal possible.\
+8. As a Producer I need any cancelled Customer orders to be reflected promptly (Order Lines removed/ Quantities reduced as appropriate) within the Traders Order so that stock can be available for other orders. \
+
+9. As a trader I need to flexibly apply sales-based discounts to orders, so that I can give customers the best deal possible.\
    \
    These are discounts not based on a customer category so the Cust Cat/Offer/Price link isn't easy to traverse (e.g. a bulk discount of 5% if total order value exceeds 100 EUR)
 
