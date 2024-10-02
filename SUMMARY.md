@@ -21,6 +21,7 @@
   * [Connector specifications](connector/connector-specifications.md)
 * [Use Cases](use-cases/README.md)
   * [Product Use Cases](use-cases/product-use-cases/README.md)
+    * [Product Transformations](use-cases/product-use-cases/product-transformations.md)
     * [CSA Use Cases](use-cases/product-use-cases/csa-use-cases.md)
   * [Orders](use-cases/orders.md)
   * [Order Use Cases](use-cases/order-use-cases/README.md)
