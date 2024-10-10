@@ -20,6 +20,7 @@
   * [Semantizer specifications](connector/semantizer-specifications.md)
   * [Connector specifications](connector/connector-specifications.md)
 * [Use Cases](use-cases/README.md)
+  * [Enterprise Use Cases](use-cases/enterprise-use-cases.md)
   * [Product Use Cases](use-cases/product-use-cases/README.md)
     * [Product Transformations](use-cases/product-use-cases/product-transformations.md)
     * [CSA Use Cases](use-cases/product-use-cases/csa-use-cases.md)
