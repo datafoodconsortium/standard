@@ -17,12 +17,18 @@ description: Use cases related to Orders
 6. As a Trader I need an option for Producer orders to be aggregated by weight to the total weight for a sales session per Product so that I can order a single bulk quantity from my supplier.\
 
 7. As a Trader I need orders to complete if no inventory information is available so that orders can still be processed by platforms that have not yet implemented inventory management.\
+   \
+   \
 
 8. As a Producer I need any cancelled Customer orders to be reflected promptly (Order Lines removed/ Quantities reduced as appropriate) within the Traders Order so that stock can be available for other orders. \
+   \
+   An Order update (PUT) can be applied to ensure any amendments to Order Lines are reflected.\
 
 9. As a trader I need to flexibly apply sales-based discounts to orders, so that I can give customers the best deal possible.\
    \
-   These are discounts not based on a customer category so the Cust Cat/Offer/Price link isn't easy to traverse (e.g. a bulk discount of 5% if total order value exceeds 100 EUR)
+   These are discounts not based on a customer category so the Cust Cat/Offer/Price link isn't easy to traverse (e.g. a bulk discount of 5% if total order value exceeds 100 EUR)\
+   \
+   The `Order` class contains `discount` property (as a float), that can contain a total value of all discounts for an Order. Individual items can similarly be discounted using the `OrderLine` `discount` property (also a float value).
 
 
 
