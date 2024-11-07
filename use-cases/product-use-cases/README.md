@@ -9,21 +9,23 @@ description: Use cases related to Products
     &#x20;\
     DFC Product Catalog's allow multiple `Catalog Item` listings of a `Supplied Product,` with different stock limits (if required), all pulling from the same `Theoretical Stock` pool (on the `Supplied Product`. \
 
-2. As a Distributor I need to constitute multiple catalogues of Products from multiple Producer Enterprises so that I can differentiate my sales by channel or brand \
+2. As a Distributor I need to constitute multiple catalogues of Products from multiple Producer Enterprises so that I can differentiate my sales by channel or brand.\
    \
    DFC `Catalogs` are managed by an `Enterprise`, that can be different from the `Enterprise` supplying the `Defined Product` \
-   \
-   \
 
-3. As a Distributor I need to organize my Products so that I can sell as multiple price points.\
+3. As a Producer I need to link multiple Variants of a Product, so that I can easily group Variants together for a better Customer experience.\
+   \
+   _**TBC**_\
+
+4. As a Distributor I need to organize my Products so that I can sell as multiple price points.\
    \
    `Offer` functionality allows multiple `Price` offers to be made to different `Customer Category'`s (e.g. member vs non-member price)\
 
-4. As a Distributor, I need to organize my products to allow me to list products by seasonal availability so that I can ensure I have appropriate offers throughout the year.\
+5. As a Distributor, I need to organize my products to allow me to list products by seasonal availability so that I can ensure I have appropriate offers throughout the year.\
    \
    `Catalog` functionality within the standard provides the option to list `Supplied Products` multiple times, for multiple different markets... so there may be some (private) catalogs for wholesale buyers, local restaurants and food hubs; and public catalogs for retail customers. These catalogs may overlap but not fully match (e.g. some products may not have the volume to warrant wholesale listing). Multiple catalogs can be maintained to match seasonal Product availability.\
 
-5. Product Demand
+6. Product Demand
    1. As a consumer, I want to be able to demand a Product from Enterprises. \
       \
       The `Defined Product` structure denotes a `Functional Product` can be requested by an `Actor`. This gives anyone (Individual or Organization) the ability to place a requirement for a Product into the marketplace.\
@@ -36,15 +38,15 @@ description: Use cases related to Products
       \
       A `Localized Product` is constituted to reference a `Supplied Product`. This provides a reference representation of a `Physical Product`. \
 
-6. Product Location/Tracking&#x20;
-   1. As an enterprise, I can anticipate the location of the product so that I can map inventory to predicted demand. \
+7. Product Location/Tracking&#x20;
+   1. As an Enterprise, I can anticipate the location of the product so that I can map inventory to predicted demand. \
       \
       \
 
-   2. As an enterprise, I know where my product is at a specific time so that I can control inventory against actual demand. \
+   2. As an Enterprise, I know where my product is at a specific time so that I can control inventory against actual demand. \
       \
 
    3. As an Enterprise, I know the batch a Product came from so that I have product traceability through the supply chain.\
       \
       The `OrderLine` `isFulfilledBy` a PhysicalProduct, which can be traced to a `ProductBatch` containing traceability data.
-7.
+8.
