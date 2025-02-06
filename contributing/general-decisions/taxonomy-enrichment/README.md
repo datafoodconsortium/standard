@@ -4,7 +4,7 @@ description: All Taxonomy files are stored and maintained through VOCbench.
 
 # Taxonomy enrichment
 
-The DFC Vocbench instance can be accessed [here](https://vocbench.datafoodconsortium.org/vocbench3/#/). To update any Taxon list maintained by the DFC team, you will need to register an account on the server and request access to the relevant project from [the admin.](mailto:vocbench@datafoodconsortium.org)
+The DFC Vocbench instance can be accessed [here](https://vocbench.dfc-standard.org/). To update any Taxon list maintained by the DFC team, you will need to register an account on the server and request access to the relevant project from [the admin.](mailto:vocbench@datafoodconsortium.org)
 
 The Projects (and lists) are:
 
