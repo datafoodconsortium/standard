@@ -57,7 +57,7 @@
 
 ## Contributing
 
-* [Procedures](contributing/general-decisions/README.md)
+* [🚧 Procedures](contributing/general-decisions/README.md)
   * [Updates to the ontology](contributing/general-decisions/updates-to-the-ontology/README.md)
     * [Patch releases procedure](contributing/general-decisions/updates-to-the-ontology/patch-releases-procedure.md)
     * [Minor releases procedure](contributing/general-decisions/updates-to-the-ontology/minor-releases-procedure.md)
@@ -68,4 +68,4 @@
 
 ## Platform Register
 
-* [Platform Register](register/platformRegister.md)
+* [Platform Register](platform-register/platformregister.md)
