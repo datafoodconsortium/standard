@@ -8,6 +8,8 @@ description: >-
 
 Currently we use Protege to amend/update/enhance and generate our OWL (ontology) files.
 
+The full list of activities required for an Ontology release are detailed [here](../ontology-releases-process.md).
+
 For more information on how we align with [Semantic Versioning](https://semver.org/) & detailed requirements for different release types... see detailed sub-sections:
 
 For Patch/bugfix releases we follow our [Patch Release Procedure](patch-releases-procedure.md).
@@ -15,6 +17,3 @@ For Patch/bugfix releases we follow our [Patch Release Procedure](patch-releases
 For Minor releases we follow our [Minor Releases Procedure](minor-releases-procedure.md).
 
 For Major releases we follow our [Major Releases Procedure](major-releases-procedure.md).
-
-
-

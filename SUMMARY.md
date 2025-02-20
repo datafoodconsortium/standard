@@ -62,6 +62,7 @@
     * [Patch releases procedure](contributing/general-decisions/updates-to-the-ontology/patch-releases-procedure.md)
     * [Minor releases procedure](contributing/general-decisions/updates-to-the-ontology/minor-releases-procedure.md)
     * [Major releases procedure](contributing/general-decisions/updates-to-the-ontology/major-releases-procedure.md)
+  * [Ontology releases process](contributing/general-decisions/ontology-releases-process.md)
   * [Taxonomy enrichment](contributing/general-decisions/taxonomy-enrichment/README.md)
     * [Taxonomy updates](contributing/general-decisions/taxonomy-enrichment/taxonomy-updates.md)
 * [Platform Notifcations](contributing/platform-notifications.md)
