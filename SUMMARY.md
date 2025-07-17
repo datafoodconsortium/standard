@@ -21,8 +21,6 @@
   * [Person](object-representation/person.md)
   * [Catalog](object-representation/catalog.md)
 
-## Client protocols
-
 ## Connectors
 
 * [🚧 Connector](connector/README.md)
