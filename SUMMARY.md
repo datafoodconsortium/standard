@@ -12,6 +12,7 @@
   * [Decentralized identifier matching reference system](technical-specifications/decentralised-identifier-matching-reference-system.md)
   * [Specifics API](technical-specifications/non-ldp-api.md)
   * [Authentication strategy](technical-specifications/authentication-strategy.md)
+  * [Authorization strategy](technical-specifications/authorization-strategy.md)
   * [Architecture representations](technical-specifications/architecture-representations.md)
   * [Order states](technical-specifications/order-states.md)
 * [Prototype specifications](prototype-specifications.md)
