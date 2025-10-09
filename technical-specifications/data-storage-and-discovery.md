@@ -199,48 +199,143 @@ The below example presents the private extended profile document hosted at `http
 
 The complete user's profile can be assembled by "collecting all statements that have the WebID as the subject or the object, regardless of their originating documents". See the [[SOLID-WEBID](#solid-webid)] profile specification [section 2](https://solid.github.io/webid-profile/#discovery) for more details.
 
-# DFC Enterprise
+# DFC objects
 
-A DFC Enterprise is the entity that gather all the business information. From the Enterprise it is possible to find products, catalogs, sale sessions or orders by following the links. Nevertheless, a mechanism to express the possible locations of business objects is needed. Indeed, platforms need to know where to put new data on other platforms.
+*The following APIs are a way to represent and exchange data. The way the data is internally stored by a DFC platform can be different.*
 
-## Enterprise's TypeIndex
+DFC objects are organized into LDP containers. The root container is the *enterprise container*. All the other DFC objects (catalogs, supplied products and so on) are direct descendant of this *enterprise container*. The location of these objects within the *enterprise container* is listed in the following table:
 
-A DFC Enterprise MUST expose the possible locations of related business objects using a TypeIndex [[TYPEINDEX](#typeindex)]. A TypeIndex is a RDF document [[RDF11-CONCEPTS](#rdf11-concepts)] containing registrations associating a particular object type to some location. Locations are either pointing to a specific RDF document or to a specific [LDP basic container](https://www.w3.org/TR/ldp/#ldpbc) [[LDP](#ldp)].
+| Object type | Location within the enterprise container |
+| ------ | ---------------------------------------- |
+| `dfc-b:Catalog` | `/catalogs/` |
+| `dfc-b:SuppliedProduct` | `/supplied-products/` |
+| `dfc-b:Order` | `/orders/` |
 
-A DFC Enterprise can provide public or private type indexes. A public TypeIndex MUST be linked from the Enterprise using the `solid:publicTypeIndex` predicate while a private TypeIndex MUST be linked with the `solid:privateTypeIndex` predicate. The following sample shows the linkage between an Enterprise and its private TypeIndex:
+For instance, if the *enterprise container* is located at `https://platform.ex/enterprises/john-s-enterprise/`, the catalogs container will be located at `https://platform.ex/enterprises/john-s-enterprise/catalogs/`.
+
+## Enterprise
+
+*The following API is a way to represent and exchange data. The way the data is internally stored by a DFC platform can be different.*
+
+An enterprise (`dfc-b:Enterprise`) is the object that contains all the others (catalogs, supplied products and so on). It is the entry point object that is registered into the user's TypeIndex.
+
+The *enterprise container* is a LDP container which contain an `index` resource describing the enterprise like in the below example:
 
 ```json
 {
-    "@id": "https://platform.ex/enterprises/john-s-enterprise/index",
-    "@type": "dfc-b:Enterprise",
-    "dfc-b:name": "John's enterprise",
-    "solid:privateTypeIndex": "https://platform.ex/enterprises/john-s-enterprise/privateTypeIndex"
+    "@base": "https://platform.ex/enterprises/",
+    "@graph": [
+        {
+            "@id": "john-s-enterprise/index",
+            "@type": "dfc-b:Enterprise",
+            "dfc-b:name": "John's enterprise"
+        },
+    ]
 }
 ```
 
-A DFC Enterprise TypeIndex MUST provide a TypeIndex registration associating each DFC type the enterprise is working with to a LDP basic container with the `solid:instanceContainer` predicate. Examples of DFC types ares `dfc-b:Catalog`, `dfc-b:SuppliedProduct` or `dfc-b:Order`. Platforms MUST reuse already registered containers rather than creating new ones. Except specific constraints, we RECOMMEND that DFC type containers are contained inside the Enterprise container or at least they should be contained at the same domain name. For each registered type container a platform MUST allow HTTP GET, POST and PUT requests.
+## Catalogs
 
-The following example shows a sample of a DFC Enterprise private TypeIndex registering catalogs:
+*The following API is a way to represent and exchange data. The way the data is internally stored by a DFC platform can be different.*
+
+Within the *enterprise container*, catalogs are stored into the `catalogs` container.
+
+A particular catalog (`dfc-b:Catalog`) is itself a LDP container which contain an `index` resource describing the catalog. The index resource also contains the catalog items, the offers and the prices of the catalog.
+
+Within that index document:
+- Catalog items can be found by listing the subjects `?subject` where `?subject a dfc-b:CatalogItem`.
+- Offers can be found by listing the subjects `?subject` where `?subject a dfc-b:Offer`.
+- Sold products can be found by listing the objects `?object` where `?subject dfc-b:references ?object`.
+
+Catalogs can be listed by requesting the representation of the `catalogs` container. In the following HTTP requests example, the `catalogs` container contains only one catalog (`https://platform.ex/enterprises/john-s-enterprise/catalogs/catalog1/`):
+
+```http
+GET /enterprises/john-s-enterprise/catalogs/ HTTP/1.1
+Host: platform.ex
+Accept: application/ld+json
+```
+
+The response:
+
+```http
+HTTP/1.1 200 OK 
+Content-Type: application/ld+json; charset=UTF-8
+Link: <http://www.w3.org/ns/ldp#BasicContainer>; rel="type", <http://www.w3.org/ns/ldp#Resource>; rel="type"
+Allow: OPTIONS,HEAD,GET,POST,PUT,PATCH
+Accept-Post: application/ld+json, image/bmp, image/jpeg
+
+{
+  "@context": {
+    "ldp": "http://www.w3.org/ns/ldp#"
+  },
+  "@graph": [
+    {
+      "@id": "https://platform.ex/enterprises/john-s-enterprise/catalogs/",
+      "@type": ["ldp:Container", "ldp:BasicContainer"],
+      "ldp:contains": ["https://platform.ex/enterprises/john-s-enterprise/catalogs/catalog1/"]
+    }
+  ]
+}
+```
+
+Below is an example of the catalog `/catalogs/catalog1/index`:
 
 ```json
 {
+    "@base": "https://platform.ex/enterprises/john-s-enterprise/catalogs/",
     "@graph": [
         {
-            "@id": "https://platform.ex/enterprises/john-s-enterprise/privateTypeIndex",
-            "@type": [
-                "solid:TypeIndex",
-                "solid:ListedDocument"
-            ]
+            "@id": "catalog1/index",
+            "@type": "dfc-b:Catalog",
+            "dfc-b:maintainedBy": "https://platform.ex/enterprises/john-s-enterprise/index",
+            "dfc-b:name": "Catalog example",
+            "dfc-b:image": "catalog1/image1.jpg",
         },
         {
-            "@id": "https://platform.ex/enterprises/john-s-enterprise/privateTypeIndex#catalogs",
-            "@type": "solid:TypeIndexRegistration",
-            "solid:forClass": "dfc-b:Catalog",
-            "solid:instanceContainer": "https://platform.ex/john-s-enterprise/catalogs/"
-        }
+            "@id": "catalog1/index#catalogItem1",
+            "@type": "dfc-b:CatalogItem",
+            "dfc-b:references": "https://platform.ex/enterprises/john-s-enterprise/supplied-products/tomato/index",
+            "dfc-b:offeredThrough": "catalog1/index#offer1"
+        },
+        {
+            "@id": "catalog1/index#offer1",
+            "@type": "dfc-b:Offer",
+            "dfc-b:hasPrice": "catalog1/index#price1",
+            "dfc-b:offers": "catalog1/index#catalogItem1"
+        },
+        {
+            "@id": "catalog1/index#price1",
+            "@type": "dfc-b:price",
+            "dfc-b:value": "2.4"
+        },
     ]
-} 
+}
 ```
+
+## Supplied products
+
+*The following API is a way to represent and exchange data. The way the data is internally stored by a DFC platform can be different.*
+
+Within the *enterprise container*, supplied products are stored into the `supplied-products` container.
+
+A particular supplied product (`dfc-b:SuppliedProduct`) is itself a LDP container which contain an `index` resource describing the product.
+
+```json
+{
+    "@base": "https://platform.ex/enterprises/john-s-enterprise/supplied-products/",
+    "@graph": [
+        {
+            "@id": "suppliedProduct1/index",
+            "@type": "dfc-b:SuppliedProduct",
+            "dfc-b:producedBy": "https://platform.ex/enterprises/john-s-enterprise/index",
+            "dfc-b:name": "Tomato",
+            "dfc-b:hasType": "dfc-pt:tomato",
+        },
+    ]
+}
+```
+
+## Orders
 
 ## Optional enterprise indexes
 
