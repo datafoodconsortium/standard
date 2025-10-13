@@ -38,7 +38,7 @@ Like the Solid protocol, the DFC protocol has the notion of [hierarchical resour
 
 > There is a 1-1 correspondence between containment triples and relative reference within the path name hierarchy. [[Source](https://github.com/solid/specification/issues/98#issuecomment-547506617)]. It follows that all resources are discoverable from a container and that it is not possible to create orphan resources. [[Source](https://github.com/solid/specification/issues/97#issuecomment-547459396)]
 
-Accordingly to this statement, if the resource `resource` is contained in the container `https://platform.ex/container/`, this resource URI MUST be `https://platform.ex/container/resource`. Moreover a resource that is not contained in a container MUST NOT exist on a DFC platform (no orphan resources).
+Accordingly to this statement, if the resource `resource` is contained in the container `https://platform.ex/container/`, this resource URI MUST be `https://platform.ex/container/resource`. A same URI can not be listed by two different containers in the scope of this specification. Platforms are encouraged to follow these requirements for the containers they define outside the scope of this specification.
 
 The below example shows the retrieving of a LDP container.
 
