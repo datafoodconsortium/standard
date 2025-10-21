@@ -24,6 +24,7 @@ A platform can provide optional [specific indexes]() to help to discover some da
 | `rdfs` | http://www.w3.org/2000/01/rdf-schema# |  |
 | `sh` | http://www.w3.org/ns/shacl# |  |
 | `solid` | http://www.w3.org/ns/solid/terms# | [Social Linked Data](https://solidproject.org/) terms. |
+| `xsd` | http://www.w3.org/2001/XMLSchema# | |
 
 # Conformance
 
@@ -232,6 +233,149 @@ The *enterprise container* is a LDP container which contain an `index` resource 
         },
     ]
 }
+```
+
+The enteprise object follows the SHACL [[SHACL](#shacl)] shape:
+
+```turtle
+:EnterpriseShape a sh:NodeShape;
+    sh:targetClass dfc-b:Enterprise;
+    sh:closed false;
+
+    sh:property [
+		sh:path dfc-b:name;
+        sh:message "The name of the enterprise.";
+        sh:datatype xsd:string;
+        sh:maxCount 1;
+	];
+
+    sh:property [
+		sh:path dfc-b:description;
+        sh:message "The description of the enterprise.";
+        sh:datatype xsd:string;
+	];
+
+    sh:property [
+		sh:path dfc-b:date;
+        sh:message "The date of the enterprise.";
+        sh:datatype xsd:dateTime;
+	];
+
+    sh:property [
+		sh:path dfc-b:hasAddress;
+        sh:message "The different addresses of the enterprise.";
+        sh:datatype dfc-b:Address;
+	];
+
+    sh:property [
+		sh:path dfc-b:hasPhoneNumber;
+        sh:message "The different phone numbers of the enterprise.";
+        sh:datatype dfc-b:PhoneNumber;
+	];
+
+    sh:property [
+		sh:path dfc-b:hasSocialMedia;
+        sh:message "The different social medias of the enterprise.";
+        sh:datatype dfc-b:SocialMedia;
+	];
+
+    sh:property [
+		sh:path dfc-b:logo;
+        sh:message "The different logos of the enterprise.";
+        sh:datatype xsd:anyURI;
+	];
+
+    sh:property [
+		sh:path dfc-b:orders;
+        sh:message "The different orders ordered by the enterprise.";
+        sh:datatype dfc-b:Order;
+	];
+
+    sh:property [
+		sh:path dfc-b:requests;
+        sh:message "To be defined.";
+        sh:datatype dfc-b:FunctionalProduct;
+	];
+
+    sh:property [
+		sh:path dfc-b:owns;
+        sh:message "To be defined.";
+        sh:datatype dfc-b:PhysicalProduct;
+	];
+
+    sh:property [
+		sh:path dfc-b:email;
+        sh:message "To be defined.";
+        sh:datatype xsd:string;
+	];
+
+    sh:property [
+		sh:path dfc-b:websitePage;
+        sh:message "To be defined.";
+        sh:datatype xsd:anyURI;
+	];
+
+    sh:property [
+		sh:path dfc-b:VATnumber;
+        sh:message "To be defined.";
+        sh:datatype xsd:string;
+        sh:maxCount 1;
+	];
+
+    sh:property [
+		sh:path dfc-b:defines;
+        sh:message "To be defined.";
+        sh:datatype dfc-b:CustomerCategory;
+	];
+
+    sh:property [
+		sh:path dfc-b:hasMainContact;
+        sh:message "To be defined.";
+        sh:datatype dfc-b:Person;
+        sh:maxCount 1;
+	];
+
+    sh:property [
+		sh:path dfc-b:supplies;
+        sh:message "To be defined.";
+        sh:datatype dfc-b:SuppliedProduct;
+	];
+
+    sh:property [
+		sh:path dfc-b:manages;
+        sh:message "To be defined.";
+        sh:datatype dfc-b:CatalogItem;
+	];
+
+    sh:property [
+		sh:path dfc-b:proposes;
+        sh:message "To be defined.";
+        sh:datatype dfc-b:TechnicalProduct;
+	];
+
+    sh:property [
+		sh:path dfc-b:transforms;
+        sh:message "To be defined.";
+        sh:datatype dfc-b:AsPlannedLocalTransformation;
+	];
+
+    sh:property [
+		sh:path dfc-b:maintains;
+        sh:message "To be defined.";
+        sh:datatype dfc-b:Catalog;
+	];
+
+    sh:property [
+		sh:path dfc-b:affiliates;
+        sh:message "To be defined.";
+        sh:datatype dfc-b:Person;
+	];
+
+    sh:property [
+		sh:path dfc-b:coordinatedBy;
+        sh:message "To be defined.";
+        sh:datatype dfc-b:Coordination;
+	].
 ```
 
 ## Catalogs
@@ -493,6 +637,10 @@ Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words. B. Leiba. IETF. May 2
 ### [RFC9112]
 
 HTTP/1.1. R. Fielding, M. Nottingham, J. Reschke, Eds. IETF. June 2022. Internet Standard. URL: https://www.rfc-editor.org/rfc/rfc9112.
+
+### [SHACL]
+
+Shapes Constraint Language (SHACL). Holger Knublauch; TopQuadrant, Inc; Dimitris Kontokostas; University of Leipzig. URL: https://www.w3.org/TR/shacl/.
 
 ### [SOLID]
 
