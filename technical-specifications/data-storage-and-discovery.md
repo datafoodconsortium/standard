@@ -15,12 +15,14 @@ A platform can provide optional [specific indexes]() to help to discover some da
 
 | Prefix | IRI | Description |
 | ------ | --- | ----------- |
+| `dc` | http://purl.org/dc/terms/ | [[DC-TERMS](#dc-terms)] |
 | `dfc-b` |   | DFC business ontology. |
 | `dfc-t` |   | DFC technical ontology. |
 | `foaf` | http://xmlns.com/foaf/0.1/ | Friend of a Friend ontology. |
 | `idx` | https://ns.inria.fr/idx/terms# | Shacl shape-based indexing ontology. |
 | `ldp` | http://www.w3.org/ns/ldp# |  |
 | `pim` | http://www.w3.org/ns/pim/space# |  |
+| `posix` | http://www.w3.org/ns/posix/stat | POSIX File Status |
 | `rdfs` | http://www.w3.org/2000/01/rdf-schema# |  |
 | `sh` | http://www.w3.org/ns/shacl# |  |
 | `solid` | http://www.w3.org/ns/solid/terms# | [Social Linked Data](https://solidproject.org/) terms. |
@@ -40,6 +42,8 @@ Like the Solid protocol, the DFC protocol has the notion of [hierarchical resour
 > There is a 1-1 correspondence between containment triples and relative reference within the path name hierarchy. [[Source](https://github.com/solid/specification/issues/98#issuecomment-547506617)]. It follows that all resources are discoverable from a container and that it is not possible to create orphan resources. [[Source](https://github.com/solid/specification/issues/97#issuecomment-547459396)]
 
 Accordingly to this statement, if the resource `resource` is contained in the container `https://platform.ex/container/`, this resource URI MUST be `https://platform.ex/container/resource`. A same URI can not be listed by two different containers in the scope of this specification. Platforms are encouraged to follow these requirements for the containers they define outside the scope of this specification.
+
+Container descriptions are not limited to containment triples. To further support client navigation and application interaction, servers can include resource metadata about contained resources as part of the container description, as described in the section [4.2.1 Contained Resource Metadata](https://solidproject.org/TR/protocol#contained-resource-metadata) of the Solid protocol [[SOLID](#solid)].
 
 The below example shows the retrieving of a LDP container.
 
@@ -62,17 +66,35 @@ Accept-Post: application/ld+json, image/bmp, image/jpeg
 
 {
   "@context": {
-    "ldp": "http://www.w3.org/ns/ldp#"
+    "ldp": "http://www.w3.org/ns/ldp#",
+    "dc": "http://purl.org/dc/terms/",
+    "posix": "http://www.w3.org/ns/posix/stat#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
     {
       "@id": "https://platform.ex/container/",
-      "@type": ["ldp:Container", "ldp:BasicContainer"],
+      "@type": ["ldp:Container", "ldp:BasicContainer", "ldp:Resource"],
+      "dc:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2025-10-21T10:14:27.000Z"
+      },
+      "posix:mtime": 1761041667,
       "ldp:contains": ["https://platform.ex/container/resource"]
+    },
+    {
+      "@id": "https://platform.ex/container/resource",
+      "@type": ["ldp:Resource", "https://www.w3.org/ns/iana/media-types/application/ld+json#Resource"],
+      "dc:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2025-10-21T10:14:27.000Z"
+      },
+      "posix:size": 132
     }
   ]
 }
 ```
+
 
 # WebIDs
 
@@ -824,6 +846,10 @@ Location: https://platform.ex/users/john/webid#me
 # References
 
 ## Normative references
+
+### [DC-TERMS]
+
+Dublin Core Metadata Terms, version 1.1. DCMI Usage Board. DCMI. 11 October 2010. DCMI Recommendation. URL: http://dublincore.org/documents/2010/10/11/dcmi-terms/.
 
 ### [LDP]
 
