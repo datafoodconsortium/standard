@@ -235,7 +235,7 @@ The *enterprise container* is a LDP container which contain an `index` resource 
 }
 ```
 
-The enteprise object follows the SHACL [[SHACL](#shacl)] shape:
+An enteprise object follows the SHACL [[SHACL](#shacl)] shape:
 
 ```turtle
 :EnterpriseShape a sh:NodeShape;
@@ -477,6 +477,213 @@ A particular supplied product (`dfc-b:SuppliedProduct`) is itself a LDP containe
         },
     ]
 }
+```
+
+A supplied product object follows the SHACL [[SHACL](#shacl)] shape:
+
+```turtle
+:SuppliedProductShape a sh:NodeShape;
+    sh:targetClass dfc:SuppliedProduct;
+    sh:closed false;
+
+    sh:property [
+		sh:path dfc:name;
+        sh:message "The name of the defined product.";
+        sh:datatype xsd:string;
+        sh:maxCount 1;
+	];
+
+    sh:property [
+		sh:path dfc:description;
+        sh:message "The description of the defined product.";
+        sh:datatype xsd:string;
+	];
+
+  sh:property [
+		sh:path dfc:date;
+        sh:message "The date of the defined product.";
+        sh:datatype xsd:dateTime;
+	];
+
+  sh:property [
+		sh:path dfc:consumedBy;
+        sh:datatype dfc:AsPlannedConsumptionFlow;
+	];
+
+  sh:property [
+		sh:path dfc:hasAllergenCharacteristic;
+        sh:datatype dfc:AllergenCharacteristic;
+	];
+
+  sh:property [
+		sh:path dfc:hasBrand;
+        sh:datatype xsd:string;
+	];
+
+  sh:property [
+		sh:path dfc:hasCertification;
+        sh:datatype skos:Concept;
+	];
+
+  sh:property [
+		sh:path dfc:hasCharacteristic;
+        sh:datatype dfc:DFC_BusinessOntology_Characteristic;
+	];
+
+  sh:property [
+		sh:path dfc:hasClaim;
+        sh:datatype skos:Concept;
+	];
+
+  sh:property [
+		sh:path dfc:hasContainerInformation;
+        sh:datatype skos:Concept;
+	];
+
+  sh:property [
+		sh:path dfc:hasNatureOrigin;
+        sh:datatype skos:Concept;
+	];
+
+  sh:property [
+		sh:path dfc:hasPartOrigin;
+        sh:datatype skos:Concept;
+	];
+
+  sh:property [
+		sh:path dfc:hasGeographicalOrigin;
+        sh:datatype skos:Concept;
+	];
+
+  sh:property [
+		sh:path dfc:hasIngredient;
+        sh:datatype dfc:Ingredient;
+	];
+
+  sh:property [
+		sh:path dfc:hasLabellingCharacteristic;
+        sh:datatype dfc:LabellingCharacteristic;
+	];
+
+  sh:property [
+		sh:path dfc:hasNutrientCharacteristic;
+        sh:datatype dfc:NutrientCharacteristic;
+	];
+
+  sh:property [
+		sh:path dfc:hasPercentageOfAlcoholByVolume;
+        sh:datatype xsd:float;
+	];
+
+  sh:property [
+		sh:path dfc:hasPhysicalCharacteristic;
+        sh:datatype dfc:PhysicalCharacteristic;
+	];
+
+  sh:property [
+		sh:path dfc:hasQuantity;
+        sh:datatype dfc:QuantitativeValue;
+	];
+
+  sh:property [
+		sh:path dfc:hasType;
+        sh:datatype xsd:anyURI;
+	];
+
+  sh:property [
+		sh:path dfc:hasUnit;
+        sh:datatype skos:Concept;
+	];
+
+  sh:property [
+		sh:path dfc:hasVariant;
+        sh:datatype dfc:DefinedProduct;
+	];
+
+  sh:property [
+		sh:path dfc:image;
+        sh:datatype xsd:anyURI;
+	];
+
+  sh:property [
+		sh:path dfc:isVariantOf;
+        sh:datatype dfc:DefinedProduct;
+	];
+
+  sh:property [
+		sh:path dfc:lifetime;
+        sh:datatype xsd:float;
+        sh:maxCount 1;
+	];
+
+  sh:property [
+		sh:path dfc:referencedBy;
+        sh:datatype dfc:CatalogItem;
+	];
+
+  sh:property [
+		sh:path dfc:URL;
+        sh:datatype xsd:anyURI;
+	];
+
+  sh:property [
+		sh:path dfc:specificCondition;
+        sh:datatype xsd:string;
+	];
+
+  sh:property [
+		sh:path dfc:availabilityTime;
+        sh:datatype xsd:duration;
+	];
+
+  sh:property [
+		sh:path dfc:deliveryCondition;
+        sh:datatype xsd:string;
+	];
+
+  sh:property [
+		sh:path dfc:frozen;
+        sh:datatype xsd:boolean;
+        sh:maxCount 1;
+	];
+
+  sh:property [
+		sh:path dfc:hasTemperature;
+        sh:datatype dfc:Temperature;
+	];
+
+  sh:property [
+		sh:path dfc:industrializes;
+        sh:datatype dfc:TechnicalProduct;
+	];
+
+  sh:property [
+		sh:path dfc:producedBy;
+        sh:datatype dfc:AsPlannedProductionFlow;
+	];
+
+  sh:property [
+		sh:path dfc:referenceOf;
+        sh:datatype dfc:LocalizedProduct;
+	];
+
+  sh:property [
+		sh:path dfc:refrigerated;
+        sh:datatype xsd:boolean;
+        sh:maxCount 1;
+	];
+
+  sh:property [
+		sh:path dfc:suppliedBy;
+        sh:datatype dfc:Enterprise;
+        sh:maxCount 1;
+	];
+
+  sh:property [
+		sh:path dfc:totalTheoreticalStock;
+        sh:datatype xsd:float;
+        sh:maxCount 1;
+	].
 ```
 
 ## Orders
