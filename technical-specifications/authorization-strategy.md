@@ -1,6 +1,9 @@
-# Authorization Strategy
+# Authorization Strategy Recommendation
 
 To manage authorization of requests across the DFC standard, it is necessary to apply authorization scopes to each request. These scopes determine whether an authenticated request can access certain data from DFC endpoints.
+
+**These authorization extensions to the [authentication strategy](./authentication-strategy.md) are transitional recommendations, and are intended to be superceded by a more granular permissioning protocol in a future version of the DFC standard.**
+
 
 ## Scope based authorization
 
@@ -24,13 +27,14 @@ Subjects define which endpoints authorization is granted to. Subjects are:
 | **Subject** | **Endpoints accessible with subject** |
 | --- | --- |
 | Enterprise | Enterprise, Address, SocialMedia, PhoneNumber, CustomerCategory, Coordination, Place |
-| Product | TechnicalProduct, LocalizedProduct, SuppliedProduct, Catalog, CatalogItem, Offer, Price, Transformation, ConsumptionFlow, ProductionFlow |
+| Product | TechnicalProduct, LocalizedProduct, SuppliedProduct, Catalog, CatalogItem, Transformation, ConsumptionFlow, ProductionFlow |
+| Price | Offer, Price |
 | Order | Order, OrderLine, SaleSession, FulfilmentStatus, PaymentStatus, OrderStatus, Coordination, ShippingOption, Place, PhysicalPlace |
 
-## Implmentation of scopes by Relying Parties
+## Implementation of scopes by Relying Parties
 
-Relying Parties (RP's), typically platforms implmenting the DFC standard, must implement security constraints on all DFC endpoints to ensure all requests have the appropriate scope for the action/subject combination.
+Relying Parties (RP's), typically platforms implementing the DFC standard, must implement security constraints on all DFC endpoints to ensure all requests have the appropriate scope for the action/subject combination.
 
-Furthermore it is recommended that RP's implment a data consent system, whereby data owners can grant (and revoke) access to these scopes for individual clients/users within the OIDC domain. For example a portal wishing to read data on a users Enterprise and Products, might request `ReadEnterprise` and `ReadProduct` access. The RP should record which Enterprises have authorized a specific client or user to which scopes.
+Furthermore it is recommended that RP's implement a data consent system, whereby data owners can grant (and revoke) access to these scopes for individual clients/users within the OIDC domain. For example a portal wishing to read data on a users Enterprise and Products, might request `ReadEnterprise` and `ReadProduct` access. The RP should record which Enterprises have authorized a specific client or user to which scopes.
 
-The DFC community provides a web component that can support RP's with this workflow: the [Data Sharing Module](https://github.com/startin-blox/data-sharing-module/) has full instructions on how to implment & manage scope permissions for users on your platform.
+Startin' Blox have supported members of the DFC community by providing a web component (funded by coopcircuits) that can support RP's with this workflow: the [Data Sharing Module](https://github.com/startin-blox/data-sharing-module/) has full instructions on how to implment & manage scope permissions for users on your platform.
