@@ -1,8 +1,10 @@
 # Authorization Strategy Recommendation
 
+This authorization strategy extended the [authentication strategy](./authentication-strategy.md) to allow platforms to grant permissions to individual endpoints and Organizations within the DFC Standard.
+
 To manage authorization of requests across the DFC standard, it is necessary to apply authorization scopes to each request. These scopes determine whether an authenticated request can access certain data from DFC endpoints.
 
-**These authorization extensions to the [authentication strategy](./authentication-strategy.md) are transitional recommendations, and are intended to be superceded by a more granular permissioning protocol in a future version of the DFC standard.**
+**These are transitional recommendations, and are intended to be superceded by a more granular permissioning protocol in a future version of the DFC standard.**
 
 
 ## Scope based authorization
@@ -35,6 +37,8 @@ Subjects define which endpoints authorization is granted to. Subjects are:
 
 Relying Parties (RP's), typically platforms implementing the DFC standard, must implement security constraints on all DFC endpoints to ensure all requests have the appropriate scope for the action/subject combination.
 
-Furthermore it is recommended that RP's implement a data consent system, whereby data owners can grant (and revoke) access to these scopes for individual clients/users within the OIDC domain. For example a portal wishing to read data on a users Enterprise and Products, might request `ReadEnterprise` and `ReadProduct` access. The RP should record which Enterprises have authorized a specific client or user to which scopes.
+Furthermore it is recommended that RP's implement a data consent system, whereby data owners can grant (and revoke) access to these scopes for individual clients/users within the OIDC domain. For example a portal wishing to read data on a users Organization and Products, might request `ReadEnterprise` and `ReadProduct` access. The RP should record which Organizations have authorized a specific client or user to which scopes.
+
+These authorizations can be communicated via properties within the dfc-t Technical Ontology. Specifically `dfc-t:assignedScope` gives details of which scopes have been granted to a client/user by an Organization, and `dfc-t:requiredScope` gives details of which scopes a client/user is requesting from an Organization.
 
 Startin' Blox have supported members of the DFC community by providing a web component (funded by coopcircuits) that can support RP's with this workflow: the [Data Sharing Module](https://github.com/startin-blox/data-sharing-module/) has full instructions on how to implment & manage scope permissions for users on your platform.
