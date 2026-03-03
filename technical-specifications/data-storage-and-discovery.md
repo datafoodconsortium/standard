@@ -5,11 +5,11 @@
 In order to interoperate, DFC platforms need to discover and advertise data, respectively from and to other platforms of the DFC ecosystem. For instance when a user creates a new product on a platform "A", the platform "A" needs to know where to create that product on the user's other platforms. To do so the DFC protocol defines entry points who take the form of URIs called [WebID](#webids). Two kinds of WebIDs are defined:
 
 - A platform's WebID leading to platform-wide information like the services and the indexes it exposes;
-- A user's WebID leading to information related to a particular user like the enterprise(s) he is affiliated to.
+- A user's WebID leading to information related to a particular user like the organization(s) he is affiliated to.
 
 On each platform, each user has his own WebID. Therefore a mechanism to find equivalent users WebID between platforms is needed. This specification defines the platform [Identity Service](#platform-identity-service) that a platform can query to obtain a WebID in exchange of an OIDC token.
 
-A platform can provide optional [specific indexes]() to help to discover some data at the platform or enterprise level. At the enterprise level an index can allow to get all orders for a particular time interval for instance. At the platform level indexes can be defined to advertise which kinds of product are sold by producers or to find enterprises by name.
+A platform can provide optional [specific indexes]() to help to discover some data at the platform or organization level. At the organization level an index can allow to get all orders for a particular time interval for instance. At the platform level indexes can be defined to advertise which kinds of product are sold by producers or to find organizations by name.
 
 # Namespaces
 
@@ -136,7 +136,7 @@ Platforms MUST expose a public platform WebID [[WEBID](#webid)]. A platform's We
 
 ## DFC user WebIDs
 
-Platforms MUST expose a public WebID [[WEBID](#webid)] for each of their DFC users who can be producers or enterprises. A DFC user WebID is linked to a private preferences document with the `pim:preferencesFile` predicate. This preferences document is linked to a private TypeIndex using the `solid:privateTypeIndex` predicate. The private TypeIndex register instance(s) of `dfc-b:Enterprise`.
+Platforms MUST expose a public WebID [[WEBID](#webid)] for each of their DFC users. A DFC user WebID is linked to a private preferences document with the `pim:preferencesFile` predicate. This preferences document is linked to a private TypeIndex using the `solid:privateTypeIndex` predicate. The private TypeIndex registers instance(s) of `dfc-b:Organization`.
 
 ```json
 {
@@ -174,15 +174,15 @@ Platforms MUST expose a public WebID [[WEBID](#webid)] for each of their DFC use
         },
         {
             "@id": "https://platform.ex/user/john/privateTypeIndex#reg1",
-            "@type": "solid:TypeIndexRegistration",
-            "solid:forClass": "dfc-b:Enterprise",
-            "solid:instance": "https://platform.ex/enterprises/john-s-enterprise/index"
+            "@type": "solid:TypeRegistration",
+            "solid:forClass": "dfc-b:Organization",
+            "solid:instance": "https://platform.ex/organizations/johns/index"
         }
     ]
 }
 ```
 
-*Note: the enterprise(s) related to a WebID are not directly linked into the WebID using the dfc-b:affiliatedBy predicate. Instead a private TypeIndex is used. This mechanism is needed to ensure a proper separation between the identity or user account (WebID) and the DFC Agent.*
+*Note: the organization(s) related to a WebID are not directly linked into the WebID using the dfc-b:affiliatedBy predicate. Instead a private TypeIndex is used. This mechanism is needed to ensure a proper separation between the identity or user account (WebID) and the DFC Agent.*
 
 ## Extended WebID profile
 
@@ -226,32 +226,32 @@ The complete user's profile can be assembled by "collecting all statements that 
 
 *The following APIs are a way to represent and exchange data. The way the data is internally stored by a DFC platform can be different.*
 
-DFC objects are organized into LDP containers. The root container is the *enterprise container*. All the other DFC objects (catalogs, supplied products and so on) are direct descendant of this *enterprise container*. The location of these objects within the *enterprise container* is listed in the following table:
+DFC objects are organized into LDP containers. The root container is the *organization container*. All the other DFC objects (catalogs, supplied products and so on) are direct descendant of this *organization container*. The location of these objects within the *organization container* is listed in the following table:
 
-| Object type | Location within the enterprise container |
+| Object type | Location within the organization container |
 | ------ | ---------------------------------------- |
 | `dfc-b:Catalog` | `/catalogs/` |
 | `dfc-b:SuppliedProduct` | `/supplied-products/` |
 | `dfc-b:Order` | `/orders/` |
 
-For instance, if the *enterprise container* is located at `https://platform.ex/enterprises/john-s-enterprise/`, the catalogs container will be located at `https://platform.ex/enterprises/john-s-enterprise/catalogs/`.
+For instance, if the *organization container* is located at `https://platform.ex/organizations/johns/`, the catalogs container will be located at `https://platform.ex/organizations/johns/catalogs/`.
 
-## Enterprise
+## Organization
 
-*The following API is a way to represent and exchange data. The way the data is internally stored by a DFC platform can be different.*
+*The following API is a way to represent and exchange data. The way the data is internally stored is left to the DFC platform.*
 
-An enterprise (`dfc-b:Enterprise`) is the object that contains all the others (catalogs, supplied products and so on). It is the entry point object that is registered into the user's TypeIndex.
+An organization (`dfc-b:Organization`) is the object that contains all the others (catalogs, supplied products and so on). It is the entry point object that is registered into the user's TypeIndex.
 
-The *enterprise container* is a LDP container which contain an `index` resource describing the enterprise like in the below example:
+The *organization container* is a LDP container which contain an `index` resource describing the organization like in the below example:
 
 ```json
 {
-    "@base": "https://platform.ex/enterprises/",
+    "@base": "https://platform.ex/organizations/",
     "@graph": [
         {
-            "@id": "john-s-enterprise/index",
-            "@type": "dfc-b:Enterprise",
-            "dfc-b:name": "John's enterprise"
+            "@id": "johns/index",
+            "@type": "dfc-b:Organization",
+            "dfc-b:name": "John's organization"
         },
     ]
 }
@@ -260,56 +260,56 @@ The *enterprise container* is a LDP container which contain an `index` resource 
 An enteprise object follows the SHACL [[SHACL](#shacl)] shape:
 
 ```turtle
-:EnterpriseShape a sh:NodeShape;
-    sh:targetClass dfc-b:Enterprise;
+:OrganizationShape a sh:NodeShape;
+    sh:targetClass dfc-b:Organization;
     sh:closed false;
 
     sh:property [
 		sh:path dfc-b:name;
-        sh:message "The name of the enterprise.";
+        sh:message "The name of the organization.";
         sh:datatype xsd:string;
         sh:maxCount 1;
 	];
 
     sh:property [
 		sh:path dfc-b:description;
-        sh:message "The description of the enterprise.";
+        sh:message "The description of the organization.";
         sh:datatype xsd:string;
 	];
 
     sh:property [
 		sh:path dfc-b:date;
-        sh:message "The date of the enterprise.";
+        sh:message "The date of the organization.";
         sh:datatype xsd:dateTime;
 	];
 
     sh:property [
 		sh:path dfc-b:hasAddress;
-        sh:message "The different addresses of the enterprise.";
+        sh:message "The different addresses of the organization.";
         sh:datatype dfc-b:Address;
 	];
 
     sh:property [
 		sh:path dfc-b:hasPhoneNumber;
-        sh:message "The different phone numbers of the enterprise.";
+        sh:message "The different phone numbers of the organization.";
         sh:datatype dfc-b:PhoneNumber;
 	];
 
     sh:property [
 		sh:path dfc-b:hasSocialMedia;
-        sh:message "The different social medias of the enterprise.";
+        sh:message "The different social medias of the organization.";
         sh:datatype dfc-b:SocialMedia;
 	];
 
     sh:property [
 		sh:path dfc-b:logo;
-        sh:message "The different logos of the enterprise.";
+        sh:message "The different logos of the organization.";
         sh:datatype xsd:anyURI;
 	];
 
     sh:property [
 		sh:path dfc-b:orders;
-        sh:message "The different orders ordered by the enterprise.";
+        sh:message "The different orders ordered by the organization.";
         sh:datatype dfc-b:Order;
 	];
 
@@ -402,9 +402,9 @@ An enteprise object follows the SHACL [[SHACL](#shacl)] shape:
 
 ## Catalogs
 
-*The following API is a way to represent and exchange data. The way the data is internally stored by a DFC platform can be different.*
+*The following API is a way to represent and exchange data. The way the data is internally stored is left to the DFC platform.*
 
-Within the *enterprise container*, catalogs are stored into the `catalogs` container.
+Within the *organization container*, catalogs are stored into the `catalogs` container.
 
 A particular catalog (`dfc-b:Catalog`) is itself a LDP container which contain an `index` resource describing the catalog. The index resource also contains the catalog items, the offers and the prices of the catalog.
 
@@ -413,10 +413,10 @@ Within that index document:
 - Offers can be found by listing the subjects `?subject` where `?subject a dfc-b:Offer`.
 - Sold products can be found by listing the objects `?object` where `?subject dfc-b:references ?object`.
 
-Catalogs can be listed by requesting the representation of the `catalogs` container. In the following HTTP requests example, the `catalogs` container contains only one catalog (`https://platform.ex/enterprises/john-s-enterprise/catalogs/catalog1/`):
+Catalogs can be listed by requesting the representation of the `catalogs` container. In the following HTTP requests example, the `catalogs` container contains only one catalog (`https://platform.ex/organizations/johns/catalogs/catalog1/`):
 
 ```http
-GET /enterprises/john-s-enterprise/catalogs/ HTTP/1.1
+GET /organizations/johns/catalogs/ HTTP/1.1
 Host: platform.ex
 Accept: application/ld+json
 ```
@@ -436,9 +436,9 @@ Accept-Post: application/ld+json, image/bmp, image/jpeg
   },
   "@graph": [
     {
-      "@id": "https://platform.ex/enterprises/john-s-enterprise/catalogs/",
+      "@id": "https://platform.ex/organizations/johns/catalogs/",
       "@type": ["ldp:Container", "ldp:BasicContainer"],
-      "ldp:contains": ["https://platform.ex/enterprises/john-s-enterprise/catalogs/catalog1/"]
+      "ldp:contains": ["https://platform.ex/organizations/johns/catalogs/catalog1/"]
     }
   ]
 }
@@ -448,19 +448,19 @@ Below is an example of the catalog `/catalogs/catalog1/index`:
 
 ```json
 {
-    "@base": "https://platform.ex/enterprises/john-s-enterprise/catalogs/",
+    "@base": "https://platform.ex/organizations/johns/catalogs/",
     "@graph": [
         {
             "@id": "catalog1/index",
             "@type": "dfc-b:Catalog",
-            "dfc-b:maintainedBy": "https://platform.ex/enterprises/john-s-enterprise/index",
+            "dfc-b:maintainedBy": "https://platform.ex/organizations/johns/index",
             "dfc-b:name": "Catalog example",
             "dfc-b:image": "catalog1/image1.jpg",
         },
         {
             "@id": "catalog1/index#catalogItem1",
             "@type": "dfc-b:CatalogItem",
-            "dfc-b:references": "https://platform.ex/enterprises/john-s-enterprise/supplied-products/tomato/index",
+            "dfc-b:references": "https://platform.ex/organizations/johns/supplied-products/tomato/index",
             "dfc-b:offeredThrough": "catalog1/index#offer1"
         },
         {
@@ -480,20 +480,20 @@ Below is an example of the catalog `/catalogs/catalog1/index`:
 
 ## Supplied products
 
-*The following API is a way to represent and exchange data. The way the data is internally stored by a DFC platform can be different.*
+*The following API is a way to represent and exchange data. The way the data is internally stored is left to the DFC platform.*
 
-Within the *enterprise container*, supplied products are stored into the `supplied-products` container.
+Within the *organization container*, supplied products are stored into the `supplied-products` container.
 
 A particular supplied product (`dfc-b:SuppliedProduct`) is itself a LDP container which contain an `index` resource describing the product.
 
 ```json
 {
-    "@base": "https://platform.ex/enterprises/john-s-enterprise/supplied-products/",
+    "@base": "https://platform.ex/organizations/johns/supplied-products/",
     "@graph": [
         {
             "@id": "suppliedProduct1/index",
             "@type": "dfc-b:SuppliedProduct",
-            "dfc-b:producedBy": "https://platform.ex/enterprises/john-s-enterprise/index",
+            "dfc-b:producedBy": "https://platform.ex/organizations/johns/index",
             "dfc-b:name": "Tomato",
             "dfc-b:hasType": "dfc-pt:tomato",
         },
@@ -697,7 +697,7 @@ A supplied product object follows the SHACL [[SHACL](#shacl)] shape:
 
   sh:property [
 		sh:path dfc:suppliedBy;
-        sh:datatype dfc:Enterprise;
+        sh:datatype dfc:organization;
         sh:maxCount 1;
 	];
 
@@ -710,9 +710,9 @@ A supplied product object follows the SHACL [[SHACL](#shacl)] shape:
 
 ## Orders
 
-## Optional enterprise indexes
+## Optional organization indexes
 
-TODO: these indexes compile enterprise's data in order to provide better performances. For instance, we could have an index to get all the orders of the week at once.
+TODO: these indexes compile organization's data in order to provide better performances. For instance, we could have an index to get all the orders of the week at once.
 
 ## Optional platform indexes
 
@@ -723,18 +723,18 @@ TODO: this kind of indexes is optional
 {
   "@graph": [
       {
-        "@id": "https://platform.ex/enterpriseIndex",
+        "@id": "https://platform.ex/organizationIndex",
         "@type": "idx:Index"
       },
       {
-        "@id": "https://platform.ex/enterpriseIndex#byCertification",
+        "@id": "https://platform.ex/organizationIndex#byCertification",
         "@type": "sh:NodeShape",
         "sh:closed": "false",
         "sh:property": [
           {
             "sh:path": "rdf:type",
             "sh:hasValue": {
-              "@id": "dfc-b:Enterprise"
+              "@id": "dfc-b:Organization"
             }
           },
           {
@@ -743,28 +743,28 @@ TODO: this kind of indexes is optional
         ]
       },
       {
-        "@id": "https://platform.ex/enterpriseByCertificationIndex#Organic",
+        "@id": "https://platform.ex/organizationByCertificationIndex#Organic",
         "@type": "idx:IndexEntry",
-        "idx:hasShape": "https://platform.ex/enterpriseIndex#byCertification",
-        "idx:hasSubIndex": "https://platform.ex/enterpriseByCertificationIndex"
+        "idx:hasShape": "https://platform.ex/organizationIndex#byCertification",
+        "idx:hasSubIndex": "https://platform.ex/organizationByCertificationIndex"
       }
     ]
   }
 {
   "@graph": [
       {
-        "@id": "https://platform.ex/enterpriseByCertificationIndex",
+        "@id": "https://platform.ex/organizationByCertificationIndex",
         "@type": "idx:Index"
       },
       {
-        "@id": "https://platform.ex/enterpriseByCertificationIndex#target",
+        "@id": "https://platform.ex/organizationByCertificationIndex#target",
         "@type": "sh:NodeShape",
         "sh:closed": "false",
         "sh:property": [
           {
             "sh:path": "rdf:type",
             "sh:hasValue": {
-              "@id": "dfc-b:Enterprise"
+              "@id": "dfc-b:Organization"
             }
           },
           {
@@ -773,28 +773,28 @@ TODO: this kind of indexes is optional
         ]
       },
       {
-        "@id": "https://platform.ex/enterpriseByCertificationIndex#Organic",
+        "@id": "https://platform.ex/organizationByCertificationIndex#Organic",
         "@type": "idx:IndexEntry",
-        "idx:hasShape": "https://platform.ex/enterpriseByCertificationIndex#target",
-        "idx:hasSubIndex": "https://platform.ex/organicEuEnterpriseIndex"
+        "idx:hasShape": "https://platform.ex/organizationByCertificationIndex#target",
+        "idx:hasSubIndex": "https://platform.ex/organicEuorganizationIndex"
       }
     ]
   }
 {
   "@graph": [
       {
-        "@id": "https://platform.ex/organicEuEnterpriseIndex",
+        "@id": "https://platform.ex/organicEuorganizationIndex",
         "@type": "idx:Index"
       },
       {
-        "@id": "https://platform.ex/organicEuEnterpriseIndex#target",
+        "@id": "https://platform.ex/organicEuorganizationIndex#target",
         "@type": "sh:NodeShape",
         "sh:closed": "false",
         "sh:property": [
           {
             "sh:path": "rdf:type",
             "sh:hasValue": {
-              "@id": "dfc-b:Enterprise"
+              "@id": "dfc-b:Organization"
             }
           },
           {
@@ -804,10 +804,10 @@ TODO: this kind of indexes is optional
         ]
       },
       {
-        "@id": "https://platform.ex/organicEuEnterpriseIndex#john-s-enterprise",
+        "@id": "https://platform.ex/organicEuorganizationIndex#johns",
         "@type": "idx:IndexEntry",
-        "idx:hasShape": "https://platform.ex/organicEuEnterpriseIndex#target",
-        "idx:target": "https://platform.ex/enterprise/john-s-enterprise/index"
+        "idx:hasShape": "https://platform.ex/organicEuorganizationIndex#target",
+        "idx:target": "https://platform.ex/organization/johns/index"
       }
     ]
   }
