@@ -8,6 +8,7 @@
   * [Product ontology](semantic-specifications/product-ontology.md)
   * [Technical ontology](semantic-specifications/technical-ontology.md)
 * [Technical specifications](technical-specifications/README.md)
+  * [Data storage and discovery](technical-specifications/data-storage-and-discovery.md)
   * [Protocols specifications](technical-specifications/protocols-specifications.md)
   * [Decentralized identifier matching reference system](technical-specifications/decentralised-identifier-matching-reference-system.md)
   * [Specifics API](technical-specifications/non-ldp-api.md)
