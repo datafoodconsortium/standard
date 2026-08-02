@@ -1,6 +1,6 @@
 # Authorization Strategy Recommendation
 
-This authorization strategy extended the [authentication strategy](./authentication-strategy.md) to allow platforms to grant permissions to individual endpoints and Organizations within the DFC Standard.
+This authorization strategy extends the [authentication strategy](./authentication-strategy.md) to allow platforms to grant permissions to individual endpoints and Organizations within the DFC Standard.
 
 To manage authorization of requests across the DFC standard, it is necessary to apply authorization scopes to each request. These scopes determine whether an authenticated request can access certain data from DFC endpoints.
 
@@ -41,4 +41,4 @@ Furthermore it is recommended that RP's implement a data consent system, whereby
 
 These authorizations can be communicated via properties within the dfc-t Technical Ontology. Specifically `dfc-t:assignedScope` gives details of which scopes have been granted to a client/user by an Organization, and `dfc-t:requiredScope` gives details of which scopes a client/user is requesting from an Organization.
 
-Startin' Blox have supported members of the DFC community by providing a web component (funded by coopcircuits) that can support RP's with this workflow: the [Data Sharing Module](https://github.com/startin-blox/data-sharing-module/) has full instructions on how to implment & manage scope permissions for users on your platform.
+[Startin' Blox](https://startinblox.com/) have supported members of the DFC community by providing a web component (funded by [coopcircuits](https://apropos.coopcircuits.fr/)) that can support RP's with this workflow: the [Data Sharing Module](https://github.com/startin-blox/data-sharing-module/) has full instructions on how to implement & manage scope permissions for users on your platform.
