@@ -12,6 +12,7 @@ We divided this chapter into 4 parts:
 * [Decentralized identifier matching reference system](decentralised-identifier-matching-reference-system.md) where we will explain why we are not building a centralized referential but rather promoting platforms intermediation.
 * [Authentication strategy](authentication-strategy.md) where we will discuss the use of OpenID protocol as our authentication layer.
 * [Architecture representations](architecture-representations.md) where we will finally resume all these information into a nice schema.
+* [URI Redirection](uri-redirection.md) where we document how DFC ontology & taxonomy files are served via the w3id.org permanent redirection service.
 
 ## Decisions and choices history
 
