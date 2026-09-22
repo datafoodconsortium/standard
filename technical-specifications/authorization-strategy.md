@@ -35,9 +35,9 @@ Subjects define which endpoints authorization is granted to. Subjects are:
 
 ## Implementation of scopes by Relying Parties
 
-Relying Parties (RP's), typically platforms implementing the DFC standard, must implement security constraints on all DFC endpoints to ensure all requests have the appropriate scope for the action/subject combination.
+Relying Parties (RP's), typically platforms implementing the DFC standard, MUST implement security constraints on all DFC endpoints to ensure all requests are appropriately authenticated. They MAY also ensure tokens have the appropriate scope for the action/subject combination.
 
-Furthermore it is recommended that RP's implement a data consent system, whereby data owners can grant (and revoke) access to these scopes for individual clients/users within the OIDC domain. For example a portal wishing to read data on a users Organization and Products, might request `ReadEnterprise` and `ReadProduct` access. The RP should record which Organizations have authorized a specific client or user to which scopes.
+To support this it is recommended that RP's implement a data consent system, whereby data owners can grant (and revoke) access to these scopes for individual clients/users within the OIDC domain. For example a portal wishing to read data on a users Organization and Products, might request `ReadEnterprise` and `ReadProduct` access. The RP should record which Organizations have authorized a specific client or user to which scopes.
 
 These authorizations can be communicated via properties within the dfc-t Technical Ontology. Specifically `dfc-t:assignedScope` gives details of which scopes have been granted to a client/user by an Organization, and `dfc-t:requiredScope` gives details of which scopes a client/user is requesting from an Organization.
 
