@@ -117,8 +117,8 @@ Property mapping within a Verifiable Grant (VC-native properties replace their `
   "credentialSubject": {
     "id": "https://market.example/client",
     "dfc-t:authorizationAction": "dfc-t:Read",
-    "dfc-t:authorizationResource": "https://farm.example/products/123",
-    "dfc-t:authorizationProperty": "https://www.w3id.org/dfc/ontology/src/DFC_BusinessOntology.owl#price"
+    "dfc-t:authorizationResource": "https://farm.example/supplied-products/123",
+    "dfc-t:authorizationProperty": "https://www.w3id.org/dfc/ontology/src/DFC_BusinessOntology.owl#description"
   },
   "credentialStatus": {
     "id": "https://auth.example/status/3#94567",

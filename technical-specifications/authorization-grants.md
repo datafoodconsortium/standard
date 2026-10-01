@@ -39,8 +39,8 @@ Classes SHOULD be defined as subclasses of appropriate existing DFC technical co
 | `dfc-t:grantee` | `AuthorizationGrant` | Resource | Agent receiving delegated authority |
 | `dfc-t:authorizationAction` | — | `AuthorizationAction` | Operation: `dfc-t:Read`, `Create`, `Update`, `Delete`, `Delegate` (extensible) |
 | `dfc-t:authorizationResource` | — | Resource | Protected individual resource |
-| `dfc-t:authorizationResourceType` | — | Class | Class of resources covered (e.g. `dfc-b:CatalogItem`) |
-| `dfc-t:authorizationProperty` | — | Property | Individual RDF property covered (e.g. `dfc-b:price`) |
+| `dfc-t:authorizationResourceType` | — | Class | Class of resources covered (e.g. `dfc-b:SuppliedProduct`) |
+| `dfc-t:authorizationProperty` | — | Property | Individual RDF property covered (e.g. `dfc-b:description`) |
 | `dfc-t:requiredScope` | — | string | OIDC scope associated with the policy/grant (e.g. `"dfc:catalog.read"`). Scopes MUST NOT be interpreted as replacing semantic authorization. |
 
 ## 2. Grant model
@@ -58,11 +58,11 @@ A `dfc-t:AuthorizationGrant` represents an authorization delegation. The minimal
     dfc-t:grantor <https://alice.example/#me> ;
     dfc-t:grantee <https://market.example/client> ;
     dfc-t:authorizationAction dfc-t:Read ;
-    dfc-t:authorizationResource <https://farm.example/products/123> ;
-    dfc-t:authorizationProperty dfc-b:price .
+    dfc-t:authorizationResource <https://farm.example/supplied-products/123> ;
+    dfc-t:authorizationProperty dfc-b:description .
 ```
 
-> Alice grants the marketplace client permission to read the `price` property of product `123`.
+> Alice grants the marketplace client permission to read the `description` property of supplied product `123`.
 
 The equivalent JSON-LD representation is RECOMMENDED for HTTP APIs:
 
@@ -84,8 +84,8 @@ The equivalent JSON-LD representation is RECOMMENDED for HTTP APIs:
   "grantor": "https://alice.example/#me",
   "grantee": "https://market.example/client",
   "action": "Read",
-  "resource": "https://farm.example/products/123",
-  "property": "https://www.w3id.org/dfc/ontology/src/DFC_BusinessOntology.owl#price",
+  "resource": "https://farm.example/supplied-products/123",
+  "property": "https://www.w3id.org/dfc/ontology/src/DFC_BusinessOntology.owl#description",
   "validUntil": "2026-12-31T23:59:59Z"
 }
 ```
@@ -116,12 +116,12 @@ An implementation MUST support inheritance at least for resource hierarchies or 
 A rule MAY explicitly deny an operation:
 
 ```turtle
-<https://auth.example/policies/no-cost>
+<https://auth.example/policies/no-price>
     a dfc-t:AuthorizationPolicy ;
     dfc-t:authorizationSubject <https://market.example/client> ;
     dfc-t:authorizationAction dfc-t:Read ;
-    dfc-t:authorizationResourceType dfc-b:Product ;
-    dfc-t:authorizationProperty dfc-b:supplierCost ;
+    dfc-t:authorizationResourceType dfc-b:SuppliedProduct ;
+    dfc-t:authorizationProperty dfc-b:price ;
     dfc-t:effect dfc-t:Deny .
 ```
 
@@ -162,44 +162,35 @@ An Authorization Server or grant-management service MAY expose:
 
 Authorization MAY produce a response filter; the PEP MUST enforce it, and authorization MUST occur **before** serialization or transmission — never retrieve-then-hide, and never rely on the client to hide data. Rules:
 
-* **Properties**: each protected property is evaluated independently (e.g. `name`/`description`/`price` ALLOW, `supplierCost` DENY → the property is omitted from the response).
-* **Nested resources**: authorization is evaluated against the actual resource/property pair; `Product/123 → producer → name` MUST NOT inherit the authorization of `Product/123 → producer` unless a policy explicitly permits it.
+* **Properties**: each protected property is evaluated independently (e.g. `description` ALLOW, `price` DENY → the price is omitted from the response).
+* **Nested resources**: authorization is evaluated against the actual resource/property pair; `SuppliedProduct/123 → supplier → name` MUST NOT inherit the authorization of `SuppliedProduct/123 → supplier` unless a policy explicitly permits it.
 * **Collections/queries**: unauthorized members MUST be excluded server-side (`find Product where subject is authorized`, not `find all then hide`); authorization predicates SHOULD be pushed into the query engine (SQL/SPARQL/document equivalent). Enumeration resistance applies: avoid revealing whether a protected resource exists to callers not authorized to discover it.
 
 ## 11. Complete example
 
 *This section is non-normative (worked example).*
 
-Grants (marketplace may read descriptions and prices of catalog items; supplier cost is denied):
+Grant (the marketplace may read the `description` of supplied products; their price is denied):
 
 ```turtle
-<https://auth.example/grants/catalog-read>
+<https://auth.example/grants/supplied-description>
     a dfc-t:AuthorizationGrant ;
     dfc-t:grantor <https://alice.example/#me> ;
     dfc-t:grantee <https://market.example/client> ;
     dfc-t:authorizationAction dfc-t:Read ;
-    dfc-t:authorizationResourceType dfc-b:CatalogItem ;
+    dfc-t:authorizationResourceType dfc-b:SuppliedProduct ;
     dfc-t:authorizationProperty dfc-b:description ;
     dfc-t:requiredScope "dfc:catalog.read" .
 
-<https://auth.example/grants/catalog-price>
-    a dfc-t:AuthorizationGrant ;
-    dfc-t:grantor <https://alice.example/#me> ;
-    dfc-t:grantee <https://market.example/client> ;
-    dfc-t:authorizationAction dfc-t:Read ;
-    dfc-t:authorizationResourceType dfc-b:CatalogItem ;
-    dfc-t:authorizationProperty dfc-b:price ;
-    dfc-t:requiredScope "dfc:catalog.read" .
-
-<https://auth.example/policies/no-supplier-cost>
+<https://auth.example/policies/no-price>
     a dfc-t:AuthorizationPolicy ;
     dfc-t:authorizationAction dfc-t:Read ;
-    dfc-t:authorizationResourceType dfc-b:CatalogItem ;
-    dfc-t:authorizationProperty dfc-b:supplierCost ;
+    dfc-t:authorizationResourceType dfc-b:SuppliedProduct ;
+    dfc-t:authorizationProperty dfc-b:price ;
     dfc-t:effect dfc-t:Deny .
 ```
 
-Request `GET /products/123` with token claims `sub = webid = https://alice.example/#me`, `client_id = https://market.example/client`, `scope = "openid webid dfc:catalog.read"` yields `description → visible, price → visible, supplierCost → absent` — even though the OIDC scope is present. The scope is the coarse API gate; the grants are the fine-grained data gate.
+Request `GET /supplied-products/123` with token claims `sub = webid = https://alice.example/#me`, `client_id = https://market.example/client`, `scope = "openid webid dfc:catalog.read"` yields `description → visible, price → absent` — even though the OIDC scope is present. The scope is the coarse API gate; the grant and the deny policy are the fine-grained data gate.
 
 ## 12. Implementation notes
 

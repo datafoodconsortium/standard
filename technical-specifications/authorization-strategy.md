@@ -101,7 +101,7 @@ The canonical v2 scope form is dotted (`dfc:<domain>.<operation>`). Deployments 
 | `Write*` | `dfc:<domain>.write` (see [action mapping](#8-action-mapping)) |
 | `Delete*` | `dfc:<domain>.delete` |
 
-Price-style distinctions that v1 encoded in scope names are expressed in v2 as property-level grants instead (e.g. `price` allowed while `supplierCost` denied under the same `dfc:catalog.read` scope).
+Price-style distinctions that v1 encoded in scope names are expressed in v2 as property-level grants instead (e.g. the `description` of a `dfc-b:SuppliedProduct` allowed while its `dfc-b:price` is denied, under the same `dfc:catalog.read` scope).
 
 ## 4. DPoP: proof-of-possession gate (independent profile)
 
@@ -173,8 +173,8 @@ HTTP/1.1 403 Forbidden
 ```json
 {
   "error": "insufficient_authorization",
-  "resource": "https://farm.example/products/123",
-  "property": "https://www.w3id.org/dfc/ontology/src/DFC_BusinessOntology.owl#supplierCost"
+  "resource": "https://farm.example/supplied-products/123",
+  "property": "https://www.w3id.org/dfc/ontology/src/DFC_BusinessOntology.owl#price"
 }
 ```
 
