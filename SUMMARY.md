@@ -16,6 +16,7 @@
   * [Authorization strategy](technical-specifications/authorization-strategy.md)
   * [Architecture representations](technical-specifications/architecture-representations.md)
   * [Order states](technical-specifications/order-states.md)
+  * [URI Redirection](technical-specifications/uri-redirection.md)
 * [Prototype specifications](prototype-specifications.md)
 * [🚧 Solid client protocol](solid-client-protocol.md)
 * [🚧 Connector](connector/README.md)
