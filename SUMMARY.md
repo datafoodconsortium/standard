@@ -14,6 +14,8 @@
   * [Specifics API](technical-specifications/non-ldp-api.md)
   * [Authentication strategy](technical-specifications/authentication-strategy.md)
   * [Authorization strategy](technical-specifications/authorization-strategy.md)
+  * [Authorization grants](technical-specifications/authorization-grants.md)
+  * [Authorization trust and credentials](technical-specifications/authorization-trust-and-credentials.md)
   * [Architecture representations](technical-specifications/architecture-representations.md)
   * [Order states](technical-specifications/order-states.md)
   * [URI Redirection](technical-specifications/uri-redirection.md)
