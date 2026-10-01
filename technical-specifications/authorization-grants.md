@@ -45,7 +45,7 @@ Classes SHOULD be defined as subclasses of appropriate existing DFC technical co
 
 ## 2. Grant model
 
-*This section is normative (the Turtle and JSON-LD illustrate the normative model).*
+*This section is non-normative (the Turtle and JSON-LD illustrate the normative model).*
 
 A `dfc-t:AuthorizationGrant` represents an authorization delegation. The minimal grant contains grantor, grantee, action, and a resource or resource type:
 

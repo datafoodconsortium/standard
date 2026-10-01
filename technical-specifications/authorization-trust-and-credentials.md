@@ -243,8 +243,8 @@ v1.0    inter-platform authorization, discovery, conformance suite
 *This section is non-normative.*
 
 ```text
-[VC-DATA-MODEL-2.0]  Verifiable Credentials Data Model v2.0. W3C Recommendation, 15 May 2025.
-[VC-BITSTRING-STATUS-LIST]  Bitstring Status List v1.0. W3C Recommendation, 15 May 2025.
-[SOLID-OIDC]  Solid-OIDC. Solid Community Group Report (actively maintained;
+[VC-DATA-MODEL-2.0](https://www.w3.org/TR/vc-data-model-2.0/)  Verifiable Credentials Data Model v2.0. W3C Recommendation, 15 May 2025.
+[VC-BITSTRING-STATUS-LIST](https://www.w3.org/TR/vc-bitstring-status-list/)  Bitstring Status List v1.0. W3C Recommendation, 15 May 2025.
+[SOLID-OIDC](https://solidproject.org/TR/oidc)  Solid-OIDC. Solid Community Group Report (actively maintained;
     pin a revision date when citing normatively, as the text is still evolving).
 ```

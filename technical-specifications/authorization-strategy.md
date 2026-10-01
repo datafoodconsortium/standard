@@ -2,7 +2,7 @@
 
 **Status:** Draft proposal
 **Intended audience:** DFC platform implementers, API implementers, identity/authorization providers, application developers
-**Namespace:** `https://www.datafoodconsortium.org#`
+**Namespace:** `dfc-t: https://www.w3id.org/dfc/ontology/src/DFC_TechnicalOntology.owl#`
 **Prefix:** `dfc-t:`
 **Specification family:** DFC Technical Ontology / DFC Protocol
 
@@ -139,7 +139,7 @@ The central interoperability requirement: **two independent DFC implementations 
 
 *This section is normative.*
 
-If authentication is required and no valid credentials are supplied, return `401 Unauthorized` and SHOULD advertise the Authorization Server (the pattern used by Solid-OIDC):
+If authentication is required and no valid credentials are supplied, return `401 Unauthorized` and SHOULD advertise the Authorization Server:
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -174,7 +174,7 @@ HTTP/1.1 403 Forbidden
 {
   "error": "insufficient_authorization",
   "resource": "https://farm.example/products/123",
-  "property": "https://www.datafoodconsortium.org#supplierCost"
+  "property": "https://www.w3id.org/dfc/ontology/src/DFC_TechnicalOntology.owl#supplierCost"
 }
 ```
 
