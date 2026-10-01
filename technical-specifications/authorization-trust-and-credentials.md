@@ -1,7 +1,7 @@
 # 🚧 Authorization trust and credentials
 
 **Status:** Draft proposal — detail page for the [v2 authorization strategy](authorization-strategy.md).
-**Namespace:** `https://www.datafoodconsortium.org#` (`dfc-t:`).
+**Namespace:** `dfc-t: https://www.w3id.org/dfc/ontology/src/DFC_TechnicalOntology.owl#`, `dfc-b: https://www.w3id.org/dfc/ontology/src/DFC_BusinessOntology.owl#`.
 **External terms referenced (informative):** `solid:` = `http://www.w3.org/ns/solid/terms#`.
 
 This page answers four questions the base model leaves open: how a Resource Server verifies that a token issuer may speak for a WebID (§1), how it verifies a named client (§2), how Verifiable Credentials serve as relationship evidence (§3), and how a grant itself becomes a portable credential (§4). Credential issuance/presentation protocols (e.g. OIDC for VCI/VP) are out of scope — this page specifies the credential data model and PDP consumption, not transport.
@@ -105,7 +105,10 @@ Property mapping within a Verifiable Grant (VC-native properties replace their `
 
 ```json
 {
-  "@context": ["https://www.w3.org/ns/credentials/v2", { "dfc-t": "https://www.datafoodconsortium.org#" }],
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    { "dfc-t": "https://www.w3id.org/dfc/ontology/src/DFC_TechnicalOntology.owl#" }
+  ],
   "id": "https://auth.example/grants/7f31",
   "type": ["VerifiableCredential", "dfc-t:AuthorizationGrant"],
   "issuer": "https://alice.example/#me",
@@ -115,7 +118,7 @@ Property mapping within a Verifiable Grant (VC-native properties replace their `
     "id": "https://market.example/client",
     "dfc-t:authorizationAction": "dfc-t:Read",
     "dfc-t:authorizationResource": "https://farm.example/products/123",
-    "dfc-t:authorizationProperty": "https://www.datafoodconsortium.org#price"
+    "dfc-t:authorizationProperty": "https://www.w3id.org/dfc/ontology/src/DFC_BusinessOntology.owl#price"
   },
   "credentialStatus": {
     "id": "https://auth.example/status/3#94567",

@@ -1,7 +1,7 @@
 # 🚧 Authorization grants
 
 **Status:** Draft proposal — detail page for the [v2 authorization strategy](authorization-strategy.md).
-**Namespace:** `https://www.datafoodconsortium.org#` (`dfc-t:`). Business-ontology terms below use `dfc-b:`; both prefixes resolve against the DFC ontology namespaces — do not conflate the two in new Turtle/JSON-LD.
+**Namespace:** `dfc-t: https://www.w3id.org/dfc/ontology/src/DFC_TechnicalOntology.owl#`, `dfc-b: https://www.w3id.org/dfc/ontology/src/DFC_BusinessOntology.owl#`.
 
 The key words **MUST**, **MUST NOT**, **SHOULD**, **MAY**, and **OPTIONAL** are to be interpreted as described in RFC 2119 / RFC 8174.
 
@@ -50,8 +50,8 @@ Classes SHOULD be defined as subclasses of appropriate existing DFC technical co
 A `dfc-t:AuthorizationGrant` represents an authorization delegation. The minimal grant contains grantor, grantee, action, and a resource or resource type:
 
 ```turtle
-@prefix dfc-t: <https://www.datafoodconsortium.org#> .
-@prefix dfc-b: <https://www.datafoodconsortium.org#> .
+@prefix dfc-t: <https://www.w3id.org/dfc/ontology/src/DFC_TechnicalOntology.owl#> .
+@prefix dfc-b: <https://www.w3id.org/dfc/ontology/src/DFC_BusinessOntology.owl#> .
 
 <https://auth.example/grants/7f31>
     a dfc-t:AuthorizationGrant ;
@@ -69,7 +69,7 @@ The equivalent JSON-LD representation is RECOMMENDED for HTTP APIs:
 ```json
 {
   "@context": {
-    "dfc-t": "https://www.datafoodconsortium.org#",
+    "dfc-t": "https://www.w3id.org/dfc/ontology/src/DFC_TechnicalOntology.owl#",
     "grantor": "dfc-t:grantor",
     "grantee": "dfc-t:grantee",
     "action": "dfc-t:authorizationAction",
@@ -85,7 +85,7 @@ The equivalent JSON-LD representation is RECOMMENDED for HTTP APIs:
   "grantee": "https://market.example/client",
   "action": "Read",
   "resource": "https://farm.example/products/123",
-  "property": "https://www.datafoodconsortium.org#price",
+  "property": "https://www.w3id.org/dfc/ontology/src/DFC_BusinessOntology.owl#price",
   "validUntil": "2026-12-31T23:59:59Z"
 }
 ```

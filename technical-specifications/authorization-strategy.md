@@ -2,7 +2,7 @@
 
 **Status:** Draft proposal
 **Intended audience:** DFC platform implementers, API implementers, identity/authorization providers, application developers
-**Namespace:** `dfc-t: https://www.w3id.org/dfc/ontology/src/DFC_TechnicalOntology.owl#`
+**Namespace:** `dfc-t: https://www.w3id.org/dfc/ontology/src/DFC_TechnicalOntology.owl#`, `dfc-b: https://www.w3id.org/dfc/ontology/src/DFC_BusinessOntology.owl#`
 **Prefix:** `dfc-t:`
 **Specification family:** DFC Technical Ontology / DFC Protocol
 
@@ -174,7 +174,7 @@ HTTP/1.1 403 Forbidden
 {
   "error": "insufficient_authorization",
   "resource": "https://farm.example/products/123",
-  "property": "https://www.w3id.org/dfc/ontology/src/DFC_TechnicalOntology.owl#supplierCost"
+  "property": "https://www.w3id.org/dfc/ontology/src/DFC_BusinessOntology.owl#supplierCost"
 }
 ```
 
